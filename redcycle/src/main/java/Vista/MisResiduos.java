@@ -55,8 +55,6 @@ public class MisResiduos extends javax.swing.JFrame {
         jLabel144.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel144.setText("Mis Residuos");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\nadis\\Documents\\GitHub\\redCycle_0\\redcycle\\src\\main\\java\\img\\planta.png")); // NOI18N
-
         jLabel4.setText("Seleccione el artículo que desee clasificar: ");
 
         cbClasificacionesBasura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -78,7 +76,7 @@ public class MisResiduos extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(78, 78, 78)
+                .addGap(72, 72, 72)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(cbClasificacionesBasura, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -90,7 +88,7 @@ public class MisResiduos extends javax.swing.JFrame {
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel144, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel144)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(67, Short.MAX_VALUE))
@@ -115,7 +113,7 @@ public class MisResiduos extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(spCantidadResiduos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 420, 310));
@@ -145,19 +143,19 @@ public class MisResiduos extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("¿Cómo lo clasifico?");
-        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 190, -1));
+        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 210, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Mis Residuos");
-        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 40, 140, -1));
+        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 40, 150, -1));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Estadísticas");
-        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 40, 120, -1));
+        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 40, 140, -1));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
@@ -165,7 +163,7 @@ public class MisResiduos extends javax.swing.JFrame {
         jLabel12.setText("Reducción de Residuos");
         jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 40, 260, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\nadis\\Documents\\GitHub\\redCycle_0\\redcycle\\src\\main\\java\\img\\logo.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
         jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 100, 90));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

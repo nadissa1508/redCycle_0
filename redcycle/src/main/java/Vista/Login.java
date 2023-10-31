@@ -75,8 +75,6 @@ public class Login extends javax.swing.JFrame {
         btnIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
         btnIniciarSesion.setText("Iniciar Sesion");
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\nadis\\Documents\\NetBeansProjects\\redcycle\\src\\main\\java\\img\\logo.png")); // NOI18N
-
         jLabel5.setText("Nombre de usuario");
 
         jLabel6.setText("Contraseña");
@@ -136,8 +134,6 @@ public class Login extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, -1, -1));
-
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\nadis\\Documents\\GitHub\\redCycle_0\\redcycle\\src\\main\\java\\img\\fondoconjunto.png")); // NOI18N
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

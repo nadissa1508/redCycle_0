@@ -40,7 +40,6 @@ public class MiCuenta extends javax.swing.JFrame {
         cbOrganica = new javax.swing.JCheckBox();
         cbPlastico = new javax.swing.JCheckBox();
         cbMulticapa = new javax.swing.JCheckBox();
-        cbOtro = new javax.swing.JCheckBox();
         cbMetal = new javax.swing.JCheckBox();
         cbVidrio = new javax.swing.JCheckBox();
         cbPapel = new javax.swing.JCheckBox();
@@ -62,7 +61,7 @@ public class MiCuenta extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\nadis\\Documents\\GitHub\\redCycle_0\\redcycle\\src\\main\\java\\img\\User2.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 31, 112, 113));
 
         jLabel4.setText("Nombre de usuario");
@@ -97,9 +96,6 @@ public class MiCuenta extends javax.swing.JFrame {
         cbMulticapa.setText("Multicapa");
         jPanel2.add(cbMulticapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, -1, 20));
 
-        cbOtro.setText("Otro");
-        jPanel2.add(cbOtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, -1, 20));
-
         cbMetal.setText("Metal");
         jPanel2.add(cbMetal, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, -1, 20));
 
@@ -113,10 +109,9 @@ public class MiCuenta extends javax.swing.JFrame {
         btnGuardar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardar.setText("Guardar");
-        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 330, 120, -1));
+        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 310, 120, -1));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Mi Cuenta");
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 158, -1));
@@ -124,36 +119,29 @@ public class MiCuenta extends javax.swing.JFrame {
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 580, 400));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Mi Cuenta");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 110, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 120, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("¿Cómo lo clasifico?");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 190, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 210, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Mis Residuos");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, 140, -1));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Estadísticas");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 30, 120, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, 140, -1));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Reducción de Residuos");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 30, 260, -1));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\nadis\\Documents\\GitHub\\redCycle_0\\redcycle\\src\\main\\java\\img\\Panda.png")); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 550));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -216,7 +204,6 @@ public class MiCuenta extends javax.swing.JFrame {
     private javax.swing.JCheckBox cbMetal;
     private javax.swing.JCheckBox cbMulticapa;
     private javax.swing.JCheckBox cbOrganica;
-    private javax.swing.JCheckBox cbOtro;
     private javax.swing.JCheckBox cbPapel;
     private javax.swing.JCheckBox cbPlastico;
     private javax.swing.JCheckBox cbVidrio;
