@@ -200,9 +200,9 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jLabel148" min="-2" pref="138" max="-2" attributes="0"/>
+                      <Component id="lbUltimoMes" min="-2" pref="138" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                      <Component id="jLabel147" min="-2" pref="138" max="-2" attributes="0"/>
+                      <Component id="lbEsteMes" min="-2" pref="138" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -222,8 +222,8 @@
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel148" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel147" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbUltimoMes" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbEsteMes" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                   </Group>
@@ -243,7 +243,7 @@
                 <Property name="text" type="java.lang.String" value="Residuos Generados"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel147">
+            <Component class="javax.swing.JLabel" name="lbEsteMes">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Osaka" size="18" style="0"/>
@@ -255,7 +255,7 @@
                 <Property name="text" type="java.lang.String" value="Este Mes"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel148">
+            <Component class="javax.swing.JLabel" name="lbUltimoMes">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Osaka" size="18" style="0"/>

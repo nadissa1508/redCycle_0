@@ -4,6 +4,9 @@
  */
 package Vista;
 
+import Controlador.Driver;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author nadis
@@ -15,6 +18,7 @@ public class CrearCuenta extends javax.swing.JFrame {
      */
     public CrearCuenta() {
         initComponents();
+        limpiar();
     }
 
     /**
@@ -44,7 +48,6 @@ public class CrearCuenta extends javax.swing.JFrame {
         cbMetal = new javax.swing.JCheckBox();
         cbVidrio = new javax.swing.JCheckBox();
         cbPapel = new javax.swing.JCheckBox();
-        cbOtro = new javax.swing.JCheckBox();
         btnRegistrarse = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
@@ -58,11 +61,11 @@ public class CrearCuenta extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\nadis\\Documents\\GitHub\\redCycle_0\\redcycle\\src\\main\\java\\img\\logo.png")); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 90, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(73, 153, 28));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Crear Cuenta");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 158, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 180, -1));
         jPanel2.add(txtNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 206, -1));
 
         jLabel4.setText("Nombre de usuario");
@@ -83,11 +86,6 @@ public class CrearCuenta extends javax.swing.JFrame {
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 218, -1));
 
         cbOrganica.setText("Orgánica");
-        cbOrganica.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbOrganicaActionPerformed(evt);
-            }
-        });
         jPanel2.add(cbOrganica, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, -1, 20));
 
         cbPlastico.setText("Plástico");
@@ -105,14 +103,16 @@ public class CrearCuenta extends javax.swing.JFrame {
         cbPapel.setText("Papel y cartón");
         jPanel2.add(cbPapel, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, -1, 20));
 
-        cbOtro.setText("Otro");
-        jPanel2.add(cbOtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, -1, 20));
-
         btnRegistrarse.setBackground(new java.awt.Color(73, 153, 28));
         btnRegistrarse.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnRegistrarse.setForeground(new java.awt.Color(255, 255, 255));
         btnRegistrarse.setText("Registrarse");
-        jPanel2.add(btnRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 360, 190, -1));
+        btnRegistrarse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarseActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 190, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 650, 420));
 
@@ -135,9 +135,56 @@ public class CrearCuenta extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cbOrganicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbOrganicaActionPerformed
+    private void limpiar() {
+        txtNombreUsuario.setText("");
+        txtCorreo.setText("");
+        txtPassword.setText("");
+        cbOrganica.setSelected(false);
+        cbPlastico.setSelected(false);
+        cbMulticapa.setSelected(false);
+        cbMetal.setSelected(false);
+        cbVidrio.setSelected(false);
+        cbPapel.setSelected(false);
+
+    }
+
+    private void crearCuenta() {
+        String litrosOrganica = "", litrosPlastico = "", litrosMulticapa = "", litrosMetal = "", litrosVidrio = "", litrosPapel = "";
+
+        if (cbOrganica.isSelected()) {
+            litrosOrganica = JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para basura organica: ");
+        }
+
+        if (cbPlastico.isSelected()) {
+            litrosPlastico = JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para el plástico:");
+        }
+        if (cbMulticapa.isSelected()) {
+            litrosMulticapa = JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para basura multicapa: ");
+        }
+        if (cbMetal.isSelected()) {
+            litrosMetal = JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para metal: ");
+        }
+        if (cbVidrio.isSelected()) {
+            litrosVidrio = JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para vidrio: ");
+        }
+        if (cbPapel.isSelected()) {
+            litrosPapel = JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para papel y cartón: ");
+        }
+        new Driver().validarUsuario(txtNombreUsuario.getText(), txtCorreo.getText(), txtPassword.getText(), "Organica", litrosOrganica, "Plastico", litrosPlastico, "Multicapa", litrosMulticapa, "Metal", litrosMetal, "Vidrio", litrosVidrio, "Papel", litrosPapel);
+
+    }
+
+    private void abrirLogin() {
+        this.dispose();
+        Login login = new Login();
+        login.setVisible(true);
+    }
+
+    private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarseActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbOrganicaActionPerformed
+        crearCuenta();
+        abrirLogin();
+    }//GEN-LAST:event_btnRegistrarseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,7 +226,6 @@ public class CrearCuenta extends javax.swing.JFrame {
     private javax.swing.JCheckBox cbMetal;
     private javax.swing.JCheckBox cbMulticapa;
     private javax.swing.JCheckBox cbOrganica;
-    private javax.swing.JCheckBox cbOtro;
     private javax.swing.JCheckBox cbPapel;
     private javax.swing.JCheckBox cbPlastico;
     private javax.swing.JCheckBox cbVidrio;

@@ -35,8 +35,8 @@ public class ReduccionResiduos extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel144 = new javax.swing.JLabel();
-        jLabel147 = new javax.swing.JLabel();
-        jLabel148 = new javax.swing.JLabel();
+        lbEsteMes = new javax.swing.JLabel();
+        lbUltimoMes = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -84,15 +84,15 @@ public class ReduccionResiduos extends javax.swing.JFrame {
         jLabel144.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel144.setText("Residuos Generados");
 
-        jLabel147.setFont(new java.awt.Font("Osaka", 0, 18)); // NOI18N
-        jLabel147.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel147.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel147.setText("Este Mes");
+        lbEsteMes.setFont(new java.awt.Font("Osaka", 0, 18)); // NOI18N
+        lbEsteMes.setForeground(new java.awt.Color(0, 0, 0));
+        lbEsteMes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbEsteMes.setText("Este Mes");
 
-        jLabel148.setFont(new java.awt.Font("Osaka", 0, 18)); // NOI18N
-        jLabel148.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel148.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel148.setText("Último Mes");
+        lbUltimoMes.setFont(new java.awt.Font("Osaka", 0, 18)); // NOI18N
+        lbUltimoMes.setForeground(new java.awt.Color(0, 0, 0));
+        lbUltimoMes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbUltimoMes.setText("Último Mes");
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/hoja.png"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -109,9 +109,9 @@ public class ReduccionResiduos extends javax.swing.JFrame {
                 .addContainerGap(27, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel148, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbUltimoMes, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61)
-                .addComponent(jLabel147, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbEsteMes, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(87, 87, 87))
         );
         jPanel2Layout.setVerticalGroup(
@@ -126,8 +126,8 @@ public class ReduccionResiduos extends javax.swing.JFrame {
                         .addComponent(jLabel2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel148)
-                    .addComponent(jLabel147))
+                    .addComponent(lbUltimoMes)
+                    .addComponent(lbEsteMes))
                 .addGap(47, 47, 47))
         );
 
@@ -282,8 +282,6 @@ public class ReduccionResiduos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel144;
     private javax.swing.JLabel jLabel146;
-    private javax.swing.JLabel jLabel147;
-    private javax.swing.JLabel jLabel148;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel9;
@@ -291,5 +289,7 @@ public class ReduccionResiduos extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JLabel lbEsteMes;
+    private javax.swing.JLabel lbUltimoMes;
     // End of variables declaration//GEN-END:variables
 }
