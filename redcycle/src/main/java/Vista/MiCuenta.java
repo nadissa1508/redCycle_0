@@ -67,7 +67,7 @@ public class MiCuenta extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/User2.png"))); // NOI18N
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 31, 112, 113));
 
         jLabel4.setText("Nombre de usuario");
@@ -149,7 +149,7 @@ public class MiCuenta extends javax.swing.JFrame {
         jLabel12.setText("Reducción de Residuos");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 30, 260, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\nadis\\Documents\\GitHub\\redCycle_0\\redcycle\\src\\main\\java\\img\\Panda.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Panda.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 550));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
