@@ -120,19 +120,24 @@ public class Driver {
         if (litros1 > 0) {
             contTemp = new Contenedor(clasificacionCont1, litros1, 0);
             contenedoresBasura.add(contTemp);
-        } else if (litros2 > 0) {
+        }
+        if (litros2 > 0) {
             contTemp = new Contenedor(clasificacionCont2, litros2, 0);
             contenedoresBasura.add(contTemp);
-        } else if (litros3 > 0) {
+        }
+        if (litros3 > 0) {
             contTemp = new Contenedor(clasificacionCont3, litros3, 0);
             contenedoresBasura.add(contTemp);
-        } else if (litros4 > 0) {
+        }
+        if (litros4 > 0) {
             contTemp = new Contenedor(clasificacionCont4, litros4, 0);
             contenedoresBasura.add(contTemp);
-        } else if (litros5 > 0) {
+        }
+        if (litros5 > 0) {
             contTemp = new Contenedor(clasificacionCont5, litros5, 0);
             contenedoresBasura.add(contTemp);
-        } else if (litros6 > 0) {
+        }
+        if (litros6 > 0) {
             contTemp = new Contenedor(clasificacionCont6, litros6, 0);
             contenedoresBasura.add(contTemp);
         }
@@ -140,7 +145,7 @@ public class Driver {
         usuario = new Usuario(nombre, correo, password, contenedoresBasura);
         if (usuario != null) {
             JOptionPane.showMessageDialog(null, "Cuenta creada con exito!");
-        }else{
+        } else {
             System.out.println("ERROR AL CREAR USUARIO");
         }
 
