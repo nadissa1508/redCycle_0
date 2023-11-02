@@ -143,6 +143,11 @@ public class Driver {
             contTemp = new Contenedor(clasificacionCont6, litros6, 0);
             contenedoresBasura.add(contTemp);
         }
+        
+        if(contenedoresBasura.isEmpty() ){
+            JOptionPane.showMessageDialog(null, "Seleccione al menos un contenedor de basura!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
         usuario = new Usuario(nombre, correo, password, contenedoresBasura);
         if (usuario != null) {
