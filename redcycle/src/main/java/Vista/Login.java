@@ -15,7 +15,11 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    public Login() {
+    
+    private Driver driver;
+    
+    public Login(Driver driver) {
+        this.driver = driver;
         initComponents();
         limpiar();
     }
@@ -180,8 +184,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     private void iniciarSesion() {
-        Driver driv = new Driver();
-        boolean flag = driv.iniciarSesion(txtNombreUsuario.getText(), txtPassword.getText());
+        boolean flag = driver.iniciarSesion(txtNombreUsuario.getText(), txtPassword.getText());
         if (flag) {
             MiCuenta cuenta = new MiCuenta();
             cuenta.setVisible(true);
@@ -191,7 +194,7 @@ public class Login extends javax.swing.JFrame {
 
     private void abrirCrearCuenta() {
         this.dispose();
-        CrearCuenta crearCuenta = new CrearCuenta();
+        CrearCuenta crearCuenta = new CrearCuenta(driver);
         crearCuenta.setVisible(true);
     }
 
@@ -233,9 +236,10 @@ public class Login extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        Driver driver2 = new Driver();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new Login(driver2).setVisible(true);
 
             }
         });

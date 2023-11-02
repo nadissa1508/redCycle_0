@@ -56,6 +56,7 @@ public class Driver {
         //usuario = new Usuario();
         //falta llenar el array clasificacionesBasura segun los tipos personalizados que seleccionó el usuario
         //debe de hacerse por defecto 
+        usuario = null;
         contenedoresBasura = new ArrayList<>();
         clasificacionesBasura = new ArrayList<>();
     }
@@ -146,7 +147,7 @@ public class Driver {
     }
 
     public boolean iniciarSesion(String user, String pass) {
-        boolean flag = true;
+        boolean flag = false;
         if (usuario != null) {
             if ((user.equals(usuario.getNombre())) && (pass.equals(usuario.getPassword()))) {
                 JOptionPane.showMessageDialog(null, "Credenciales correctas!");

@@ -16,7 +16,11 @@ public class CrearCuenta extends javax.swing.JFrame {
     /**
      * Creates new form CrearCuenta
      */
-    public CrearCuenta() {
+    
+    private static Driver driver;
+    
+    public CrearCuenta(Driver driver) {
+        this.driver = driver;
         initComponents();
         limpiar();
     }
@@ -170,13 +174,13 @@ public class CrearCuenta extends javax.swing.JFrame {
         if (cbPapel.isSelected()) {
             litrosPapel = JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para papel y cartón: ");
         }
-        new Driver().validarUsuario(txtNombreUsuario.getText(), txtCorreo.getText(), txtPassword.getText(), "Organica", litrosOrganica, "Plastico", litrosPlastico, "Multicapa", litrosMulticapa, "Metal", litrosMetal, "Vidrio", litrosVidrio, "Papel", litrosPapel);
+        driver.validarUsuario(txtNombreUsuario.getText(), txtCorreo.getText(), txtPassword.getText(), "Organica", litrosOrganica, "Plastico", litrosPlastico, "Multicapa", litrosMulticapa, "Metal", litrosMetal, "Vidrio", litrosVidrio, "Papel", litrosPapel);
 
     }
 
     private void abrirLogin() {
         this.dispose();
-        Login login = new Login();
+        Login login = new Login(driver);
         login.setVisible(true);
     }
 
@@ -216,7 +220,7 @@ public class CrearCuenta extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CrearCuenta().setVisible(true);
+                new CrearCuenta(driver).setVisible(true);
             }
         });
     }
