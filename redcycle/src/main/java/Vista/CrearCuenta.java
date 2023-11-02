@@ -16,9 +16,8 @@ public class CrearCuenta extends javax.swing.JFrame {
     /**
      * Creates new form CrearCuenta
      */
-    
     private static Driver driver;
-    
+
     public CrearCuenta(Driver driver) {
         this.driver = driver;
         initComponents();
@@ -153,12 +152,12 @@ public class CrearCuenta extends javax.swing.JFrame {
     }
 
     private void crearCuenta() {
+        
         String litrosOrganica = "", litrosPlastico = "", litrosMulticapa = "", litrosMetal = "", litrosVidrio = "", litrosPapel = "";
 
         if (cbOrganica.isSelected()) {
             litrosOrganica = JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para basura organica: ");
         }
-
         if (cbPlastico.isSelected()) {
             litrosPlastico = JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para el plástico:");
         }
@@ -187,7 +186,10 @@ public class CrearCuenta extends javax.swing.JFrame {
     private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarseActionPerformed
         // TODO add your handling code here:
         crearCuenta();
-        abrirLogin();
+        if(driver.getUsuario() != null){
+            abrirLogin();
+        }
+        
     }//GEN-LAST:event_btnRegistrarseActionPerformed
 
     /**

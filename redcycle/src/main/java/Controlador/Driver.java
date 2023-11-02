@@ -71,6 +71,7 @@ public class Driver {
             }
 
         } catch (Exception e) {
+            //ACA HAY ERROR
             JOptionPane.showMessageDialog(null, "Debe ingresar un número decimal, no ingrese letras o números negativos", "Error", JOptionPane.ERROR_MESSAGE);
             System.out.println("ERROR AL TRATAR INGRESAR CANTIDAD DE LITROS DEL CONTENEDOR");
             litros = -1.1f;
@@ -92,6 +93,7 @@ public class Driver {
             JOptionPane.showMessageDialog(null, "Campo vacio!", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         } else if (litrosOrganica < 0) {
+            //ENTRA ACA
             JOptionPane.showMessageDialog(null, "Ingrese una cantidad valida en la cantidad del litros del contenedor (basura orgánica) !", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         } else if (litrosPlastico < 0) {

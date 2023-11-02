@@ -4,6 +4,8 @@
  */
 package Vista;
 
+import Controlador.Driver;
+
 /**
  *
  * @author nadis
@@ -13,7 +15,11 @@ public class MiCuenta extends javax.swing.JFrame {
     /**
      * Creates new form MiCuenta
      */
-    public MiCuenta() {
+    
+    private static Driver driver;
+    
+    public MiCuenta(Driver driver) {
+        this.driver = driver;
         initComponents();
     }
 
@@ -196,7 +202,7 @@ public class MiCuenta extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MiCuenta().setVisible(true);
+                new MiCuenta(driver).setVisible(true);
             }
         });
     }
