@@ -133,11 +133,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/hoja.png"/>
-                </Property>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
@@ -382,44 +377,24 @@
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JLabel" name="lbIMGContenedorVidrios">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/bote_verde.png"/>
-                </Property>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lbIMGContenedorOrganica">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/bote_cafe.png"/>
-                </Property>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lbIMGContenedorMulticapa">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/bote_rojo.png"/>
-                </Property>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lbIMGContenedorPapel">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/img/bote_azul.png"/>
+                  <Image iconType="2" name="C:\Users\richi\OneDrive\Documentos\GitHub\redCycle_0\redcycle\src\main\java\img\bote_azul.png"/>
                 </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lbIMGContenedorMetal">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/bote_morao.png"/>
-                </Property>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lbIMGContenedorPlasticos">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/img/bote_amarillo.png"/>
+                  <Image iconType="2" name="C:\Users\richi\OneDrive\Documentos\GitHub\redCycle_0\redcycle\src\main\java\img\bote_amarillo.png"/>
                 </Property>
               </Properties>
             </Component>
@@ -601,11 +576,6 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/fondo2.png"/>
-            </Property>
-          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="0" y="0" width="-1" height="560"/>
