@@ -5,13 +5,38 @@
 package Controlador;
 
 import Modelo.Clasificacion;
+import Modelo.Contenedor;
 import Modelo.Usuario;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author richi
  */
+
 public class DriverClasidico {
-       //olis
+    
+    Usuario usuario = new Usuario();
+    Clasificacion clas  = new Clasificacion();
+    ArrayList<String> articulos = new ArrayList<>();
+    
+    public DriverClasidico(){
+        
+       for (Contenedor contenedor : usuario.getContedenoresBasura()){
+           
+            articulos.add(usuario.getContedenoresBasura().toString());
+       }
+       clas.setArrayArtículos(articulos);
+      
+       
+    }
+    
+    
+    
+    
+    
+    
+    
+       
 }

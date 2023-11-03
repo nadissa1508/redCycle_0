@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Vista;
+import Controlador.Driver;
+
+import Controlador.DriverClasidico;
 
 /**
  *
@@ -16,6 +19,8 @@ public class Clasifico extends javax.swing.JFrame {
     public Clasifico() {
         initComponents();
     }
+    
+    private static DriverClasidico clasifico;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -227,8 +232,8 @@ public class Clasifico extends javax.swing.JFrame {
         });
     }
     
-    public void setTextInTextField(String text) {
-        txtDescripcion.setText(text);
+    private void cambiarTexto(){
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
