@@ -4,6 +4,7 @@
  */
 package Vista;
 
+import Controlador.Driver;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -24,6 +25,12 @@ public class MisResiduos extends javax.swing.JFrame {
        
     }
     
+    private static Driver driver;
+    public MisResiduos (Driver driver) {
+        this.driver = driver;
+        initComponents();
+    }
+    
     public void abrirMisResiduos() {
         this.dispose();
         MisResiduos residuos = new MisResiduos();
@@ -35,6 +42,26 @@ public class MisResiduos extends javax.swing.JFrame {
         ReduccionResiduos reduccion = new ReduccionResiduos();
         reduccion.setVisible(true);
     }
+    
+     public void abrirClasifico() {
+        this.dispose();
+        Clasifico clasifico = new Clasifico(driver);
+        clasifico.setVisible(true);
+    }
+     
+    public void abrirMiCuenta(){
+        this.dispose();
+        MiCuenta cuenta = new MiCuenta(driver);
+        cuenta.setVisible(true);
+    }
+    
+     public void abrirEstadisticas() {
+        this.dispose();
+        Estadisticas estadisticas = new Estadisticas();
+        estadisticas.setVisible(true);
+    }
+
+    
      
      
 
@@ -377,12 +404,22 @@ public class MisResiduos extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Mi Cuenta");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
         jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 110, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("¿Cómo lo clasifico?");
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
         jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 210, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
@@ -395,12 +432,22 @@ public class MisResiduos extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Estadísticas");
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel11MouseClicked(evt);
+            }
+        });
         jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 40, 140, -1));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Reducción de Residuos");
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
         jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 40, 260, -1));
         jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 560));
 
@@ -447,6 +494,26 @@ public class MisResiduos extends javax.swing.JFrame {
     private void txtCantMetalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantMetalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCantMetalActionPerformed
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        // TODO add your handling code here:
+        abrirMiCuenta();
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        // TODO add your handling code here:
+        abrirClasifico();
+    }//GEN-LAST:event_jLabel9MouseClicked
+
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+        // TODO add your handling code here:
+        abrirEstadisticas();
+    }//GEN-LAST:event_jLabel11MouseClicked
+
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+        // TODO add your handling code here:
+        abrirReduccionResiduos();
+    }//GEN-LAST:event_jLabel12MouseClicked
 
     /**
      * @param args the command line arguments

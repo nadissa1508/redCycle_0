@@ -132,6 +132,9 @@
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Mi Cuenta"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel3MouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
@@ -144,6 +147,9 @@
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="&#xbf;C&#xf3;mo lo clasifico?"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel9MouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
@@ -156,6 +162,9 @@
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Mis Residuos"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel11MouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel12">
           <Properties>
@@ -168,6 +177,9 @@
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Estad&#xed;sticas"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel12MouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel13">
           <Properties>
@@ -269,20 +281,12 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/hoja.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="jLabel2"/>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
         <Component class="javax.swing.JLabel" name="jLabel1">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/logo.png"/>
-            </Property>
-          </Properties>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel4">
           <Properties>
