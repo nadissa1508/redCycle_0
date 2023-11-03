@@ -86,7 +86,7 @@ public class MisResiduos extends javax.swing.JFrame {
         jLabel144.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel144.setText("Mis Residuos");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/hoja.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/hoja.png")); // NOI18N
 
         jLabel4.setText("Seleccione el artículo que desee clasificar: ");
 
@@ -155,15 +155,15 @@ public class MisResiduos extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        lbIMGContenedorVidrios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bote_verde.png"))); // NOI18N
+        lbIMGContenedorVidrios.setIcon(new javax.swing.ImageIcon("/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/bote_verde.png")); // NOI18N
 
-        lbIMGContenedorOrganica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bote_cafe.png"))); // NOI18N
+        lbIMGContenedorOrganica.setIcon(new javax.swing.ImageIcon("/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/bote_cafe.png")); // NOI18N
 
-        lbIMGContenedorMulticapa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bote_rojo.png"))); // NOI18N
+        lbIMGContenedorMulticapa.setIcon(new javax.swing.ImageIcon("/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/bote_rojo.png")); // NOI18N
 
         lbIMGContenedorPapel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bote_azul.png"))); // NOI18N
 
-        lbIMGContenedorMetal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bote_morao.png"))); // NOI18N
+        lbIMGContenedorMetal.setIcon(new javax.swing.ImageIcon("/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/bote_morao.png")); // NOI18N
 
         lbIMGContenedorPlasticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bote_amarillo.png"))); // NOI18N
 
@@ -399,7 +399,7 @@ public class MisResiduos extends javax.swing.JFrame {
         jLabel12.setText("Reducción de Residuos");
         jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 40, 260, -1));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo2.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon("/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/fondo2.png")); // NOI18N
         jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 560));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

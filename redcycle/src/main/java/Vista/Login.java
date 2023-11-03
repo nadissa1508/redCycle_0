@@ -210,8 +210,10 @@ public class Login extends javax.swing.JFrame {
     private void iniciarSesion() {
         boolean flag = driver.iniciarSesion(txtNombreUsuario.getText(), txtPassword.getText());
         if (flag) {
+            this.dispose();
             MiCuenta cuenta = new MiCuenta(driver);
             cuenta.setVisible(true);
+            
         }
 
     }

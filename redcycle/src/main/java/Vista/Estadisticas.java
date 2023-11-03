@@ -86,7 +86,7 @@ public class Estadisticas extends javax.swing.JFrame {
         jLabel12.setText("Reducción de Residuos");
         jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 40, 260, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/logo.png")); // NOI18N
         jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 90, 80));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
@@ -99,7 +99,7 @@ public class Estadisticas extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("Estadísticas");
-        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 120, -1));
+        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 150, -1));
 
         jLabel4.setText("Seleccione fecha para ver sus estadísticas : ");
         jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, -1, 20));
@@ -119,17 +119,17 @@ public class Estadisticas extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        lbIMGVidrios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bote_verde.png"))); // NOI18N
+        lbIMGVidrios.setIcon(new javax.swing.ImageIcon("/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/bote_verde.png")); // NOI18N
 
-        lbIMGOrganica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bote_cafe.png"))); // NOI18N
+        lbIMGOrganica.setIcon(new javax.swing.ImageIcon("/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/bote_cafe.png")); // NOI18N
 
-        lbIMGMulticapa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bote_rojo.png"))); // NOI18N
+        lbIMGMulticapa.setIcon(new javax.swing.ImageIcon("/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/bote_rojo.png")); // NOI18N
 
-        lbIMGPapel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bote_azul.png"))); // NOI18N
+        lbIMGPapel.setIcon(new javax.swing.ImageIcon("/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/bote_azul.png")); // NOI18N
 
-        lbIMGMetal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bote_morao.png"))); // NOI18N
+        lbIMGMetal.setIcon(new javax.swing.ImageIcon("/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/bote_morao.png")); // NOI18N
 
-        lbIMGPlasticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bote_amarillo.png"))); // NOI18N
+        lbIMGPlasticos.setIcon(new javax.swing.ImageIcon("/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/bote_amarillo.png")); // NOI18N
 
         lbMulticapa.setText("Multicapa");
 

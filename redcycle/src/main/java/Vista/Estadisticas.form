@@ -135,7 +135,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/img/logo.png"/>
+              <Image iconType="2" name="/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/logo.png"/>
             </Property>
           </Properties>
           <Constraints>
@@ -174,7 +174,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="80" y="120" width="120" height="-1"/>
+              <AbsoluteConstraints x="80" y="120" width="150" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -318,42 +318,42 @@
             <Component class="javax.swing.JLabel" name="lbIMGVidrios">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/img/bote_verde.png"/>
+                  <Image iconType="2" name="/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/bote_verde.png"/>
                 </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lbIMGOrganica">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/img/bote_cafe.png"/>
+                  <Image iconType="2" name="/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/bote_cafe.png"/>
                 </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lbIMGMulticapa">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/img/bote_rojo.png"/>
+                  <Image iconType="2" name="/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/bote_rojo.png"/>
                 </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lbIMGPapel">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/img/bote_azul.png"/>
+                  <Image iconType="2" name="/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/bote_azul.png"/>
                 </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lbIMGMetal">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/img/bote_morao.png"/>
+                  <Image iconType="2" name="/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/bote_morao.png"/>
                 </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lbIMGPlasticos">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/img/bote_amarillo.png"/>
+                  <Image iconType="2" name="/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/bote_amarillo.png"/>
                 </Property>
               </Properties>
             </Component>

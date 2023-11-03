@@ -5,6 +5,9 @@
 package Vista;
 
 import Controlador.Driver;
+import Modelo.Usuario;
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -15,14 +18,110 @@ public class MiCuenta extends javax.swing.JFrame {
     /**
      * Creates new form MiCuenta
      */
-    
     private static Driver driver;
     
-    public MiCuenta(Driver driver) {
+   public MiCuenta(Driver driver) {
         this.driver = driver;
         initComponents();
+        limpiar();
+        traerDatos();
+    }
+    
+
+    public void limpiar() {
+        txtNombreUsuario.setText("");
+        txtCorreo.setText("");
+        txtPassword.setText("");
+        cbOrganica.setSelected(false);
+        cbPlastico.setSelected(false);
+        cbMulticapa.setSelected(false);
+        cbMetal.setSelected(false);
+        cbVidrio.setSelected(false);
+        cbPapel.setSelected(false);
     }
 
+    public void traerDatos() {
+
+        Usuario tempUser = new Usuario();
+        tempUser = driver.getUsuario();
+
+        txtNombreUsuario.setText(tempUser.getNombre());
+        txtCorreo.setText(tempUser.getCorreo());
+        txtPassword.setText(tempUser.getPassword());
+
+        String[] clasificaciones = tempUser.getClasificacionesContenedores();
+        for (int i = 0; i < tempUser.sizeContenedores(); i++) {
+            if (clasificaciones[i] != null) {
+                if (clasificaciones[i].equals("Organica")) {
+                    cbOrganica.setSelected(true);
+                } else if (clasificaciones[i].equals("Plastico")) {
+                    cbPlastico.setSelected(true);
+                } else if (clasificaciones[i].equals("Multicapa")) {
+                    cbMulticapa.setSelected(true);
+                } else if (clasificaciones[i].equals("Metal")) {
+                    cbMetal.setSelected(true);
+                } else if (clasificaciones[i].equals("Vidrio")) {
+                    cbVidrio.setSelected(true);
+                } else if (clasificaciones[i].equals("Papel")) {
+                    cbPapel.setSelected(true);
+                }
+            }
+        }
+    }
+
+    public void actualizarCuenta() {
+        String litrosOrganica = "", litrosPlastico = "", litrosMulticapa = "", litrosMetal = "", litrosVidrio = "", litrosPapel = "";
+
+        if (cbOrganica.isSelected()) {
+            litrosOrganica = JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para basura organica: ");
+        }
+        if (cbPlastico.isSelected()) {
+            litrosPlastico = JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para el plástico:");
+        }
+        if (cbMulticapa.isSelected()) {
+            litrosMulticapa = JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para basura multicapa: ");
+        }
+        if (cbMetal.isSelected()) {
+            litrosMetal = JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para metal: ");
+        }
+        if (cbVidrio.isSelected()) {
+            litrosVidrio = JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para vidrio: ");
+        }
+        if (cbPapel.isSelected()) {
+            litrosPapel = JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para papel y cartón: ");
+        }
+        driver.validarUsuario("actualizada", txtNombreUsuario.getText(), txtCorreo.getText(), txtPassword.getText(), "Organica", litrosOrganica, "Plastico", litrosPlastico, "Multicapa", litrosMulticapa, "Metal", litrosMetal, "Vidrio", litrosVidrio, "Papel", litrosPapel);
+    }
+
+    public void abrirClasifico() {
+        this.dispose();
+        Clasifico clasifico = new Clasifico(driver);
+        clasifico.setVisible(true);
+    }
+    
+    //a partir de aca falta configurar objeto driver
+
+    public void abrirMisResiduos() {
+        this.dispose();
+        MisResiduos residuos = new MisResiduos();
+        residuos.setVisible(true);
+    }
+
+    public void abrirEstadisticas() {
+        this.dispose();
+        Estadisticas estadisticas = new Estadisticas();
+        estadisticas.setVisible(true);
+    }
+
+    public void abrirReduccionResiduos() {
+        this.dispose();
+        ReduccionResiduos reduccion = new ReduccionResiduos();
+        reduccion.setVisible(true);
+    }
+    
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,11 +150,11 @@ public class MiCuenta extends javax.swing.JFrame {
         cbPapel = new javax.swing.JCheckBox();
         btnGuardar = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        lbCuenta = new javax.swing.JLabel();
+        lbComoClasifico = new javax.swing.JLabel();
+        lbMisResiduos = new javax.swing.JLabel();
+        lbEstadisticas = new javax.swing.JLabel();
+        lbReduccionResiduos = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -67,17 +166,11 @@ public class MiCuenta extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/User2.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/User2.png")); // NOI18N
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 31, 112, 113));
 
         jLabel4.setText("Nombre de usuario");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 206, -1));
-
-        txtNombreUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreUsuarioActionPerformed(evt);
-            }
-        });
         jPanel2.add(txtNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 206, -1));
 
         jLabel5.setText("Correo electrónico");
@@ -95,11 +188,6 @@ public class MiCuenta extends javax.swing.JFrame {
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 218, -1));
 
         cbOrganica.setText("Orgánica");
-        cbOrganica.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbOrganicaActionPerformed(evt);
-            }
-        });
         jPanel2.add(cbOrganica, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, -1, 20));
 
         cbPlastico.setText("Plástico");
@@ -121,6 +209,11 @@ public class MiCuenta extends javax.swing.JFrame {
         btnGuardar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 310, 120, -1));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -130,32 +223,52 @@ public class MiCuenta extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 580, 400));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Mi Cuenta");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 120, -1));
+        lbCuenta.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        lbCuenta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbCuenta.setText("Mi Cuenta");
+        jPanel1.add(lbCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 120, -1));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("¿Cómo lo clasifico?");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 210, -1));
+        lbComoClasifico.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        lbComoClasifico.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbComoClasifico.setText("¿Cómo lo clasifico?");
+        lbComoClasifico.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbComoClasificoMouseClicked(evt);
+            }
+        });
+        jPanel1.add(lbComoClasifico, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 210, -1));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Mis Residuos");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, 140, -1));
+        lbMisResiduos.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        lbMisResiduos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbMisResiduos.setText("Mis Residuos");
+        lbMisResiduos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbMisResiduosMouseClicked(evt);
+            }
+        });
+        jPanel1.add(lbMisResiduos, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, 140, -1));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("Estadísticas");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, 140, -1));
+        lbEstadisticas.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        lbEstadisticas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbEstadisticas.setText("Estadísticas");
+        lbEstadisticas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbEstadisticasMouseClicked(evt);
+            }
+        });
+        jPanel1.add(lbEstadisticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, 140, -1));
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("Reducción de Residuos");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 30, 260, -1));
+        lbReduccionResiduos.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        lbReduccionResiduos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbReduccionResiduos.setText("Reducción de Residuos");
+        lbReduccionResiduos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbReduccionResiduosMouseClicked(evt);
+            }
+        });
+        jPanel1.add(lbReduccionResiduos, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 30, 260, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Panda.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/Panda.png")); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 550));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -174,13 +287,32 @@ public class MiCuenta extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cbOrganicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbOrganicaActionPerformed
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbOrganicaActionPerformed
+        actualizarCuenta();
+        limpiar();
+        traerDatos();
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
-    private void txtNombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreUsuarioActionPerformed
+    private void lbComoClasificoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbComoClasificoMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreUsuarioActionPerformed
+        abrirClasifico();
+    }//GEN-LAST:event_lbComoClasificoMouseClicked
+
+    private void lbMisResiduosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMisResiduosMouseClicked
+        // TODO add your handling code here:
+        abrirMisResiduos();
+    }//GEN-LAST:event_lbMisResiduosMouseClicked
+
+    private void lbEstadisticasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbEstadisticasMouseClicked
+        // TODO add your handling code here:
+        abrirEstadisticas();
+    }//GEN-LAST:event_lbEstadisticasMouseClicked
+
+    private void lbReduccionResiduosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbReduccionResiduosMouseClicked
+        // TODO add your handling code here:
+        abrirReduccionResiduos();
+    }//GEN-LAST:event_lbReduccionResiduosMouseClicked
 
     /**
      * @param args the command line arguments
@@ -226,20 +358,20 @@ public class MiCuenta extends javax.swing.JFrame {
     private javax.swing.JCheckBox cbPlastico;
     private javax.swing.JCheckBox cbVidrio;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lbComoClasifico;
+    private javax.swing.JLabel lbCuenta;
+    private javax.swing.JLabel lbEstadisticas;
+    private javax.swing.JLabel lbMisResiduos;
+    private javax.swing.JLabel lbReduccionResiduos;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtNombreUsuario;
     private javax.swing.JTextField txtPassword;

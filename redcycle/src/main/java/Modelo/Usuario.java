@@ -56,6 +56,20 @@ public class Usuario {
     public void setContedenoresBasura(ArrayList<Contenedor> contedenoresBasura) {
         this.contedenoresBasura = contedenoresBasura;
     }
+    
+    public int sizeContenedores(){
+        return contedenoresBasura.size();
+    }
+    
+    public String[] getClasificacionesContenedores(){
+        String[] clasificaciones = new String[6];
+        for(int i = 0; i < contedenoresBasura.size(); i++){
+            if(contedenoresBasura.get(i) != null){
+                clasificaciones[i] = contedenoresBasura.get(i).getClasificacion();
+            }
+        }
+        return clasificaciones;
+    }
 
     //Constructor
     public Usuario(String nombre, String correo, String password, ArrayList<Contenedor> contedenoresBasura) {

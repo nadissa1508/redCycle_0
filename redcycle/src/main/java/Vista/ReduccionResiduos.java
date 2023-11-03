@@ -94,7 +94,7 @@ public class ReduccionResiduos extends javax.swing.JFrame {
         lbUltimoMes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbUltimoMes.setText("Último Mes");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/hoja.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/hoja.png")); // NOI18N
         jLabel2.setText("jLabel2");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -131,7 +131,7 @@ public class ReduccionResiduos extends javax.swing.JFrame {
                 .addGap(47, 47, 47))
         );
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/logo.png")); // NOI18N
 
         jPanel4.setBackground(new java.awt.Color(237, 255, 211));
 
@@ -220,7 +220,7 @@ public class ReduccionResiduos extends javax.swing.JFrame {
                         .addGap(31, 31, 31)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

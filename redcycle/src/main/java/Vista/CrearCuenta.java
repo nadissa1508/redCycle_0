@@ -116,12 +116,12 @@ public class CrearCuenta extends javax.swing.JFrame {
         });
         jPanel2.add(btnRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 190, -1));
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon("/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/logo.png")); // NOI18N
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, 100));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 650, 420));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/fondo.png")); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, 0, 940, 520));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -175,7 +175,7 @@ public class CrearCuenta extends javax.swing.JFrame {
         if (cbPapel.isSelected()) {
             litrosPapel = JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para papel y cartón: ");
         }
-        driver.validarUsuario(txtNombreUsuario.getText(), txtCorreo.getText(), txtPassword.getText(), "Organica", litrosOrganica, "Plastico", litrosPlastico, "Multicapa", litrosMulticapa, "Metal", litrosMetal, "Vidrio", litrosVidrio, "Papel", litrosPapel);
+        driver.validarUsuario("Creada ",txtNombreUsuario.getText(), txtCorreo.getText(), txtPassword.getText(), "Organica", litrosOrganica, "Plastico", litrosPlastico, "Multicapa", litrosMulticapa, "Metal", litrosMetal, "Vidrio", litrosVidrio, "Papel", litrosPapel);
 
     }
 

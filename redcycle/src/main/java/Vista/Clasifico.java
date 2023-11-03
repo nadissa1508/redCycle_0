@@ -16,7 +16,9 @@ public class Clasifico extends javax.swing.JFrame {
     /**
      * Creates new form Clasifico
      */
-    public Clasifico() {
+    private static Driver driver;
+    public Clasifico(Driver driver) {
+        this.driver = driver;
         initComponents();
     }
     
@@ -174,7 +176,7 @@ public class Clasifico extends javax.swing.JFrame {
         jLabel12.setText("Reducción de Residuos");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 30, 260, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo2.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("/Users/viankacastro/Desktop/redCycle_0/redcycle/src/main/java/img/fondo2.png")); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 0, 1060, 580));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -227,7 +229,7 @@ public class Clasifico extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Clasifico().setVisible(true);
+                new Clasifico(driver).setVisible(true);
             }
         });
     }
