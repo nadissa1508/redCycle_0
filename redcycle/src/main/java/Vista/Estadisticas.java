@@ -33,13 +33,13 @@ public class Estadisticas extends javax.swing.JFrame {
     
     public void abrirReduccionResiduos() {
         this.dispose();
-        ReduccionResiduos reduccion = new ReduccionResiduos();
+        ReduccionResiduos reduccion = new ReduccionResiduos(driver);
         reduccion.setVisible(true);
     }
      
     public void abrirMisResiduos() {
         this.dispose();
-        MisResiduos residuos = new MisResiduos();
+        MisResiduos residuos = new MisResiduos(driver);
         residuos.setVisible(true);
     }
     
@@ -327,7 +327,7 @@ public class Estadisticas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Estadisticas().setVisible(true);
+                new Estadisticas(driver).setVisible(true);
             }
         });
     }

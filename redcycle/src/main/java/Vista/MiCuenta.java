@@ -103,19 +103,19 @@ public class MiCuenta extends javax.swing.JFrame {
 
     public void abrirMisResiduos() {
         this.dispose();
-        MisResiduos residuos = new MisResiduos();
+        MisResiduos residuos = new MisResiduos(driver);
         residuos.setVisible(true);
     }
 
     public void abrirEstadisticas() {
         this.dispose();
-        Estadisticas estadisticas = new Estadisticas();
+        Estadisticas estadisticas = new Estadisticas(driver);
         estadisticas.setVisible(true);
     }
 
     public void abrirReduccionResiduos() {
         this.dispose();
-        ReduccionResiduos reduccion = new ReduccionResiduos();
+        ReduccionResiduos reduccion = new ReduccionResiduos(driver);
         reduccion.setVisible(true);
     }
     

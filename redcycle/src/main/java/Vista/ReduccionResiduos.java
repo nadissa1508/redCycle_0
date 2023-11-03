@@ -27,13 +27,13 @@ public class ReduccionResiduos extends javax.swing.JFrame {
     
     public void abrirMisResiduos() {
         this.dispose();
-        MisResiduos residuos = new MisResiduos();
+        MisResiduos residuos = new MisResiduos(driver);
         residuos.setVisible(true);
     }
     
      public void abrirReduccionResiduos() {
         this.dispose();
-        ReduccionResiduos reduccion = new ReduccionResiduos();
+        ReduccionResiduos reduccion = new ReduccionResiduos(driver);
         reduccion.setVisible(true);
     }
     
@@ -51,7 +51,7 @@ public class ReduccionResiduos extends javax.swing.JFrame {
     
      public void abrirEstadisticas() {
         this.dispose();
-        Estadisticas estadisticas = new Estadisticas();
+        Estadisticas estadisticas = new Estadisticas(driver);
         estadisticas.setVisible(true);
     }
      
@@ -346,7 +346,7 @@ public class ReduccionResiduos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ReduccionResiduos().setVisible(true);
+                new ReduccionResiduos(driver).setVisible(true);
             }
         });
     }

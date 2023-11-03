@@ -383,20 +383,10 @@
             <Component class="javax.swing.JLabel" name="lbIMGContenedorMulticapa">
             </Component>
             <Component class="javax.swing.JLabel" name="lbIMGContenedorPapel">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\richi\OneDrive\Documentos\GitHub\redCycle_0\redcycle\src\main\java\img\bote_azul.png"/>
-                </Property>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lbIMGContenedorMetal">
             </Component>
             <Component class="javax.swing.JLabel" name="lbIMGContenedorPlasticos">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\richi\OneDrive\Documentos\GitHub\redCycle_0\redcycle\src\main\java\img\bote_amarillo.png"/>
-                </Property>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lbMulticapa">
               <Properties>
