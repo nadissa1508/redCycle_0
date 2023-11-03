@@ -226,6 +226,10 @@ public class Clasifico extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void setTextInTextField(String text) {
+        txtDescripcion.setText(text);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;

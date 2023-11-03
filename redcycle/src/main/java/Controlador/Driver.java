@@ -32,7 +32,7 @@ public class Driver {
     //Atributos
 
     private Usuario usuario;
-    private ArrayList<Contenedor> contenedoresBasura;
+
     private ArrayList<Clasificacion> clasificacionesBasura;
 
     //Getters y Setters
@@ -57,7 +57,7 @@ public class Driver {
         //falta llenar el array clasificacionesBasura segun los tipos personalizados que seleccionó el usuario
         //debe de hacerse por defecto 
         usuario = null;
-        contenedoresBasura = new ArrayList<>();
+
         clasificacionesBasura = new ArrayList<>();
     }
 
@@ -118,6 +118,8 @@ public class Driver {
     }
 
     public void guardarUsuario(String nombre, String correo, String password, String clasificacionCont1, float litros1, String clasificacionCont2, float litros2, String clasificacionCont3, float litros3, String clasificacionCont4, float litros4, String clasificacionCont5, float litros5, String clasificacionCont6, float litros6) {
+        ArrayList<Contenedor> contenedoresBasura = new ArrayList<>();
+
         Contenedor contTemp;
         if (litros1 > 0) {
             contTemp = new Contenedor(clasificacionCont1, litros1, 0);
@@ -143,8 +145,8 @@ public class Driver {
             contTemp = new Contenedor(clasificacionCont6, litros6, 0);
             contenedoresBasura.add(contTemp);
         }
-        
-        if(contenedoresBasura.isEmpty() ){
+
+        if (contenedoresBasura.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Seleccione al menos un contenedor de basura!", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
