@@ -23,30 +23,30 @@ import java.util.ArrayList;
  * */
 public class Clasificacion {
 
-    private String casificacion;
+    private String clasificacion;
     private String descripcion;
     private String datoNegativo;
     private String datoPositivo;
-    private ArrayList<String> arrayArtículos;
+    private ArrayList<String> arrayArticulos;
 
-    public Clasificacion(String casificacion, String descripcion, String datoNegativo, String datoPositivo, ArrayList<String> arrayArtículos) {
-        this.casificacion = casificacion;
+    public Clasificacion(String clasificacion, String descripcion, String datoNegativo, String datoPositivo, ArrayList<String> arrayArticulos) {
+        this.clasificacion = clasificacion;
         this.descripcion = descripcion;
         this.datoNegativo = datoNegativo;
         this.datoPositivo = datoPositivo;
-        this.arrayArtículos = arrayArtículos;
+        this.arrayArticulos = arrayArticulos;
     }
 
     public Clasificacion() {
-        this.casificacion = "";
+        this.clasificacion = "";
         this.descripcion = "";
         this.datoNegativo = "";
         this.datoPositivo = "";
-        this.arrayArtículos = new ArrayList<>();
+        this.arrayArticulos = new ArrayList<>();
     }
 
-    public void setCasificacion(String casificacion) {
-        this.casificacion = casificacion;
+    public void setClasificacion(String clasificacion) {
+        this.clasificacion = clasificacion;
     }
 
     public void setDescripcion(String descripcion) {
@@ -61,8 +61,8 @@ public class Clasificacion {
         this.datoPositivo = datoPositivo;
     }
 
-    public String getCasificacion() {
-        return casificacion;
+    public String getClasificacion() {
+        return clasificacion;
     }
 
     public String getDescripcion() {
@@ -78,21 +78,25 @@ public class Clasificacion {
     }
 
     public ArrayList<String> getArrayArtículos() {
-        return arrayArtículos;
+        return arrayArticulos;
     }
 
-    public void setArrayArtículos(ArrayList<String> arrayArtículos) {
-        this.arrayArtículos = arrayArtículos;
+    public void setArrayArtículos(ArrayList<String> arrayArticulos) {
+        this.arrayArticulos = arrayArticulos;
     }
 
+    public void agregarArticulo(String articulo){
+        this.arrayArticulos.add(articulo);
+    }
+    
     @Override
     public String toString() {
         return "Clasificacio{"
-                + "casificacion='" + casificacion + '\''
+                + "clasificacion='" + clasificacion + '\''
                 + ", descripcion='" + descripcion + '\''
                 + ", datoNegativo='" + datoNegativo + '\''
                 + ", datoPositivo='" + datoPositivo + '\''
-                + ", arrayArtículos=" + arrayArtículos
+                + ", arrayArticulos=" + arrayArticulos
                 + '}';
     }
 }

@@ -5,7 +5,8 @@
 package Vista;
 import Controlador.Driver;
 
-import Controlador.DriverClasidico;
+import Controlador.DriverClasifico;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,10 +18,35 @@ public class Clasifico extends javax.swing.JFrame {
      * Creates new form Clasifico
      */
     private static Driver driver;
+    private static DriverClasifico driverClasifico;
+    
+    
     public Clasifico(Driver driver) {
         this.driver = driver;
+        driverClasifico = new DriverClasifico();
         initComponents();
+        limpiar();
     }
+    
+    public void limpiar(){
+        txtBuscarArticulo.setText("");
+        txtDescripcion.setText("");
+        lbClasificacion.setText("Clasificación");
+    }
+    
+    public void buscarArticulo(){
+        String tituloLabel = driverClasifico.buscarArticulo(txtBuscarArticulo.getText());
+        if(tituloLabel.equals("Organica")){
+            lbClasificacion.setText(tituloLabel);
+            txtDescripcion.setText(driverClasifico.devolverDescripcion(tituloLabel));
+        }else{
+            JOptionPane.showMessageDialog(null, "No se ha encontrado el artículo!");
+            limpiar();
+        }
+        
+    }
+    
+    
     
     public void abrirMisResiduos() {
         this.dispose();
@@ -47,9 +73,7 @@ public class Clasifico extends javax.swing.JFrame {
     }
 
 
-    
-    private static DriverClasidico clasifico;
-
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -69,11 +93,11 @@ public class Clasifico extends javax.swing.JFrame {
         lbClasificacion = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDescripcion = new javax.swing.JTextArea();
-        jLabel3 = new javax.swing.JLabel();
+        lbCuenta = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        lbMisResiduos = new javax.swing.JLabel();
+        lbEstadisticas = new javax.swing.JLabel();
+        lbReduccionResiduos = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -172,16 +196,16 @@ public class Clasifico extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, 420, 310));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Mi Cuenta");
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbCuenta.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        lbCuenta.setForeground(new java.awt.Color(0, 0, 0));
+        lbCuenta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbCuenta.setText("Mi Cuenta");
+        lbCuenta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+                lbCuentaMouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 110, -1));
+        jPanel1.add(lbCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 110, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
@@ -189,38 +213,38 @@ public class Clasifico extends javax.swing.JFrame {
         jLabel9.setText("¿Cómo lo clasifico?");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 220, -1));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Mis Residuos");
-        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbMisResiduos.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        lbMisResiduos.setForeground(new java.awt.Color(0, 0, 0));
+        lbMisResiduos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbMisResiduos.setText("Mis Residuos");
+        lbMisResiduos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel10MouseClicked(evt);
+                lbMisResiduosMouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, 140, -1));
+        jPanel1.add(lbMisResiduos, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, 140, -1));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("Estadísticas");
-        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbEstadisticas.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        lbEstadisticas.setForeground(new java.awt.Color(0, 0, 0));
+        lbEstadisticas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbEstadisticas.setText("Estadísticas");
+        lbEstadisticas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel11MouseClicked(evt);
+                lbEstadisticasMouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 30, 130, -1));
+        jPanel1.add(lbEstadisticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 30, 130, 30));
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("Reducción de Residuos");
-        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbReduccionResiduos.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        lbReduccionResiduos.setForeground(new java.awt.Color(0, 0, 0));
+        lbReduccionResiduos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbReduccionResiduos.setText("Reducción de Residuos");
+        lbReduccionResiduos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel12MouseClicked(evt);
+                lbReduccionResiduosMouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 30, 260, -1));
+        jPanel1.add(lbReduccionResiduos, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 30, 260, -1));
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 0, 1060, 580));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -241,27 +265,28 @@ public class Clasifico extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
+        buscarArticulo();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+    private void lbMisResiduosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMisResiduosMouseClicked
         // TODO add your handling code here:
         abrirMisResiduos();
-    }//GEN-LAST:event_jLabel10MouseClicked
+    }//GEN-LAST:event_lbMisResiduosMouseClicked
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    private void lbCuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbCuentaMouseClicked
         // TODO add your handling code here:
         abrirMiCuenta();
-    }//GEN-LAST:event_jLabel3MouseClicked
+    }//GEN-LAST:event_lbCuentaMouseClicked
 
-    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+    private void lbEstadisticasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbEstadisticasMouseClicked
         // TODO add your handling code here:
         abrirEstadisticas();
-    }//GEN-LAST:event_jLabel11MouseClicked
+    }//GEN-LAST:event_lbEstadisticasMouseClicked
 
-    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+    private void lbReduccionResiduosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbReduccionResiduosMouseClicked
         // TODO add your handling code here:
         abrirReduccionResiduos();
-    }//GEN-LAST:event_jLabel12MouseClicked
+    }//GEN-LAST:event_lbReduccionResiduosMouseClicked
 
     /**
      * @param args the command line arguments
@@ -297,19 +322,12 @@ public class Clasifico extends javax.swing.JFrame {
             }
         });
     }
-    
-    private void cambiarTexto(){
-        
-    }
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel144;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -317,6 +335,10 @@ public class Clasifico extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbClasificacion;
+    private javax.swing.JLabel lbCuenta;
+    private javax.swing.JLabel lbEstadisticas;
+    private javax.swing.JLabel lbMisResiduos;
+    private javax.swing.JLabel lbReduccionResiduos;
     private javax.swing.JTextField txtBuscarArticulo;
     private javax.swing.JTextArea txtDescripcion;
     // End of variables declaration//GEN-END:variables
