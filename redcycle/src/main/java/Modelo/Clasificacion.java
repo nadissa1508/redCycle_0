@@ -77,11 +77,11 @@ public class Clasificacion {
         return datoPositivo;
     }
 
-    public ArrayList<String> getArrayArtículos() {
+    public ArrayList<String> getArrayArticulos() {
         return arrayArticulos;
     }
 
-    public void setArrayArtículos(ArrayList<String> arrayArticulos) {
+    public void setArrayArticulos(ArrayList<String> arrayArticulos) {
         this.arrayArticulos = arrayArticulos;
     }
 

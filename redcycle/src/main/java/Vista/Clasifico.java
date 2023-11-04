@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Vista;
+
 import Controlador.Driver;
 
 import Controlador.DriverClasifico;
@@ -19,61 +20,71 @@ public class Clasifico extends javax.swing.JFrame {
      */
     private static Driver driver;
     private static DriverClasifico driverClasifico;
-    
-    
+
     public Clasifico(Driver driver) {
         this.driver = driver;
         driverClasifico = new DriverClasifico();
         initComponents();
         limpiar();
     }
-    
-    public void limpiar(){
+
+    public void limpiar() {
         txtBuscarArticulo.setText("");
         txtDescripcion.setText("");
         lbClasificacion.setText("Clasificación");
     }
-    
-    public void buscarArticulo(){
+
+    public void buscarArticulo() {
         String tituloLabel = driverClasifico.buscarArticulo(txtBuscarArticulo.getText());
-        if(tituloLabel.equals("Organica")){
+        if (tituloLabel.equals("Organica")) {
             lbClasificacion.setText(tituloLabel);
             txtDescripcion.setText(driverClasifico.devolverDescripcion(tituloLabel));
-        }else{
+        } else if (tituloLabel.equals("Plastico")) {
+            lbClasificacion.setText(tituloLabel);
+            txtDescripcion.setText(driverClasifico.devolverDescripcion(tituloLabel));
+        } else if (tituloLabel.equals("Multicapa")) {
+            lbClasificacion.setText(tituloLabel);
+            txtDescripcion.setText(driverClasifico.devolverDescripcion(tituloLabel));
+        } else if (tituloLabel.equals("Metal")) {
+            lbClasificacion.setText(tituloLabel);
+            txtDescripcion.setText(driverClasifico.devolverDescripcion(tituloLabel));
+        } else if (tituloLabel.equals("Vidrio")) {
+            lbClasificacion.setText(tituloLabel);
+            txtDescripcion.setText(driverClasifico.devolverDescripcion(tituloLabel));
+        } else if (tituloLabel.equals("Papel y cartón")) {
+            lbClasificacion.setText(tituloLabel);
+            txtDescripcion.setText(driverClasifico.devolverDescripcion(tituloLabel));
+        } else {
             JOptionPane.showMessageDialog(null, "No se ha encontrado el artículo!");
             limpiar();
         }
-        
+
     }
-    
-    
-    
+
     public void abrirMisResiduos() {
         this.dispose();
         MisResiduos residuos = new MisResiduos(driver);
         residuos.setVisible(true);
     }
-    
-    public void abrirMiCuenta(){
+
+    public void abrirMiCuenta() {
         this.dispose();
         MiCuenta cuenta = new MiCuenta(driver);
         cuenta.setVisible(true);
     }
-    
+
     public void abrirEstadisticas() {
         this.dispose();
         Estadisticas estadisticas = new Estadisticas(driver);
         estadisticas.setVisible(true);
     }
-    
+
     public void abrirReduccionResiduos() {
         this.dispose();
         ReduccionResiduos reduccion = new ReduccionResiduos(driver);
         reduccion.setVisible(true);
     }
 
-
-   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -322,7 +333,7 @@ public class Clasifico extends javax.swing.JFrame {
             }
         });
     }
- 
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
