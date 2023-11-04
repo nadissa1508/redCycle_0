@@ -88,6 +88,7 @@ public class Estadisticas extends javax.swing.JFrame {
         lbOrganica = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel4.setBackground(new java.awt.Color(246, 246, 246));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

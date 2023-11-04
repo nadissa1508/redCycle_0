@@ -112,6 +112,7 @@ public class MisResiduos extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel4.setBackground(new java.awt.Color(246, 246, 246));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -189,10 +190,6 @@ public class MisResiduos extends javax.swing.JFrame {
         jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 430, 310));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        lbIMGContenedorPapel.setIcon(new javax.swing.ImageIcon("C:\\Users\\richi\\OneDrive\\Documentos\\GitHub\\redCycle_0\\redcycle\\src\\main\\java\\img\\bote_azul.png")); // NOI18N
-
-        lbIMGContenedorPlasticos.setIcon(new javax.swing.ImageIcon("C:\\Users\\richi\\OneDrive\\Documentos\\GitHub\\redCycle_0\\redcycle\\src\\main\\java\\img\\bote_amarillo.png")); // NOI18N
 
         lbMulticapa.setText("Multicapa");
 

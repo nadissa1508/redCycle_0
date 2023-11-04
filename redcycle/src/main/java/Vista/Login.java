@@ -50,6 +50,7 @@ public class Login extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -85,18 +86,12 @@ public class Login extends javax.swing.JFrame {
 
         jLabel6.setText("Contraseña");
 
-        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\richi\\OneDrive\\Documentos\\GitHub\\redCycle_0\\redcycle\\src\\main\\java\\img\\logo.png")); // NOI18N
-
         lbRegistrarse.setText("¿No tienes una cuenta? Registrate");
         lbRegistrarse.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbRegistrarseMouseClicked(evt);
             }
         });
-
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\richi\\OneDrive\\Documentos\\GitHub\\redCycle_0\\redcycle\\src\\main\\java\\img\\candado.png")); // NOI18N
-
-        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\richi\\OneDrive\\Documentos\\GitHub\\redCycle_0\\redcycle\\src\\main\\java\\img\\userlogo.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -169,8 +164,6 @@ public class Login extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, 370, 450));
-
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\richi\\OneDrive\\Documentos\\GitHub\\redCycle_0\\redcycle\\src\\main\\java\\img\\fondo.png")); // NOI18N
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 940, 540));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -89,6 +89,7 @@ public class ReduccionResiduos extends javax.swing.JFrame {
         jLabel10.setText("Mis Residuos");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(246, 246, 246));
 
