@@ -12,5 +12,12 @@ import java.util.ArrayList;
  * @author nadis
  */
 public class DriverContenedor {
-     private ArrayList<Clasificacion> clasificacionesBasura;
+
+    private ArrayList<Clasificacion> clasificacionesBasura;
+    private Driver driver;
+
+    public DriverContenedor(Driver driver) {
+        this.driver = driver;
+    }
+
 }

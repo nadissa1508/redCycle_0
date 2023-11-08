@@ -20,6 +20,9 @@ package Controlador;
  * 
  * */
 import Modelo.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -31,34 +34,43 @@ import javax.swing.JOptionPane;
 public class Driver {
     //Atributos
 
-    private Usuario usuario;
-
-    private ArrayList<Clasificacion> clasificacionesBasura;
+    private ArrayList<Usuario> usuarios;
+    private Archivo usuariosCSV;
+    private int indexUsuario; //variable que indica el index del usuario que inició sesion 
 
     //Getters y Setters
+    public ArrayList<Usuario> getUsuarios() {
+        return usuarios;
+    }
+    
     public Usuario getUsuario() {
-        return usuario;
+        Usuario tempUser = new Usuario(usuarios.get(indexUsuario).getNombre(), usuarios.get(indexUsuario).getCorreo(), usuarios.get(indexUsuario).getPassword(), usuarios.get(indexUsuario).getContedenoresBasura());
+        return tempUser;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    public ArrayList<Clasificacion> getClasificacionesBasura() {
-        return clasificacionesBasura;
-    }
-
-    public void setClasificacionesBasura(ArrayList<Clasificacion> clasificacionesBasura) {
-        this.clasificacionesBasura = clasificacionesBasura;
+    public void setUsuario(ArrayList<Usuario> usuarios) {
+        this.usuarios = usuarios;
     }
 
     public Driver() {
-        //usuario = new Usuario();
-        //falta llenar el array clasificacionesBasura segun los tipos personalizados que seleccionó el usuario
-        //debe de hacerse por defecto 
-        usuario = null;
+        indexUsuario = -1;
+        File file = new File("C:Usuario.csv");
+        usuariosCSV = new Archivo("Usuario.csv");
 
-        clasificacionesBasura = new ArrayList<>();
+        if (file.exists()) {
+            //si el archivo existe entonces llenar array con datos delcsv
+            try {
+                usuarios = usuariosCSV.leerCSV();
+            } catch (FileNotFoundException e) {
+                System.out.println("Error al cargar informacion de usuarios!");
+            } catch (IOException ioe) {
+                System.out.println("Error al cargar informacion de usuarios!!");
+            }
+        } else {
+            //si el archivo no existe, entonces crear array normal
+            usuarios = new ArrayList();
+        }
+
     }
 
     private float validarLitrosCont(String cantLitros) {
@@ -113,7 +125,7 @@ public class Driver {
             return;
         }
 
-        guardarUsuario(mensaje,nombre, correo, password, clasificacionCont1, litrosOrganica, clasificacionCont2, litrosPlastico, clasificacionCont3, litrosMulticapa, clasificacionCont4, litrosMetal, clasificacionCont5, litrosVidrio, clasificacionCont6, litrosPapel);
+        guardarUsuario(mensaje, nombre, correo, password, clasificacionCont1, litrosOrganica, clasificacionCont2, litrosPlastico, clasificacionCont3, litrosMulticapa, clasificacionCont4, litrosMetal, clasificacionCont5, litrosVidrio, clasificacionCont6, litrosPapel);
 
     }
 
@@ -151,8 +163,9 @@ public class Driver {
             return;
         }
 
-        usuario = new Usuario(nombre, correo, password, contenedoresBasura);
+        Usuario usuario = new Usuario(nombre, correo, password, contenedoresBasura);
         if (usuario != null) {
+            usuarios.add(usuario);
             JOptionPane.showMessageDialog(null, "Cuenta " + mensaje + " con exito!");
         } else {
             System.out.println("ERROR AL CREAR USUARIO");
@@ -162,17 +175,20 @@ public class Driver {
 
     public boolean iniciarSesion(String user, String pass) {
         boolean flag = false;
-        if (usuario != null) {
-            if ((user.equals(usuario.getNombre())) && (pass.equals(usuario.getPassword()))) {
-                JOptionPane.showMessageDialog(null, "Credenciales correctas!");
-                flag = true;
+        for (int x = 0; x < usuarios.size(); x++) {
+            if (usuarios.get(x) != null) {
+                if ((user.equals(usuarios.get(x).getNombre())) && (pass.equals(usuarios.get(x).getPassword()))) {
+                    JOptionPane.showMessageDialog(null, "Credenciales correctas!");
+                    indexUsuario = x;
+                    flag = true;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Credenciales incorrectas!", "Error", JOptionPane.ERROR_MESSAGE);
+                    flag = false;
+                }
             } else {
-                JOptionPane.showMessageDialog(null, "Credenciales incorrectas!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Debe registrarse para poder iniciar sesión", "Error", JOptionPane.ERROR_MESSAGE);
                 flag = false;
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Debe registrarse para poder iniciar sesión", "Error", JOptionPane.ERROR_MESSAGE);
-            flag = false;
         }
 
         return flag;

@@ -5,6 +5,7 @@
 package Vista;
 
 import Controlador.Driver;
+import Controlador.DriverContenedor;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -22,8 +23,12 @@ public class MisResiduos extends javax.swing.JFrame {
    
     
     private static Driver driver;
+    private DriverContenedor driverContenedor;
+    
+    
     public MisResiduos (Driver driver) {
         this.driver = driver;
+        driverContenedor = new DriverContenedor(driver);
         initComponents();
     }
     
@@ -57,7 +62,9 @@ public class MisResiduos extends javax.swing.JFrame {
         estadisticas.setVisible(true);
     }
 
-    
+    public void guardar(){
+        
+    }
      
      
 
@@ -104,11 +111,11 @@ public class MisResiduos extends javax.swing.JFrame {
         txtCantOrganica = new javax.swing.JTextField();
         txtCantPlasticos = new javax.swing.JTextField();
         txtCantMetal = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        lbMiCuenta = new javax.swing.JLabel();
+        lbClasifico = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        lbEstadisticas = new javax.swing.JLabel();
+        lbReduccionResiduos = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -214,42 +221,6 @@ public class MisResiduos extends javax.swing.JFrame {
         jLabel26.setText("Cantidad");
 
         jLabel27.setText("Cantidad");
-
-        txtCantPapel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCantPapelActionPerformed(evt);
-            }
-        });
-
-        txtCantMulticapa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCantMulticapaActionPerformed(evt);
-            }
-        });
-
-        txtCantVidrios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCantVidriosActionPerformed(evt);
-            }
-        });
-
-        txtCantOrganica.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCantOrganicaActionPerformed(evt);
-            }
-        });
-
-        txtCantPlasticos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCantPlasticosActionPerformed(evt);
-            }
-        });
-
-        txtCantMetal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCantMetalActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -393,27 +364,27 @@ public class MisResiduos extends javax.swing.JFrame {
 
         jPanel4.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 130, 530, 320));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Mi Cuenta");
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbMiCuenta.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        lbMiCuenta.setForeground(new java.awt.Color(0, 0, 0));
+        lbMiCuenta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbMiCuenta.setText("Mi Cuenta");
+        lbMiCuenta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+                lbMiCuentaMouseClicked(evt);
             }
         });
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 110, -1));
+        jPanel4.add(lbMiCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 110, -1));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("¿Cómo lo clasifico?");
-        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbClasifico.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        lbClasifico.setForeground(new java.awt.Color(0, 0, 0));
+        lbClasifico.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbClasifico.setText("¿Cómo lo clasifico?");
+        lbClasifico.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel9MouseClicked(evt);
+                lbClasificoMouseClicked(evt);
             }
         });
-        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 210, -1));
+        jPanel4.add(lbClasifico, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 210, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
@@ -421,27 +392,27 @@ public class MisResiduos extends javax.swing.JFrame {
         jLabel10.setText("Mis Residuos");
         jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 40, 150, -1));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("Estadísticas");
-        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbEstadisticas.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        lbEstadisticas.setForeground(new java.awt.Color(0, 0, 0));
+        lbEstadisticas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbEstadisticas.setText("Estadísticas");
+        lbEstadisticas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel11MouseClicked(evt);
+                lbEstadisticasMouseClicked(evt);
             }
         });
-        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 40, 140, -1));
+        jPanel4.add(lbEstadisticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 40, 140, -1));
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("Reducción de Residuos");
-        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbReduccionResiduos.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        lbReduccionResiduos.setForeground(new java.awt.Color(0, 0, 0));
+        lbReduccionResiduos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbReduccionResiduos.setText("Reducción de Residuos");
+        lbReduccionResiduos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel12MouseClicked(evt);
+                lbReduccionResiduosMouseClicked(evt);
             }
         });
-        jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 40, 260, -1));
+        jPanel4.add(lbReduccionResiduos, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 40, 260, -1));
         jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 560));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -462,51 +433,28 @@ public class MisResiduos extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
+        guardar();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-    private void txtCantPapelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantPapelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCantPapelActionPerformed
-
-    private void txtCantMulticapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantMulticapaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCantMulticapaActionPerformed
-
-    private void txtCantVidriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantVidriosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCantVidriosActionPerformed
-
-    private void txtCantOrganicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantOrganicaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCantOrganicaActionPerformed
-
-    private void txtCantPlasticosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantPlasticosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCantPlasticosActionPerformed
-
-    private void txtCantMetalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantMetalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCantMetalActionPerformed
-
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    private void lbMiCuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMiCuentaMouseClicked
         // TODO add your handling code here:
         abrirMiCuenta();
-    }//GEN-LAST:event_jLabel3MouseClicked
+    }//GEN-LAST:event_lbMiCuentaMouseClicked
 
-    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+    private void lbClasificoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbClasificoMouseClicked
         // TODO add your handling code here:
         abrirClasifico();
-    }//GEN-LAST:event_jLabel9MouseClicked
+    }//GEN-LAST:event_lbClasificoMouseClicked
 
-    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+    private void lbEstadisticasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbEstadisticasMouseClicked
         // TODO add your handling code here:
         abrirEstadisticas();
-    }//GEN-LAST:event_jLabel11MouseClicked
+    }//GEN-LAST:event_lbEstadisticasMouseClicked
 
-    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+    private void lbReduccionResiduosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbReduccionResiduosMouseClicked
         // TODO add your handling code here:
         abrirReduccionResiduos();
-    }//GEN-LAST:event_jLabel12MouseClicked
+    }//GEN-LAST:event_lbReduccionResiduosMouseClicked
 
     /**
      * @param args the command line arguments
@@ -550,8 +498,6 @@ public class MisResiduos extends javax.swing.JFrame {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox<String> cbClasificacionesBasura;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel144;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel22;
@@ -560,14 +506,14 @@ public class MisResiduos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JLabel lbClasifico;
+    private javax.swing.JLabel lbEstadisticas;
     private javax.swing.JLabel lbIMGContenedorMetal;
     private javax.swing.JLabel lbIMGContenedorMulticapa;
     private javax.swing.JLabel lbIMGContenedorOrganica;
@@ -575,10 +521,12 @@ public class MisResiduos extends javax.swing.JFrame {
     private javax.swing.JLabel lbIMGContenedorPlasticos;
     private javax.swing.JLabel lbIMGContenedorVidrios;
     private javax.swing.JLabel lbMetal;
+    private javax.swing.JLabel lbMiCuenta;
     private javax.swing.JLabel lbMulticapa;
     private javax.swing.JLabel lbOrganica;
     private javax.swing.JLabel lbPapel;
     private javax.swing.JLabel lbPlasticos;
+    private javax.swing.JLabel lbReduccionResiduos;
     private javax.swing.JLabel lbVidrios;
     private javax.swing.JSpinner spCantidadResiduos;
     private javax.swing.JTextField txtCantMetal;
