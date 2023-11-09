@@ -110,6 +110,7 @@ public class Clasifico extends javax.swing.JFrame {
         lbEstadisticas = new javax.swing.JLabel();
         lbReduccionResiduos = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -133,7 +134,6 @@ public class Clasifico extends javax.swing.JFrame {
         });
 
         jLabel144.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
-        jLabel144.setForeground(new java.awt.Color(0, 0, 0));
         jLabel144.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel144.setText("¿Cómo lo clasifico?");
 
@@ -175,7 +175,6 @@ public class Clasifico extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray));
 
         lbClasificacion.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
-        lbClasificacion.setForeground(new java.awt.Color(0, 0, 0));
         lbClasificacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbClasificacion.setText("Plástico");
 
@@ -209,7 +208,6 @@ public class Clasifico extends javax.swing.JFrame {
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, 420, 310));
 
         lbCuenta.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        lbCuenta.setForeground(new java.awt.Color(0, 0, 0));
         lbCuenta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbCuenta.setText("Mi Cuenta");
         lbCuenta.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -220,13 +218,11 @@ public class Clasifico extends javax.swing.JFrame {
         jPanel1.add(lbCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 110, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("¿Cómo lo clasifico?");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 220, -1));
 
         lbMisResiduos.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        lbMisResiduos.setForeground(new java.awt.Color(0, 0, 0));
         lbMisResiduos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbMisResiduos.setText("Mis Residuos");
         lbMisResiduos.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -237,7 +233,6 @@ public class Clasifico extends javax.swing.JFrame {
         jPanel1.add(lbMisResiduos, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, 140, -1));
 
         lbEstadisticas.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        lbEstadisticas.setForeground(new java.awt.Color(0, 0, 0));
         lbEstadisticas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbEstadisticas.setText("Estadísticas");
         lbEstadisticas.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -248,7 +243,6 @@ public class Clasifico extends javax.swing.JFrame {
         jPanel1.add(lbEstadisticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 30, 130, 30));
 
         lbReduccionResiduos.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        lbReduccionResiduos.setForeground(new java.awt.Color(0, 0, 0));
         lbReduccionResiduos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbReduccionResiduos.setText("Reducción de Residuos");
         lbReduccionResiduos.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -257,7 +251,12 @@ public class Clasifico extends javax.swing.JFrame {
             }
         });
         jPanel1.add(lbReduccionResiduos, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 30, 260, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/fondo2.png"));
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 0, 1060, 580));
+
+        jLabel1.setText("jLabel1");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 560));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -338,6 +337,7 @@ public class Clasifico extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel144;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

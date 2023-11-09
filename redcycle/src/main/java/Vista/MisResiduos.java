@@ -117,6 +117,7 @@ public class MisResiduos extends javax.swing.JFrame {
         lbEstadisticas = new javax.swing.JLabel();
         lbReduccionResiduos = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -127,7 +128,6 @@ public class MisResiduos extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel144.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
-        jLabel144.setForeground(new java.awt.Color(0, 0, 0));
         jLabel144.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel144.setText("Mis Residuos");
 
@@ -365,7 +365,6 @@ public class MisResiduos extends javax.swing.JFrame {
         jPanel4.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 130, 530, 320));
 
         lbMiCuenta.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        lbMiCuenta.setForeground(new java.awt.Color(0, 0, 0));
         lbMiCuenta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbMiCuenta.setText("Mi Cuenta");
         lbMiCuenta.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -376,7 +375,6 @@ public class MisResiduos extends javax.swing.JFrame {
         jPanel4.add(lbMiCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 110, -1));
 
         lbClasifico.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        lbClasifico.setForeground(new java.awt.Color(0, 0, 0));
         lbClasifico.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbClasifico.setText("¿Cómo lo clasifico?");
         lbClasifico.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -387,13 +385,11 @@ public class MisResiduos extends javax.swing.JFrame {
         jPanel4.add(lbClasifico, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 210, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Mis Residuos");
         jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 40, 150, -1));
 
         lbEstadisticas.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        lbEstadisticas.setForeground(new java.awt.Color(0, 0, 0));
         lbEstadisticas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbEstadisticas.setText("Estadísticas");
         lbEstadisticas.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -404,7 +400,6 @@ public class MisResiduos extends javax.swing.JFrame {
         jPanel4.add(lbEstadisticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 40, 140, -1));
 
         lbReduccionResiduos.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        lbReduccionResiduos.setForeground(new java.awt.Color(0, 0, 0));
         lbReduccionResiduos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbReduccionResiduos.setText("Reducción de Residuos");
         lbReduccionResiduos.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -415,13 +410,17 @@ public class MisResiduos extends javax.swing.JFrame {
         jPanel4.add(lbReduccionResiduos, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 40, 260, -1));
         jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 560));
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/fondo2.png"));
+        jLabel1.setText("jLabel1");
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1040, 560));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 10, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -497,6 +496,7 @@ public class MisResiduos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox<String> cbClasificacionesBasura;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel144;
     private javax.swing.JLabel jLabel2;
