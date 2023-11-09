@@ -6,12 +6,14 @@ package Modelo;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.io.PrintWriter;
 
 /**
  *
- * @author nadis
+ * @author nadissa
  */
 public class Archivo {
 
@@ -24,6 +26,7 @@ public class Archivo {
     public void crearCSV(ArrayList<Usuario> usuarios) throws Exception{
         
         
+
     }
     
     public ArrayList<Usuario> leerCSV() throws FileNotFoundException, IOException{

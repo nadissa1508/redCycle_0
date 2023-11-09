@@ -16,11 +16,12 @@ public class Usuario {
     private String nombre = "";
     private String correo = "";
     private String password = "";
+    private int id;
     private ArrayList<Contenedor> contedenoresBasura;
 
     @Override
     public String toString() {
-        return "Usuario [nombre=" + nombre + ", correo=" + correo + ", password=" + password + ", contedenoresBasura="
+        return "Usuario [id=" + id + "nombre=" + nombre + ", correo=" + correo + ", password=" + password + ", contedenoresBasura="
                 + contedenoresBasura + "]";
     }
 
@@ -36,7 +37,7 @@ public class Usuario {
     public String getCorreo() {
         return correo;
     }
-
+    
     public void setCorreo(String correo) {
         this.correo = correo;
     }
@@ -47,6 +48,14 @@ public class Usuario {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    
+    public int getId(){
+        return id;
+    }
+    
+    public void setId(int id) {
+        this.id = id;
     }
 
     public ArrayList<Contenedor> getContedenoresBasura() {
@@ -72,14 +81,16 @@ public class Usuario {
     }
 
     //Constructor
-    public Usuario(String nombre, String correo, String password, ArrayList<Contenedor> contedenoresBasura) {
+    public Usuario(int id, String nombre, String correo, String password, ArrayList<Contenedor> contedenoresBasura) {
         this.nombre = nombre;
         this.correo = correo;
         this.password = password;
         this.contedenoresBasura = contedenoresBasura;
+        this.id = id;
     }
 
     public Usuario() {
+        this.id = 0;
         this.nombre = "";
         this.correo = "";
         this.password = "";
