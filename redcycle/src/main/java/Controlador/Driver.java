@@ -37,6 +37,7 @@ public class Driver {
     private ArrayList<Usuario> usuarios;
     private Archivo usuariosCSV;
     private int indexUsuario; //variable que indica el index del usuario que inició sesion 
+    int globalid = 0;
 
     //Getters y Setters
     public ArrayList<Usuario> getUsuarios() {
@@ -44,7 +45,7 @@ public class Driver {
     }
     
     public Usuario getUsuario() {
-        Usuario tempUser = new Usuario(usuarios.get(indexUsuario).getNombre(), usuarios.get(indexUsuario).getCorreo(), usuarios.get(indexUsuario).getPassword(), usuarios.get(indexUsuario).getContedenoresBasura());
+        Usuario tempUser = new Usuario(usuarios.get (indexUsuario).getId(),usuarios.get(indexUsuario).getNombre(), usuarios.get(indexUsuario).getCorreo(), usuarios.get(indexUsuario).getPassword(), usuarios.get(indexUsuario).getContedenoresBasura());
         return tempUser;
     }
 
@@ -72,6 +73,12 @@ public class Driver {
         }
 
     }
+    
+    public int obtenerSiguienteID() {
+        globalid++; 
+        return globalid;
+    }
+    
 
     private float validarLitrosCont(String cantLitros) {
         float litros = 0.0f;
@@ -91,7 +98,7 @@ public class Driver {
         return litros;
     }
 
-    public void validarUsuario(String mensaje, String nombre, String correo, String password, String clasificacionCont1, String litros1, String clasificacionCont2, String litros2, String clasificacionCont3, String litros3, String clasificacionCont4, String litros4, String clasificacionCont5, String litros5, String clasificacionCont6, String litros6) {
+    public void validarUsuario(String mensaje, int id, String nombre, String correo, String password, String clasificacionCont1, String litros1, String clasificacionCont2, String litros2, String clasificacionCont3, String litros3, String clasificacionCont4, String litros4, String clasificacionCont5, String litros5, String clasificacionCont6, String litros6) {
         float litrosOrganica = 0.0f, litrosPlastico = 0.0f, litrosMulticapa = 0.0f, litrosMetal = 0.0f, litrosVidrio = 0.0f, litrosPapel = 0.0f;
 
         litrosOrganica = validarLitrosCont(litros1);
@@ -125,11 +132,11 @@ public class Driver {
             return;
         }
 
-        guardarUsuario(mensaje, nombre, correo, password, clasificacionCont1, litrosOrganica, clasificacionCont2, litrosPlastico, clasificacionCont3, litrosMulticapa, clasificacionCont4, litrosMetal, clasificacionCont5, litrosVidrio, clasificacionCont6, litrosPapel);
+        guardarUsuario(mensaje, id, nombre, correo, password, clasificacionCont1, litrosOrganica, clasificacionCont2, litrosPlastico, clasificacionCont3, litrosMulticapa, clasificacionCont4, litrosMetal, clasificacionCont5, litrosVidrio, clasificacionCont6, litrosPapel);
 
     }
 
-    public void guardarUsuario(String mensaje, String nombre, String correo, String password, String clasificacionCont1, float litros1, String clasificacionCont2, float litros2, String clasificacionCont3, float litros3, String clasificacionCont4, float litros4, String clasificacionCont5, float litros5, String clasificacionCont6, float litros6) {
+    public void guardarUsuario(String mensaje, int id, String nombre, String correo, String password, String clasificacionCont1, float litros1, String clasificacionCont2, float litros2, String clasificacionCont3, float litros3, String clasificacionCont4, float litros4, String clasificacionCont5, float litros5, String clasificacionCont6, float litros6) {
         ArrayList<Contenedor> contenedoresBasura = new ArrayList<>();
 
         Contenedor contTemp;
@@ -163,7 +170,8 @@ public class Driver {
             return;
         }
 
-        Usuario usuario = new Usuario(nombre, correo, password, contenedoresBasura);
+        Usuario usuario = new Usuario(obtenerSiguienteID(), nombre, correo, password, contenedoresBasura);
+        
         if (usuario != null) {
             usuarios.add(usuario);
             JOptionPane.showMessageDialog(null, "Cuenta " + mensaje + " con exito!");

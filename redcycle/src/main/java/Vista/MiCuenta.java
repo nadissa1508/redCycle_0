@@ -90,7 +90,11 @@ public class MiCuenta extends javax.swing.JFrame {
         if (cbPapel.isSelected()) {
             litrosPapel = JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para papel y cartón: ");
         }
-        driver.validarUsuario("actualizada", txtNombreUsuario.getText(), txtCorreo.getText(), txtPassword.getText(), "Organica", litrosOrganica, "Plastico", litrosPlastico, "Multicapa", litrosMulticapa, "Metal", litrosMetal, "Vidrio", litrosVidrio, "Papel", litrosPapel);
+        
+        Usuario usuarioActual = driver.getUsuario();
+        int idUsuarioActual = usuarioActual.getId();
+        
+        driver.validarUsuario("actualizada",idUsuarioActual, txtNombreUsuario.getText(), txtCorreo.getText(), txtPassword.getText(), "Organica", litrosOrganica, "Plastico", litrosPlastico, "Multicapa", litrosMulticapa, "Metal", litrosMetal, "Vidrio", litrosVidrio, "Papel", litrosPapel);
     }
 
     public void abrirClasifico() {
