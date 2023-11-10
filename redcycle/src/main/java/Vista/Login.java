@@ -179,6 +179,7 @@ public class Login extends javax.swing.JFrame {
 
     private void lbRegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbRegistrarseMouseClicked
         // TODO add your handling code here:}
+        this.dispose();
         abrirCrearCuenta();
     }//GEN-LAST:event_lbRegistrarseMouseClicked
 

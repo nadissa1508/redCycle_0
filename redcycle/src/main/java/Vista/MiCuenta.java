@@ -104,6 +104,12 @@ public class MiCuenta extends javax.swing.JFrame {
         clasifico.setVisible(true);
     }
     
+    public void abrirLogin() {
+        this.dispose();
+        Login login = new Login(driver);
+        login.setVisible(true);
+    }
+    
     //a partir de aca falta configurar objeto driver
 
     public void abrirMisResiduos() {
@@ -173,6 +179,8 @@ public class MiCuenta extends javax.swing.JFrame {
         cbPapel = new javax.swing.JCheckBox();
         btnGuardar = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
+        btnCerrar = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
         lbCuenta = new javax.swing.JLabel();
         lbComoClasifico = new javax.swing.JLabel();
         lbMisResiduos = new javax.swing.JLabel();
@@ -196,7 +204,9 @@ public class MiCuenta extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 31, 112, 113));
+        jLabel2.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/User2.png"));
+        jLabel2.setText(".");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 14, 170, 130));
 
         jLabel4.setText("Nombre de usuario");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 206, -1));
@@ -235,7 +245,7 @@ public class MiCuenta extends javax.swing.JFrame {
         jPanel2.add(cbPapel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 260, -1, 20));
 
         btnGuardar.setBackground(new java.awt.Color(73, 153, 28));
-        btnGuardar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnGuardar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -243,12 +253,31 @@ public class MiCuenta extends javax.swing.JFrame {
                 btnGuardarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 310, 120, -1));
+        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, 120, -1));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Mi Cuenta");
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 158, -1));
+
+        btnCerrar.setBackground(new java.awt.Color(73, 153, 28));
+        btnCerrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnCerrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCerrar.setText("Cerrar Sesión");
+        btnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCerrarMouseClicked(evt);
+            }
+        });
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 370, 120, -1));
+
+        jLabel9.setText("jLabel9");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 100, 40));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 580, 400));
 
@@ -298,7 +327,7 @@ public class MiCuenta extends javax.swing.JFrame {
         jPanel1.add(lbReduccionResiduos, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 30, 260, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/panda.png"));
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 550));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 560));
 
         jLabel3.setText("jLabel3");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 560));
@@ -311,9 +340,7 @@ public class MiCuenta extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -351,6 +378,19 @@ public class MiCuenta extends javax.swing.JFrame {
         cerrarVentana();
     }//GEN-LAST:event_formWindowClosing
 
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        // TODO add your handling code here:
+        abrirLogin();
+    }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void btnCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseClicked
+        // TODO add your handling code here:
+        limpiar();
+        
+        
+        
+    }//GEN-LAST:event_btnCerrarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -387,6 +427,7 @@ public class MiCuenta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JCheckBox cbMetal;
     private javax.swing.JCheckBox cbMulticapa;
@@ -403,6 +444,7 @@ public class MiCuenta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lbComoClasifico;

@@ -123,6 +123,7 @@ public class MisResiduos extends javax.swing.JFrame {
         setResizable(false);
 
         jPanel4.setBackground(new java.awt.Color(246, 246, 246));
+        jPanel4.setPreferredSize(new java.awt.Dimension(950, 560));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
@@ -372,7 +373,7 @@ public class MisResiduos extends javax.swing.JFrame {
                 lbMiCuentaMouseClicked(evt);
             }
         });
-        jPanel4.add(lbMiCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 110, -1));
+        jPanel4.add(lbMiCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 110, -1));
 
         lbClasifico.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         lbClasifico.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -382,12 +383,12 @@ public class MisResiduos extends javax.swing.JFrame {
                 lbClasificoMouseClicked(evt);
             }
         });
-        jPanel4.add(lbClasifico, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 210, -1));
+        jPanel4.add(lbClasifico, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 210, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Mis Residuos");
-        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 40, 150, -1));
+        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 30, 150, -1));
 
         lbEstadisticas.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         lbEstadisticas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -397,7 +398,7 @@ public class MisResiduos extends javax.swing.JFrame {
                 lbEstadisticasMouseClicked(evt);
             }
         });
-        jPanel4.add(lbEstadisticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 40, 140, -1));
+        jPanel4.add(lbEstadisticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 30, 140, -1));
 
         lbReduccionResiduos.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         lbReduccionResiduos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -407,18 +408,18 @@ public class MisResiduos extends javax.swing.JFrame {
                 lbReduccionResiduosMouseClicked(evt);
             }
         });
-        jPanel4.add(lbReduccionResiduos, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 40, 260, -1));
+        jPanel4.add(lbReduccionResiduos, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 30, 260, -1));
         jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 560));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/fondo2.png"));
         jLabel1.setText("jLabel1");
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 560));
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 570));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 1082, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 1160, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

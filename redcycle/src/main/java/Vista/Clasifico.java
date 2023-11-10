@@ -215,12 +215,12 @@ public class Clasifico extends javax.swing.JFrame {
                 lbCuentaMouseClicked(evt);
             }
         });
-        jPanel1.add(lbCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 110, -1));
+        jPanel1.add(lbCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 110, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("¿Cómo lo clasifico?");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 220, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 220, -1));
 
         lbMisResiduos.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         lbMisResiduos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -230,7 +230,7 @@ public class Clasifico extends javax.swing.JFrame {
                 lbMisResiduosMouseClicked(evt);
             }
         });
-        jPanel1.add(lbMisResiduos, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, 140, -1));
+        jPanel1.add(lbMisResiduos, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 30, 140, -1));
 
         lbEstadisticas.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         lbEstadisticas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -240,7 +240,7 @@ public class Clasifico extends javax.swing.JFrame {
                 lbEstadisticasMouseClicked(evt);
             }
         });
-        jPanel1.add(lbEstadisticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 30, 130, 30));
+        jPanel1.add(lbEstadisticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 30, 130, 30));
 
         lbReduccionResiduos.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         lbReduccionResiduos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -250,9 +250,11 @@ public class Clasifico extends javax.swing.JFrame {
                 lbReduccionResiduosMouseClicked(evt);
             }
         });
-        jPanel1.add(lbReduccionResiduos, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 30, 260, -1));
+        jPanel1.add(lbReduccionResiduos, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 30, 260, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/fondo2.png"));
+        jLabel2.setPreferredSize(new java.awt.Dimension(950, 560));
+        jLabel2.setRequestFocusEnabled(false);
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 0, 1060, 580));
 
         jLabel1.setText("jLabel1");
