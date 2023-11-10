@@ -27,25 +27,21 @@ import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author nadis
- */
 public class Driver {
     //Atributos
 
     private ArrayList<Usuario> usuarios;
-    private Archivo usuariosCSV;
+    private Archivo archivo;
     private int indexUsuario; //variable que indica el index del usuario que inició sesion 
-    int globalid = 0;
+    int globalid;
 
     //Getters y Setters
     public ArrayList<Usuario> getUsuarios() {
         return usuarios;
     }
-    
+
     public Usuario getUsuario() {
-        Usuario tempUser = new Usuario(usuarios.get (indexUsuario).getId(),usuarios.get(indexUsuario).getNombre(), usuarios.get(indexUsuario).getCorreo(), usuarios.get(indexUsuario).getPassword(), usuarios.get(indexUsuario).getContedenoresBasura());
+        Usuario tempUser = new Usuario(usuarios.get(indexUsuario).getId(), usuarios.get(indexUsuario).getNombre(), usuarios.get(indexUsuario).getCorreo(), usuarios.get(indexUsuario).getPassword(), usuarios.get(indexUsuario).getContenedoresBasura());
         return tempUser;
     }
 
@@ -54,14 +50,15 @@ public class Driver {
     }
 
     public Driver() {
-        indexUsuario = -1;
+       // indexUsuario = 0;
         File file = new File("C:Usuario.csv");
-        usuariosCSV = new Archivo("Usuario.csv");
+        archivo = new Archivo("Usuario.csv", "Contenedores.csv");
 
         if (file.exists()) {
             //si el archivo existe entonces llenar array con datos delcsv
             try {
-                usuarios = usuariosCSV.leerCSV();
+                usuarios = archivo.leerUsuariosCSV();
+                globalid = usuarios.get(usuarios.size() - 1).getId();
             } catch (FileNotFoundException e) {
                 System.out.println("Error al cargar informacion de usuarios!");
             } catch (IOException ioe) {
@@ -70,15 +67,17 @@ public class Driver {
         } else {
             //si el archivo no existe, entonces crear array normal
             usuarios = new ArrayList();
+            indexUsuario = 0;
+            globalid = 0;
+            System.out.println("entre aqui");
         }
 
     }
-    
+
     public int obtenerSiguienteID() {
-        globalid++; 
+        globalid++;
         return globalid;
     }
-    
 
     private float validarLitrosCont(String cantLitros) {
         float litros = 0.0f;
@@ -98,7 +97,7 @@ public class Driver {
         return litros;
     }
 
-    public void validarUsuario(String mensaje, int id, String nombre, String correo, String password, String clasificacionCont1, String litros1, String clasificacionCont2, String litros2, String clasificacionCont3, String litros3, String clasificacionCont4, String litros4, String clasificacionCont5, String litros5, String clasificacionCont6, String litros6) {
+    public void validarUsuario(String mensaje, int idActual, String nombre, String correo, String password, String clasificacionCont1, String litros1, String clasificacionCont2, String litros2, String clasificacionCont3, String litros3, String clasificacionCont4, String litros4, String clasificacionCont5, String litros5, String clasificacionCont6, String litros6, boolean flag) {
         float litrosOrganica = 0.0f, litrosPlastico = 0.0f, litrosMulticapa = 0.0f, litrosMetal = 0.0f, litrosVidrio = 0.0f, litrosPapel = 0.0f;
 
         litrosOrganica = validarLitrosCont(litros1);
@@ -132,11 +131,11 @@ public class Driver {
             return;
         }
 
-        guardarUsuario(mensaje, id, nombre, correo, password, clasificacionCont1, litrosOrganica, clasificacionCont2, litrosPlastico, clasificacionCont3, litrosMulticapa, clasificacionCont4, litrosMetal, clasificacionCont5, litrosVidrio, clasificacionCont6, litrosPapel);
+        guardarUsuario(mensaje, idActual, nombre, correo, password, clasificacionCont1, litrosOrganica, clasificacionCont2, litrosPlastico, clasificacionCont3, litrosMulticapa, clasificacionCont4, litrosMetal, clasificacionCont5, litrosVidrio, clasificacionCont6, litrosPapel, flag);
 
     }
 
-    public void guardarUsuario(String mensaje, int id, String nombre, String correo, String password, String clasificacionCont1, float litros1, String clasificacionCont2, float litros2, String clasificacionCont3, float litros3, String clasificacionCont4, float litros4, String clasificacionCont5, float litros5, String clasificacionCont6, float litros6) {
+    public void guardarUsuario(String mensaje, int idActual, String nombre, String correo, String password, String clasificacionCont1, float litros1, String clasificacionCont2, float litros2, String clasificacionCont3, float litros3, String clasificacionCont4, float litros4, String clasificacionCont5, float litros5, String clasificacionCont6, float litros6, boolean flag) {
         ArrayList<Contenedor> contenedoresBasura = new ArrayList<>();
 
         Contenedor contTemp;
@@ -170,10 +169,18 @@ public class Driver {
             return;
         }
 
-        Usuario usuario = new Usuario(obtenerSiguienteID(),nombre, correo, password, contenedoresBasura);
-        
+        Usuario usuario = new Usuario(0, nombre, correo, password, contenedoresBasura);
+
         if (usuario != null) {
-            usuarios.add(usuario);
+
+            if (flag) {
+                usuario.setId(obtenerSiguienteID());
+                usuarios.add(usuario);
+            } else {
+                usuario.setId(idActual);
+                usuarios.set(indexUsuario, usuario);
+            }
+
             JOptionPane.showMessageDialog(null, "Cuenta " + mensaje + " con exito!");
         } else {
             System.out.println("ERROR AL CREAR USUARIO");
@@ -183,25 +190,41 @@ public class Driver {
 
     public boolean iniciarSesion(String user, String pass) {
         boolean flag = false;
-        for (int x = 0; x < usuarios.size(); x++) {
-            if (usuarios.get(x) != null) {
+
+        if (usuarios.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Debe registrarse para poder iniciar sesión", "Error", JOptionPane.ERROR_MESSAGE);
+            flag = false;
+        } else {
+            for (int x = 0; x < usuarios.size(); x++) {
+                System.out.println("esto hay en usuarios " + usuarios.get(0));
                 if ((user.equals(usuarios.get(x).getNombre())) && (pass.equals(usuarios.get(x).getPassword()))) {
-                    JOptionPane.showMessageDialog(null, "Credenciales correctas!");
                     indexUsuario = x;
                     flag = true;
                 } else {
-                    JOptionPane.showMessageDialog(null, "Credenciales incorrectas!", "Error", JOptionPane.ERROR_MESSAGE);
                     flag = false;
                 }
+            }
+
+            if (flag) {
+                JOptionPane.showMessageDialog(null, "Credenciales correctas!");
             } else {
-                JOptionPane.showMessageDialog(null, "Debe registrarse para poder iniciar sesión", "Error", JOptionPane.ERROR_MESSAGE);
-                flag = false;
+                JOptionPane.showMessageDialog(null, "Credenciales incorrectas!", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
 
         return flag;
     }
 
+    
+    public void guardarArchivoUser() throws Exception{
+        archivo.guardarUsuariosCSV(usuarios);
+    }
+    
+    public void guardarArchivoCont() throws IOException{
+        archivo.guardarContenedoresCSV(usuarios);
+    }
+    
+    
     public void buscarResiduo(String residuo) {
 
     }

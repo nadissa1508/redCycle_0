@@ -183,8 +183,8 @@ public class CrearCuenta extends javax.swing.JFrame {
         if (cbPapel.isSelected()) {
             litrosPapel = JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para papel y cartón: ");
         }
-        int nuevoId = driver.obtenerSiguienteID();
-        driver.validarUsuario("Creada ",nuevoId,txtNombreUsuario.getText(), txtCorreo.getText(), txtPassword.getText(), "Organica", litrosOrganica, "Plastico", litrosPlastico, "Multicapa", litrosMulticapa, "Metal", litrosMetal, "Vidrio", litrosVidrio, "Papel", litrosPapel);
+        //int nuevoId = driver.obtenerSiguienteID();
+        driver.validarUsuario("Creada ",0, txtNombreUsuario.getText(), txtCorreo.getText(), txtPassword.getText(), "Organica", litrosOrganica, "Plastico", litrosPlastico, "Multicapa", litrosMulticapa, "Metal", litrosMetal, "Vidrio", litrosVidrio, "Papel", litrosPapel, true);
 
     }
 

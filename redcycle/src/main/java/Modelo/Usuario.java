@@ -13,9 +13,9 @@ import java.util.ArrayList;
 public class Usuario {
 
     //Atributos 
-    private String nombre = "";
-    private String correo = "";
-    private String password = "";
+    private String nombre;
+    private String correo;
+    private String password;
     private int id;
     private ArrayList<Contenedor> contedenoresBasura;
 
@@ -58,11 +58,11 @@ public class Usuario {
         this.id = id;
     }
 
-    public ArrayList<Contenedor> getContedenoresBasura() {
+    public ArrayList<Contenedor> getContenedoresBasura() {
         return contedenoresBasura;
     }
 
-    public void setContedenoresBasura(ArrayList<Contenedor> contedenoresBasura) {
+    public void setContenedoresBasura(ArrayList<Contenedor> contedenoresBasura) {
         this.contedenoresBasura = contedenoresBasura;
     }
     
