@@ -111,19 +111,19 @@ public class Login extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(73, 153, 28));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("¡BIENVENIDO!");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 192, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 192, -1));
 
         txtNombreUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreUsuarioActionPerformed(evt);
             }
         });
-        jPanel2.add(txtNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 192, -1));
-        jPanel2.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 190, -1));
+        jPanel2.add(txtNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 192, -1));
+        jPanel2.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 190, -1));
 
         cbRecordarPass.setForeground(new java.awt.Color(0, 83, 40));
         cbRecordarPass.setText("Recordar contraseña");
-        jPanel2.add(cbRecordarPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 170, -1));
+        jPanel2.add(cbRecordarPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, 170, -1));
 
         btnIniciarSesion.setBackground(new java.awt.Color(73, 153, 28));
         btnIniciarSesion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -138,10 +138,10 @@ public class Login extends javax.swing.JFrame {
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 284, -1, -1));
 
         jLabel5.setText("Nombre de usuario");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 161, -1));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 161, -1));
 
         jLabel6.setText("Contraseña");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 159, -1));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 159, -1));
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 24, -1, 41));
 
         lbRegistrarse.setText("¿No tienes una cuenta? Registrate");
@@ -150,7 +150,7 @@ public class Login extends javax.swing.JFrame {
                 lbRegistrarseMouseClicked(evt);
             }
         });
-        jPanel2.add(lbRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, 220, -1));
+        jPanel2.add(lbRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, 220, -1));
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 214, -1, -1));
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 164, -1, -1));
 
