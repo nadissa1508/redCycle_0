@@ -170,7 +170,7 @@ public class Driver {
             return;
         }
 
-        Usuario usuario = new Usuario(obtenerSiguienteID(), nombre, correo, password, contenedoresBasura);
+        Usuario usuario = new Usuario(obtenerSiguienteID(),nombre, correo, password, contenedoresBasura);
         
         if (usuario != null) {
             usuarios.add(usuario);
