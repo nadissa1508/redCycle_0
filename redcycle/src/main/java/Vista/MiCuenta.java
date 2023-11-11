@@ -9,7 +9,6 @@ import Modelo.Usuario;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author nadis
@@ -20,14 +19,13 @@ public class MiCuenta extends javax.swing.JFrame {
      * Creates new form MiCuenta
      */
     private static Driver driver;
-    
-   public MiCuenta(Driver driver) {
+
+    public MiCuenta(Driver driver) {
         this.driver = driver;
         initComponents();
         limpiar();
         traerDatos();
     }
-    
 
     public void limpiar() {
         txtNombreUsuario.setText("");
@@ -91,10 +89,10 @@ public class MiCuenta extends javax.swing.JFrame {
         if (cbPapel.isSelected()) {
             litrosPapel = JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para papel y cartón: ");
         }
-        
+
         Usuario usuarioActual = driver.getUsuario();
         int idUsuarioActual = usuarioActual.getId();
-        
+
         driver.validarUsuario("actualizada", idUsuarioActual, txtNombreUsuario.getText(), txtCorreo.getText(), txtPassword.getText(), "Organica", litrosOrganica, "Plastico", litrosPlastico, "Multicapa", litrosMulticapa, "Metal", litrosMetal, "Vidrio", litrosVidrio, "Papel", litrosPapel, false);
     }
 
@@ -103,15 +101,14 @@ public class MiCuenta extends javax.swing.JFrame {
         Clasifico clasifico = new Clasifico(driver);
         clasifico.setVisible(true);
     }
-    
+
     public void abrirLogin() {
         this.dispose();
         Login login = new Login(driver);
         login.setVisible(true);
     }
-    
-    //a partir de aca falta configurar objeto driver
 
+    //a partir de aca falta configurar objeto driver
     public void abrirMisResiduos() {
         this.dispose();
         MisResiduos residuos = new MisResiduos(driver);
@@ -129,28 +126,26 @@ public class MiCuenta extends javax.swing.JFrame {
         ReduccionResiduos reduccion = new ReduccionResiduos(driver);
         reduccion.setVisible(true);
     }
-    
-    private void cerrarVentana(){
+
+    private void cerrarVentana() {
         int resp = JOptionPane.showConfirmDialog(null, "¿Desea salir del programa?", "Confirmar cierre", JOptionPane.YES_NO_OPTION);
-        if(resp == JOptionPane.YES_OPTION){
-            try{
-                driver.guardarArchivoUser(); 
-            }catch(Exception e){
-               System.out.println("Error al guardar CSV DE USUARIO"); 
+        if ((resp == JOptionPane.YES_OPTION) && (driver.getSizeUsuarios() > 0)) {
+            try {
+                driver.guardarArchivoUser();
+            } catch (Exception e) {
+                System.out.println("Error al guardar CSV DE USUARIO");
             }
-            
-             try{
-                driver.guardarArchivoCont(); 
-            }catch(IOException io){
-               System.out.println("Error al guardar CSV DE CONTENEDORES"); 
+
+            try {
+                driver.guardarArchivoCont();
+            } catch (IOException io) {
+                System.out.println("Error al guardar CSV DE CONTENEDORES");
             }
             System.exit(0);
         }
-            
+
     }
-    
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -386,9 +381,8 @@ public class MiCuenta extends javax.swing.JFrame {
     private void btnCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseClicked
         // TODO add your handling code here:
         limpiar();
-        
-        
-        
+
+
     }//GEN-LAST:event_btnCerrarMouseClicked
 
     /**

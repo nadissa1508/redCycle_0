@@ -17,12 +17,12 @@ public class Usuario {
     private String correo;
     private String password;
     private int id;
-    private ArrayList<Contenedor> contedenoresBasura;
+    private ArrayList<Contenedor> contenedoresBasura;
 
     @Override
     public String toString() {
-        return "Usuario [id=" + id + "nombre=" + nombre + ", correo=" + correo + ", password=" + password + ", contedenoresBasura="
-                + contedenoresBasura + "]";
+        return "Usuario [id=" + id + "nombre=" + nombre + ", correo=" + correo + ", password=" + password + ", contenedoresBasura="
+                + contenedoresBasura + "]";
     }
 
     //Getters y Setters
@@ -59,33 +59,33 @@ public class Usuario {
     }
 
     public ArrayList<Contenedor> getContenedoresBasura() {
-        return contedenoresBasura;
+        return contenedoresBasura;
     }
 
-    public void setContenedoresBasura(ArrayList<Contenedor> contedenoresBasura) {
-        this.contedenoresBasura = contedenoresBasura;
+    public void setContenedoresBasura(ArrayList<Contenedor> contenedoresBasura) {
+        this.contenedoresBasura = contenedoresBasura;
     }
     
     public int sizeContenedores(){
-        return contedenoresBasura.size();
+        return contenedoresBasura.size();
     }
     
     public String[] getClasificacionesContenedores(){
         String[] clasificaciones = new String[6];
-        for(int i = 0; i < contedenoresBasura.size(); i++){
-            if(contedenoresBasura.get(i) != null){
-                clasificaciones[i] = contedenoresBasura.get(i).getClasificacion();
+        for(int i = 0; i < contenedoresBasura.size(); i++){
+            if(contenedoresBasura.get(i) != null){
+                clasificaciones[i] = contenedoresBasura.get(i).getClasificacion();
             }
         }
         return clasificaciones;
     }
 
     //Constructor
-    public Usuario(int id, String nombre, String correo, String password, ArrayList<Contenedor> contedenoresBasura) {
+    public Usuario(int id, String nombre, String correo, String password, ArrayList<Contenedor> contenedoresBasura) {
         this.nombre = nombre;
         this.correo = correo;
         this.password = password;
-        this.contedenoresBasura = contedenoresBasura;
+        this.contenedoresBasura = contenedoresBasura;
         this.id = id;
     }
 
@@ -94,7 +94,7 @@ public class Usuario {
         this.nombre = "";
         this.correo = "";
         this.password = "";
-        this.contedenoresBasura = new ArrayList<>();
+        this.contenedoresBasura = new ArrayList<>();
     }
 
 }

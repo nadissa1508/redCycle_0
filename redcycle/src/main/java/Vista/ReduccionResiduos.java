@@ -5,6 +5,8 @@
 package Vista;
 
 import Controlador.Driver;
+import java.io.IOException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -55,7 +57,24 @@ public class ReduccionResiduos extends javax.swing.JFrame {
         estadisticas.setVisible(true);
     }
      
-     
+     private void cerrarVentana() {
+        int resp = JOptionPane.showConfirmDialog(null, "¿Desea salir del programa?", "Confirmar cierre", JOptionPane.YES_NO_OPTION);
+        if ((resp == JOptionPane.YES_OPTION) && (driver.getSizeUsuarios() > 0)) {
+            try {
+                driver.guardarArchivoUser();
+            } catch (Exception e) {
+                System.out.println("Error al guardar CSV DE USUARIO");
+            }
+
+            try {
+                driver.guardarArchivoCont();
+            } catch (IOException io) {
+                System.out.println("Error al guardar CSV DE CONTENEDORES");
+            }
+            System.exit(0);
+        }
+
+    } 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -90,6 +109,11 @@ public class ReduccionResiduos extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(950, 560));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(246, 246, 246));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -260,6 +284,11 @@ public class ReduccionResiduos extends javax.swing.JFrame {
         // TODO add your handling code here:
         abrirMiCuenta();
     }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        cerrarVentana();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

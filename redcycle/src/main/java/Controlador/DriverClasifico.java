@@ -155,7 +155,7 @@ public class DriverClasifico {
         String desc = "";
         for (Clasificacion clasBasura : clasificacionesBasura) {
             if (clasBasura.getClasificacion().equals(clasificacion)) {
-                desc = clasBasura.getDescripcion();
+                desc = clasBasura.getDescripcion() + "\n\n" + clasBasura.getDatoNegativo();
             }
         }
         return desc;

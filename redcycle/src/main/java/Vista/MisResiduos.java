@@ -10,9 +10,11 @@ import Modelo.Contenedor;
 import Modelo.Usuario;
 import java.util.ArrayList;
 import java.awt.Image;
+import java.io.IOException;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -153,6 +155,24 @@ public class MisResiduos extends javax.swing.JFrame {
         
     }
     
+     private void cerrarVentana() {
+        int resp = JOptionPane.showConfirmDialog(null, "¿Desea salir del programa?", "Confirmar cierre", JOptionPane.YES_NO_OPTION);
+        if ((resp == JOptionPane.YES_OPTION) && (driver.getSizeUsuarios() > 0)) {
+            try {
+                driver.guardarArchivoUser();
+            } catch (Exception e) {
+                System.out.println("Error al guardar CSV DE USUARIO");
+            }
+
+            try {
+                driver.guardarArchivoCont();
+            } catch (IOException io) {
+                System.out.println("Error al guardar CSV DE CONTENEDORES");
+            }
+            System.exit(0);
+        }
+
+    }
      
      
 
@@ -215,6 +235,11 @@ public class MisResiduos extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel4.setBackground(new java.awt.Color(246, 246, 246));
         jPanel4.setPreferredSize(new java.awt.Dimension(950, 560));
@@ -518,6 +543,11 @@ public class MisResiduos extends javax.swing.JFrame {
         // TODO add your handling code here:
         setResiduos();
     }//GEN-LAST:event_btnGuardarMouseClicked
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        cerrarVentana();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

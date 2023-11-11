@@ -22,6 +22,7 @@ public class Archivo {
 
     private File archivo;
     private File archivoContenedores;
+    private int idUsuario;
 
     public Archivo(String nombreUser, String nombreCont) {
         archivo = new File(nombreUser);
@@ -114,23 +115,46 @@ public class Archivo {
 
     }
 
+//    public HashMap<Integer, ArrayList<Contenedor>> leerContenedoresCSV() throws IOException {
+//        HashMap<Integer, ArrayList<Contenedor>> contenedoresPorUsuario = new HashMap<>();
+//        try (BufferedReader br = new BufferedReader(new FileReader(archivoContenedores))) {
+//            String linea = br.readLine();
+//            while ((linea = br.readLine()) != null) {
+//                String[] datos = linea.split(",");
+//                int idUsuario = Integer.parseInt(datos[0]);
+//                String clasificacion = datos[1];
+//                float litros = Float.parseFloat(datos[2]);
+//                int cantResiduos = Integer.parseInt(datos[3]);
+//
+//                Contenedor contenedor = new Contenedor(clasificacion, litros, cantResiduos);
+//               
+//                contenedoresPorUsuario.putIfAbsent(idUsuario, new ArrayList<>());
+//                contenedoresPorUsuario.get(idUsuario).add(contenedor);
+//            }
+//        }
+//        return contenedoresPorUsuario;
+//    }
     public HashMap<Integer, ArrayList<Contenedor>> leerContenedoresCSV() throws IOException {
         HashMap<Integer, ArrayList<Contenedor>> contenedoresPorUsuario = new HashMap<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(archivoContenedores))) {
-            String linea = br.readLine();
-            while ((linea = br.readLine()) != null) {
-                String[] datos = linea.split(",");
-                int idUsuario = Integer.parseInt(datos[0]);
-                String clasificacion = datos[1];
-                float litros = Float.parseFloat(datos[2]);
-                int cantResiduos = Integer.parseInt(datos[3]);
+        BufferedReader br = new BufferedReader(new FileReader(archivoContenedores));
+        String linea;
+        br.readLine(); // Leer la primera línea que contiene los encabezados
 
-                Contenedor contenedor = new Contenedor(clasificacion, litros, cantResiduos);
+        while ((linea = br.readLine()) != null) {
+            String[] datosContenedores = linea.split(",");
+            int idUsuario = Integer.parseInt(datosContenedores[0]);
+            String clasificacion = datosContenedores[1];
+            float litros = Float.parseFloat(datosContenedores[2]);
+            int cantResiduos = Integer.parseInt(datosContenedores[3]);
 
-                contenedoresPorUsuario.putIfAbsent(idUsuario, new ArrayList<>());
-                contenedoresPorUsuario.get(idUsuario).add(contenedor);
-            }
+            Contenedor contenedor = new Contenedor(clasificacion, litros, cantResiduos);
+
+            contenedoresPorUsuario.putIfAbsent(idUsuario, new ArrayList<>());
+            contenedoresPorUsuario.get(idUsuario).add(contenedor);
         }
+
+        br.close();
         return contenedoresPorUsuario;
     }
+
 }

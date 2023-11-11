@@ -5,6 +5,8 @@
 package Vista;
 import Controlador.Driver;
 import Modelo.Usuario;
+import java.io.IOException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -49,7 +51,24 @@ public class Estadisticas extends javax.swing.JFrame {
         clasifico.setVisible(true);
     }
 
+     private void cerrarVentana() {
+        int resp = JOptionPane.showConfirmDialog(null, "¿Desea salir del programa?", "Confirmar cierre", JOptionPane.YES_NO_OPTION);
+        if ((resp == JOptionPane.YES_OPTION) && (driver.getSizeUsuarios() > 0)) {
+            try {
+                driver.guardarArchivoUser();
+            } catch (Exception e) {
+                System.out.println("Error al guardar CSV DE USUARIO");
+            }
 
+            try {
+                driver.guardarArchivoCont();
+            } catch (IOException io) {
+                System.out.println("Error al guardar CSV DE CONTENEDORES");
+            }
+            System.exit(0);
+        }
+
+    }
 
 
 
@@ -89,6 +108,11 @@ public class Estadisticas extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel4.setBackground(new java.awt.Color(246, 246, 246));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -296,6 +320,11 @@ public class Estadisticas extends javax.swing.JFrame {
         // TODO add your handling code here:
         abrirReduccionResiduos();
     }//GEN-LAST:event_jLabel12MouseClicked
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        cerrarVentana();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

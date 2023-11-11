@@ -5,6 +5,7 @@
 package Vista;
 
 import Controlador.Driver;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 
 /**
@@ -60,6 +61,11 @@ public class CrearCuenta extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -205,32 +211,32 @@ public class CrearCuenta extends javax.swing.JFrame {
 
     }
     
-    public void crearCuenta2() {
-        
-        String litrosOrganica = "", litrosPlastico = "", litrosMulticapa = "", litrosMetal = "", litrosVidrio = "", litrosPapel = "";
-
-       // if (cbOrganica.isSelected()) {
-            litrosOrganica = "2";//JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para basura organica: ");
-        //}
-        //if (cbPlastico.isSelected()) {
-            litrosPlastico =  "2";//JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para el plástico:");
-        //}
-        //if (cbMulticapa.isSelected()) {
-            litrosMulticapa =  "2";//JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para basura multicapa: ");
-       // }
-       // if (cbMetal.isSelected()) {
-            litrosMetal =  "2";//JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para metal: ");
-       // }
-       // if (cbVidrio.isSelected()) {
-            litrosVidrio =  "2";//JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para vidrio: ");
-       // }
-       // if (cbPapel.isSelected()) {
-            litrosPapel =  "2";//JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para papel y cartón: ");
-       // }
-        //int nuevoId = driver.obtenerSiguienteID();
-        driver.validarUsuario("Creada ",0, "a", "a", "a", "Organica", litrosOrganica, "Plastico", litrosPlastico, "Multicapa", litrosMulticapa, "Metal", litrosMetal, "Vidrio", litrosVidrio, "Papel", litrosPapel, true);
-
-    }
+//    public void crearCuenta2() {
+//        
+//        String litrosOrganica = "", litrosPlastico = "", litrosMulticapa = "", litrosMetal = "", litrosVidrio = "", litrosPapel = "";
+//
+//       // if (cbOrganica.isSelected()) {
+//            litrosOrganica = "2";//JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para basura organica: ");
+//        //}
+//        //if (cbPlastico.isSelected()) {
+//            litrosPlastico =  "2";//JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para el plástico:");
+//        //}
+//        //if (cbMulticapa.isSelected()) {
+//            litrosMulticapa =  "2";//JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para basura multicapa: ");
+//       // }
+//       // if (cbMetal.isSelected()) {
+//            litrosMetal =  "2";//JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para metal: ");
+//       // }
+//       // if (cbVidrio.isSelected()) {
+//            litrosVidrio =  "2";//JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para vidrio: ");
+//       // }
+//       // if (cbPapel.isSelected()) {
+//            litrosPapel =  "2";//JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para papel y cartón: ");
+//       // }
+//        //int nuevoId = driver.obtenerSiguienteID();
+//        driver.validarUsuario("Creada ",0, "a", "a", "a", "Organica", litrosOrganica, "Plastico", litrosPlastico, "Multicapa", litrosMulticapa, "Metal", litrosMetal, "Vidrio", litrosVidrio, "Papel", litrosPapel, true);
+//
+//    }
 
     private void abrirLogin() {
         this.dispose();
@@ -238,6 +244,26 @@ public class CrearCuenta extends javax.swing.JFrame {
         login.setVisible(true);
     }
 
+    
+     private void cerrarVentana() {
+        int resp = JOptionPane.showConfirmDialog(null, "¿Desea salir del programa?", "Confirmar cierre", JOptionPane.YES_NO_OPTION);
+        if ((resp == JOptionPane.YES_OPTION) && (driver.getSizeUsuarios() > 0)) {
+            try {
+                driver.guardarArchivoUser();
+            } catch (Exception e) {
+                System.out.println("Error al guardar CSV DE USUARIO");
+            }
+
+            try {
+                driver.guardarArchivoCont();
+            } catch (IOException io) {
+                System.out.println("Error al guardar CSV DE CONTENEDORES");
+            }
+            System.exit(0);
+        }
+
+    }
+    
     private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarseActionPerformed
         // TODO add your handling code here:
         crearCuenta();
@@ -255,6 +281,11 @@ public class CrearCuenta extends javax.swing.JFrame {
     private void cbOrganicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbOrganicaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbOrganicaActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        cerrarVentana();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

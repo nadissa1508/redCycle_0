@@ -1,3 +1,6 @@
 idUsuario,clasificacion,litros,cantResiduos
-1,Organica,20.0,2
-1,Plastico,90.0,4
+2,Metal,50.0,0
+2,Vidrio,50.0,0
+1,Organica,40.0,50
+1,Plastico,50.0,0
+1,Multicapa,60.0,0

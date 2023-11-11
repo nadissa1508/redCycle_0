@@ -25,6 +25,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 import javax.swing.JOptionPane;
@@ -46,11 +47,16 @@ public class Driver {
         Usuario tempUser = new Usuario(usuarios.get(indexUsuario).getId(), usuarios.get(indexUsuario).getNombre(), usuarios.get(indexUsuario).getCorreo(), usuarios.get(indexUsuario).getPassword(), usuarios.get(indexUsuario).getContenedoresBasura());
         return tempUser;
     }
-    public void setUsuario(int pid, ArrayList<Contenedor> pCont){
-       Usuario tempUser = new Usuario(pid, usuarios.get(indexUsuario).getNombre(), usuarios.get(indexUsuario).getCorreo(), usuarios.get(indexUsuario).getPassword(),pCont);
-       usuarios.remove(pid-1);
-       usuarios.add(tempUser);
-        
+
+    public void setUsuario(int pid, ArrayList<Contenedor> pCont) {
+        Usuario tempUser = new Usuario(pid, usuarios.get(indexUsuario).getNombre(), usuarios.get(indexUsuario).getCorreo(), usuarios.get(indexUsuario).getPassword(), pCont);
+        usuarios.remove(pid - 1);
+        usuarios.add(tempUser);
+
+    }
+
+    public int getSizeUsuarios() {
+        return usuarios.size();
     }
 
     public void setUsuario(ArrayList<Usuario> usuarios) {
@@ -58,7 +64,7 @@ public class Driver {
     }
 
     public Driver() {
-       // indexUsuario = 0;
+        // indexUsuario = 0;
         File file = new File("C:Usuario.csv");
         archivo = new Archivo("Usuario.csv", "Contenedores.csv");
 
@@ -66,6 +72,24 @@ public class Driver {
             //si el archivo existe entonces llenar array con datos delcsv
             try {
                 usuarios = archivo.leerUsuariosCSV();
+                HashMap<Integer, ArrayList<Contenedor>> contenedoresPorUsuario = archivo.leerContenedoresCSV();
+
+                for (int userId : contenedoresPorUsuario.keySet()) {
+                    System.out.println("Usuario ID: " + userId);
+                    ArrayList<Contenedor> contenedores = contenedoresPorUsuario.get(userId);
+                    for (Contenedor contenedor : contenedores) {
+                        System.out.println("   Contenedor: " + contenedor);
+                    }
+                }
+
+                for (Usuario usuario : usuarios) {
+                    System.out.println("usuario: " + usuario.getNombre());
+                    System.out.println("pass: " + usuario.getPassword());
+                    if (contenedoresPorUsuario.containsKey(usuario.getId())) {
+                        usuario.setContenedoresBasura(contenedoresPorUsuario.get(usuario.getId()));
+                    }
+                }
+
                 globalid = usuarios.get(usuarios.size() - 1).getId();
             } catch (FileNotFoundException e) {
                 System.out.println("Error al cargar informacion de usuarios!");
@@ -77,7 +101,6 @@ public class Driver {
             usuarios = new ArrayList();
             indexUsuario = 0;
             globalid = 0;
-            System.out.println("entre aqui");
         }
 
     }
@@ -189,7 +212,6 @@ public class Driver {
                 usuarios.set(indexUsuario, usuario);
             }
 
-            
             JOptionPane.showMessageDialog(null, "Cuenta " + mensaje + " con exito!");
         } else {
             System.out.println("ERROR AL CREAR USUARIO");
@@ -199,16 +221,18 @@ public class Driver {
 
     public boolean iniciarSesion(String user, String pass) {
         boolean flag = false;
+        boolean encontrado = false;
 
         if (usuarios.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Debe registrarse para poder iniciar sesión", "Error", JOptionPane.ERROR_MESSAGE);
             flag = false;
         } else {
-            for (int x = 0; x < usuarios.size(); x++) {
-                System.out.println("esto hay en usuarios " + usuarios.get(0));
+            for (int x = 0; x < usuarios.size() && !encontrado; x++) {
+
                 if ((user.equals(usuarios.get(x).getNombre())) && (pass.equals(usuarios.get(x).getPassword()))) {
                     indexUsuario = x;
                     flag = true;
+                    encontrado = true;
                 } else {
                     flag = false;
                 }
@@ -224,16 +248,14 @@ public class Driver {
         return flag;
     }
 
-    
-    public void guardarArchivoUser() throws Exception{
+    public void guardarArchivoUser() throws Exception {
         archivo.guardarUsuariosCSV(usuarios);
     }
-    
-    public void guardarArchivoCont() throws IOException{
+
+    public void guardarArchivoCont() throws IOException {
         archivo.guardarContenedoresCSV(usuarios);
     }
-    
-    
+
     public void buscarResiduo(String residuo) {
 
     }
@@ -262,9 +284,9 @@ public class Driver {
     public void calcularProgresoMensual() {
 
     }
-    
-    public void setContenedoresBasura(ArrayList<Contenedor> pCont){
-       
+
+    public void setContenedoresBasura(ArrayList<Contenedor> pCont) {
+
     }
 
 }
