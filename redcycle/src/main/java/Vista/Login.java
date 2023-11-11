@@ -38,11 +38,11 @@ public class Login extends javax.swing.JFrame {
     }
 
     private void iniciarSesion() {
-        boolean flag = true; //esto es temporal
-        //tempVC boolean flag = driver.iniciarSesion(txtNombreUsuario.getText(), txtPassword.getText());
+       // boolean flag = true; //esto es temporal
+        boolean flag = driver.iniciarSesion(txtNombreUsuario.getText(), txtPassword.getText());
         
-         CrearCuenta crearCuenta = new CrearCuenta(driver); //esto es temporal
-         crearCuenta.crearCuenta2(); //esto es temporal
+        // CrearCuenta crearCuenta = new CrearCuenta(driver); //esto es temporal
+        // crearCuenta.crearCuenta2(); //esto es temporal
         
         if (flag) {
             this.dispose();
