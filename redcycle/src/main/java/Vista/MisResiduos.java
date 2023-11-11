@@ -6,6 +6,9 @@ package Vista;
 
 import Controlador.Driver;
 import Controlador.DriverContenedor;
+import Modelo.Contenedor;
+import Modelo.Usuario;
+import java.util.ArrayList;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -30,6 +33,7 @@ public class MisResiduos extends javax.swing.JFrame {
         this.driver = driver;
         driverContenedor = new DriverContenedor(driver);
         initComponents();
+        llenarCombo();
     }
     
     public void abrirMisResiduos() {
@@ -65,6 +69,90 @@ public class MisResiduos extends javax.swing.JFrame {
     public void guardar(){
         
     }
+    
+    public void llenarCombo(){
+       ArrayList<Contenedor> cB = new ArrayList<>();
+        cB = driver.getUsuario().getContenedoresBasura();
+        spCantidadResiduos.setValue(cB.get(0).getCantResiduos());
+        for (int k=0;k<cB.size();k++){
+           cbClasificacionesBasura.addItem(cB.get(k).getClasificacion()); 
+        }
+    }
+    
+    public void getResiduos(){
+      ArrayList<Contenedor> cB = new ArrayList<>();
+        cB = driver.getUsuario().getContenedoresBasura();
+       
+        for (int k=0;k<cB.size();k++){
+            if (cB.get(k).getClasificacion().equals(cbClasificacionesBasura.getSelectedItem().toString())){
+                spCantidadResiduos.setValue(cB.get(k).getCantResiduos());
+                break;
+            }
+        }
+         for (int k=0;k<cB.size();k++){
+            if (cB.get(k).getClasificacion().equals("Multicapa")){
+               txtCantMulticapa.setText(String.valueOf(cB.get(k).getCantResiduos()));
+            }
+            if (cB.get(k).getClasificacion().equals("Papel")){
+               txtCantPapel.setText(String.valueOf(cB.get(k).getCantResiduos()));  
+            }
+            if (cB.get(k).getClasificacion().equals("Plastico")){
+               txtCantPlasticos.setText(String.valueOf(cB.get(k).getCantResiduos()));
+            }
+            if (cB.get(k).getClasificacion().equals("Vidrio")){
+               txtCantVidrios.setText(String.valueOf(cB.get(k).getCantResiduos()));  
+            }
+            if (cB.get(k).getClasificacion().equals("Organica")){
+               txtCantOrganica.setText(String.valueOf(cB.get(k).getCantResiduos()));
+            }
+            if (cB.get(k).getClasificacion().equals("Metal")){
+               txtCantMetal.setText(String.valueOf(cB.get(k).getCantResiduos()));  
+            }
+        }
+    }
+     
+    public void setResiduos(){
+        ArrayList<Contenedor> cB = new ArrayList<>();
+        ArrayList<Contenedor> cBmod = new ArrayList<>();
+        cB = driver.getUsuario().getContenedoresBasura();
+        
+        String itemSelected = cbClasificacionesBasura.getSelectedItem().toString();
+        
+       
+        if (itemSelected.equals("Multicapa")){
+        txtCantMulticapa.setText(String.valueOf(spCantidadResiduos.getValue()));
+        }
+        if (itemSelected.equals("Papel")){
+        txtCantPapel.setText(String.valueOf(spCantidadResiduos.getValue()));
+        }
+        if (itemSelected.equals("Plastico")){
+        txtCantPlasticos.setText(String.valueOf(spCantidadResiduos.getValue()));
+        }
+        if (itemSelected.equals("Vidrio")){
+        txtCantVidrios.setText(String.valueOf(spCantidadResiduos.getValue()));
+        }
+        if (itemSelected.equals("Organica")){
+        txtCantOrganica.setText(String.valueOf(spCantidadResiduos.getValue()));
+        }
+        if (itemSelected.equals("Metal")){
+        txtCantMetal.setText(String.valueOf(spCantidadResiduos.getValue()));
+        }
+        
+        for(int i=0;i<cB.size();i++){
+            if (cB.get(i).getClasificacion().toString().equals(itemSelected)){
+                Contenedor contTemp = new Contenedor(cB.get(i).getClasificacion(), cB.get(i).getLitros(), Integer.parseInt(spCantidadResiduos.getValue().toString()));
+                cBmod.add(contTemp);
+                
+            }else {
+                
+                cBmod.add(cB.get(i));
+            }
+        }
+
+        this.driver.setUsuario(driver.getUsuario().getId(), cBmod);
+        
+    }
+    
      
      
 
@@ -102,7 +190,6 @@ public class MisResiduos extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         txtCantPapel = new javax.swing.JTextField();
@@ -111,6 +198,13 @@ public class MisResiduos extends javax.swing.JFrame {
         txtCantOrganica = new javax.swing.JTextField();
         txtCantPlasticos = new javax.swing.JTextField();
         txtCantMetal = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
         lbMiCuenta = new javax.swing.JLabel();
         lbClasifico = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -134,14 +228,35 @@ public class MisResiduos extends javax.swing.JFrame {
 
         jLabel4.setText("Seleccione el artículo que desee clasificar: ");
 
-        cbClasificacionesBasura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbClasificacionesBasura.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbClasificacionesBasuraMouseClicked(evt);
+            }
+        });
+        cbClasificacionesBasura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbClasificacionesBasuraActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Cantidad producida:");
+
+        spCantidadResiduos.setModel(new javax.swing.SpinnerNumberModel());
+        spCantidadResiduos.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spCantidadResiduosStateChanged(evt);
+            }
+        });
 
         btnGuardar.setBackground(new java.awt.Color(73, 153, 28));
         btnGuardar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardar.setText("GUARDAR");
+        btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGuardarMouseClicked(evt);
+            }
+        });
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
@@ -154,13 +269,13 @@ public class MisResiduos extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(72, 72, 72)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cbClasificacionesBasura, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(jPanel5Layout.createSequentialGroup()
-                                    .addComponent(spCantidadResiduos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(spCantidadResiduos, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -192,178 +307,99 @@ public class MisResiduos extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(spCantidadResiduos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 430, 310));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(lbIMGContenedorVidrios, new org.netbeans.lib.awtextra.AbsoluteConstraints(414, 217, -1, 113));
+        jPanel1.add(lbIMGContenedorOrganica, new org.netbeans.lib.awtextra.AbsoluteConstraints(527, 169, -1, -1));
+        jPanel1.add(lbIMGContenedorMulticapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 275, -1, 109));
+        jPanel1.add(lbIMGContenedorPapel, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 419, -1, -1));
+        jPanel1.add(lbIMGContenedorMetal, new org.netbeans.lib.awtextra.AbsoluteConstraints(527, 402, -1, -1));
+        jPanel1.add(lbIMGContenedorPlasticos, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 388, -1, -1));
 
+        lbMulticapa.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lbMulticapa.setText("Multicapa");
+        jPanel1.add(lbMulticapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
+        lbPapel.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lbPapel.setText("Papel");
+        jPanel1.add(lbPapel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, -1, -1));
 
+        lbVidrios.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lbVidrios.setText("Vidrios");
+        jPanel1.add(lbVidrios, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 206, -1, -1));
 
+        lbPlasticos.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lbPlasticos.setText("Plásticos");
+        jPanel1.add(lbPlasticos, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 57, -1));
 
+        lbMetal.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lbMetal.setText("Metal");
+        jPanel1.add(lbMetal, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, 57, -1));
 
+        lbOrganica.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lbOrganica.setText("Orgánica");
+        jPanel1.add(lbOrganica, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, -1, -1));
 
         jLabel22.setText("Cantidad");
+        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 152, -1, -1));
 
         jLabel23.setText("Cantidad");
+        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 338, -1, -1));
 
         jLabel24.setText("Cantidad");
-
-        jLabel25.setText("Cantidad");
+        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, -1, -1));
 
         jLabel26.setText("Cantidad");
+        jPanel1.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, -1, -1));
 
         jLabel27.setText("Cantidad");
+        jPanel1.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, -1, -1));
+        jPanel1.add(txtCantPapel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 59, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lbIMGContenedorMulticapa)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel22))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txtCantMulticapa, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(lbIMGContenedorPapel)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel23)
-                                        .addComponent(txtCantPapel, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(lbPapel))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(lbMulticapa)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(lbIMGContenedorVidrios)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtCantVidrios, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel24)))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(lbIMGContenedorPlasticos)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel25)
-                                .addComponent(txtCantPlasticos, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(lbPlasticos, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(80, 80, 80)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(lbVidrios, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(90, 90, 90)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lbIMGContenedorOrganica)
-                                .addComponent(lbIMGContenedorMetal))
-                            .addComponent(lbMetal, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel26)
-                                    .addComponent(txtCantOrganica, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(txtCantMetal, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel27)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(lbOrganica)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(lbIMGContenedorMulticapa, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lbMulticapa)
-                                        .addGap(6, 6, 6))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(35, 35, 35)
-                                        .addComponent(jLabel22)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtCantMulticapa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbIMGContenedorPapel)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel23)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtCantPapel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(40, 40, 40))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addComponent(jLabel24)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtCantVidrios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel25)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtCantPlasticos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(39, 39, 39))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(lbIMGContenedorVidrios, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lbVidrios)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbIMGContenedorPlasticos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lbPapel)
-                                .addComponent(lbMetal))
-                            .addComponent(lbPlasticos))
-                        .addGap(8, 8, 8))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 22, Short.MAX_VALUE)
-                        .addComponent(lbIMGContenedorOrganica)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbOrganica)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbIMGContenedorMetal)
-                        .addGap(29, 29, 29))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabel26)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtCantOrganica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel27)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtCantMetal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(68, 68, 68))))
-        );
+        txtCantMulticapa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCantMulticapaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtCantMulticapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 59, -1));
 
-        jPanel4.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 130, 530, 320));
+        txtCantVidrios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCantVidriosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtCantVidrios, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 59, -1));
+        jPanel1.add(txtCantOrganica, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, 59, -1));
+        jPanel1.add(txtCantPlasticos, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 59, -1));
+        jPanel1.add(txtCantMetal, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 360, 59, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/bote_amarillo.png"));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, 84, 103));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/bote_verde.png"));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 81, 103));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/bote_azul.png"));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, 81, 101));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/bote_rojo.png"));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 229, 81, 103));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/bote_morao.png"));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 227, 81, 103));
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/bote_cafe.png"));
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 233, 81, 103));
+
+        jLabel28.setText("Cantidad");
+        jPanel1.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, -1, -1));
+
+        jPanel4.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 120, 540, 390));
 
         lbMiCuenta.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         lbMiCuenta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -412,14 +448,13 @@ public class MisResiduos extends javax.swing.JFrame {
         jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 560));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/fondo2.png"));
-        jLabel1.setText("jLabel1");
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 570));
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 570));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 1160, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 1090, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -454,6 +489,36 @@ public class MisResiduos extends javax.swing.JFrame {
         abrirReduccionResiduos();
     }//GEN-LAST:event_lbReduccionResiduosMouseClicked
 
+    private void txtCantVidriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantVidriosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCantVidriosActionPerformed
+
+    private void cbClasificacionesBasuraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbClasificacionesBasuraActionPerformed
+        // TODO add your handling code here:
+         getResiduos();
+    }//GEN-LAST:event_cbClasificacionesBasuraActionPerformed
+
+    
+    private void cbClasificacionesBasuraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbClasificacionesBasuraMouseClicked
+        // TODO add your handling code here:
+        //System.out.println("estoy en el mouse clicked");
+    }//GEN-LAST:event_cbClasificacionesBasuraMouseClicked
+
+    private void txtCantMulticapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantMulticapaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCantMulticapaActionPerformed
+
+    private void spCantidadResiduosStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spCantidadResiduosStateChanged
+        // TODO add your handling code here:
+        //GRAGAGRGAGRG
+        //setResiduos();
+    }//GEN-LAST:event_spCantidadResiduosStateChanged
+
+    private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
+        // TODO add your handling code here:
+        setResiduos();
+    }//GEN-LAST:event_btnGuardarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -485,6 +550,7 @@ public class MisResiduos extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MisResiduos(driver).setVisible(true);
+                
             }
         });
     }
@@ -497,17 +563,23 @@ public class MisResiduos extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbClasificacionesBasura;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel144;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;

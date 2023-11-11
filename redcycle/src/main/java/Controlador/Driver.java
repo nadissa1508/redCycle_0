@@ -25,6 +25,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.JOptionPane;
 
 public class Driver {
@@ -43,6 +45,12 @@ public class Driver {
     public Usuario getUsuario() {
         Usuario tempUser = new Usuario(usuarios.get(indexUsuario).getId(), usuarios.get(indexUsuario).getNombre(), usuarios.get(indexUsuario).getCorreo(), usuarios.get(indexUsuario).getPassword(), usuarios.get(indexUsuario).getContenedoresBasura());
         return tempUser;
+    }
+    public void setUsuario(int pid, ArrayList<Contenedor> pCont){
+       Usuario tempUser = new Usuario(pid, usuarios.get(indexUsuario).getNombre(), usuarios.get(indexUsuario).getCorreo(), usuarios.get(indexUsuario).getPassword(),pCont);
+       usuarios.remove(pid-1);
+       usuarios.add(tempUser);
+        
     }
 
     public void setUsuario(ArrayList<Usuario> usuarios) {
@@ -181,6 +189,7 @@ public class Driver {
                 usuarios.set(indexUsuario, usuario);
             }
 
+            
             JOptionPane.showMessageDialog(null, "Cuenta " + mensaje + " con exito!");
         } else {
             System.out.println("ERROR AL CREAR USUARIO");
@@ -252,6 +261,10 @@ public class Driver {
 
     public void calcularProgresoMensual() {
 
+    }
+    
+    public void setContenedoresBasura(ArrayList<Contenedor> pCont){
+       
     }
 
 }

@@ -92,6 +92,11 @@ public class CrearCuenta extends javax.swing.JFrame {
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 218, -1));
 
         cbOrganica.setText("Orgánica");
+        cbOrganica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbOrganicaActionPerformed(evt);
+            }
+        });
         jPanel2.add(cbOrganica, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, -1, 20));
 
         cbPlastico.setText("Plástico");
@@ -199,6 +204,33 @@ public class CrearCuenta extends javax.swing.JFrame {
         driver.validarUsuario("Creada ",0, txtNombreUsuario.getText(), txtCorreo.getText(), txtPassword.getText(), "Organica", litrosOrganica, "Plastico", litrosPlastico, "Multicapa", litrosMulticapa, "Metal", litrosMetal, "Vidrio", litrosVidrio, "Papel", litrosPapel, true);
 
     }
+    
+    public void crearCuenta2() {
+        
+        String litrosOrganica = "", litrosPlastico = "", litrosMulticapa = "", litrosMetal = "", litrosVidrio = "", litrosPapel = "";
+
+       // if (cbOrganica.isSelected()) {
+            litrosOrganica = "2";//JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para basura organica: ");
+        //}
+        //if (cbPlastico.isSelected()) {
+            litrosPlastico =  "2";//JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para el plástico:");
+        //}
+        //if (cbMulticapa.isSelected()) {
+            litrosMulticapa =  "2";//JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para basura multicapa: ");
+       // }
+       // if (cbMetal.isSelected()) {
+            litrosMetal =  "2";//JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para metal: ");
+       // }
+       // if (cbVidrio.isSelected()) {
+            litrosVidrio =  "2";//JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para vidrio: ");
+       // }
+       // if (cbPapel.isSelected()) {
+            litrosPapel =  "2";//JOptionPane.showInputDialog("Ingrese la cantidad de litros de su contenedor para papel y cartón: ");
+       // }
+        //int nuevoId = driver.obtenerSiguienteID();
+        driver.validarUsuario("Creada ",0, "a", "a", "a", "Organica", litrosOrganica, "Plastico", litrosPlastico, "Multicapa", litrosMulticapa, "Metal", litrosMetal, "Vidrio", litrosVidrio, "Papel", litrosPapel, true);
+
+    }
 
     private void abrirLogin() {
         this.dispose();
@@ -219,6 +251,10 @@ public class CrearCuenta extends javax.swing.JFrame {
         // TODO add your handling code here:
         abrirLogin();
     }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void cbOrganicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbOrganicaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbOrganicaActionPerformed
 
     /**
      * @param args the command line arguments
