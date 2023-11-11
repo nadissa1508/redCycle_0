@@ -90,7 +90,7 @@ public class Driver {
                     }
                 }
 
-                globalid = usuarios.get(usuarios.size() - 1).getId();
+                globalid = (usuarios.get(usuarios.size() - 1).getId());
             } catch (FileNotFoundException e) {
                 System.out.println("Error al cargar informacion de usuarios!");
             } catch (IOException ioe) {

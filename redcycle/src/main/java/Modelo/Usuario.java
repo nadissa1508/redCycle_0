@@ -79,6 +79,7 @@ public class Usuario {
         }
         return clasificaciones;
     }
+   
 
     //Constructor
     public Usuario(int id, String nombre, String correo, String password, ArrayList<Contenedor> contenedoresBasura) {
