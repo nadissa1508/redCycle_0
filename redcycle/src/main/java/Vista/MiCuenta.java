@@ -163,7 +163,6 @@ public class MiCuenta extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         txtCorreo = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         cbOrganica = new javax.swing.JCheckBox();
@@ -176,6 +175,7 @@ public class MiCuenta extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         btnCerrar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JPasswordField();
         lbCuenta = new javax.swing.JLabel();
         lbComoClasifico = new javax.swing.JLabel();
         lbMisResiduos = new javax.swing.JLabel();
@@ -205,15 +205,14 @@ public class MiCuenta extends javax.swing.JFrame {
 
         jLabel4.setText("Nombre de usuario");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 206, -1));
-        jPanel2.add(txtNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 206, -1));
+        jPanel2.add(txtNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 210, -1));
 
         jLabel5.setText("Correo electrónico");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 206, -1));
-        jPanel2.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 206, -1));
+        jPanel2.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 210, -1));
 
         jLabel6.setText("Contraseña");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 206, -1));
-        jPanel2.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 206, -1));
 
         jLabel7.setText("Seleccione las clasificaciones de residuos");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, -1, 26));
@@ -273,6 +272,9 @@ public class MiCuenta extends javax.swing.JFrame {
 
         jLabel9.setText("jLabel9");
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 100, 40));
+
+        txtPassword.setText("jPasswordField1");
+        jPanel2.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 210, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 580, 400));
 
@@ -448,6 +450,6 @@ public class MiCuenta extends javax.swing.JFrame {
     private javax.swing.JLabel lbReduccionResiduos;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtNombreUsuario;
-    private javax.swing.JTextField txtPassword;
+    private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
 }

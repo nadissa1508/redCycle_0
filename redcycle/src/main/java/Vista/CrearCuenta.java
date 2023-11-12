@@ -43,7 +43,6 @@ public class CrearCuenta extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         txtCorreo = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         cbOrganica = new javax.swing.JCheckBox();
@@ -56,6 +55,7 @@ public class CrearCuenta extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
+        txtPassword = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
 
@@ -78,18 +78,17 @@ public class CrearCuenta extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Crear Cuenta");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 50, 180, -1));
-        jPanel2.add(txtNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 206, -1));
+        jPanel2.add(txtNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 210, -1));
 
         jLabel4.setText("Nombre de usuario");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 206, -1));
 
         jLabel5.setText("Correo electrónico");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 206, -1));
-        jPanel2.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 206, -1));
+        jPanel2.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 210, -1));
 
         jLabel6.setText("Contraseña");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 206, -1));
-        jPanel2.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 206, -1));
 
         jLabel7.setText("Seleccione las clasificaciones de residuos");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, -1, 26));
@@ -145,6 +144,9 @@ public class CrearCuenta extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 380, 110, 30));
+
+        txtPassword.setText("jPasswordField1");
+        jPanel2.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 210, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 650, 420));
 
@@ -348,6 +350,6 @@ public class CrearCuenta extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtNombreUsuario;
-    private javax.swing.JTextField txtPassword;
+    private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
 }

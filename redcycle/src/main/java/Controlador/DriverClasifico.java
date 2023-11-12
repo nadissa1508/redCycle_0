@@ -52,16 +52,16 @@ public class DriverClasifico {
         tempClas = new Clasificacion();
         //CREAR OBJETO CLASIFICACION -> BASURA PLASTICO
         String[] articulosPlastico = {
-            "Botella de plástico",
+            "Botella de plastico",
             "Envases de yogur",
-            "Bolsas de plástico",
+            "Bolsas de plastico",
             "Envases de productos de limpieza",
             "Tapas de botellas",
-            "Tazas desechables de plástico",
-            "Juguetes de plástico",
-            "Cubiertos desechables de plástico",
-            "Envases de champú",
-            "Envases de detergente líquido"
+            "Tazas desechables de plastico",
+            "Juguetes de plastico",
+            "Cubiertos desechables de plastico",
+            "Envases de champu",
+            "Envases de detergente liquido"
         };
         tempClas = new Clasificacion("Plastico", "El artículo que buscaste se debe clasificar como Plástico. Este tipo de desechos están compuestos en su mayoría por derivados del petróleo, tienen un tiempo de degradación muy lento y tardan al menos 100 años en descomponerse.", "Los plásticos mal gestionados a menudo terminan en océanos y mares, los animales marinos pueden ingerir plásticos al confundirlos con alimentos, lo que puede llevar a daños internos, asfixia e incluso la muerte.", "Reducir la producción de residuos de plástico beneficia al medio ambiente al conservar la vida marina y los ecosistemas marinos. Al optar por alternativas sostenibles, como bolsas reutilizables y botellas recargables, ayudas a prevenir la contaminación de los océanos y la ingesta de plásticos por parte de la vida marina. Además, esta elección también puede ahorrarte dinero a largo plazo y disminuir tu huella de carbono.", llenarArrayArticulos(articulosPlastico));
         clasificacionesBasura.add(tempClas);
@@ -71,7 +71,7 @@ public class DriverClasifico {
             "Envase de aperitivos",
             "Envase de jugo",
             "Envase de papas fritas",
-            "Bolsas de café",
+            "Bolsas de cafe",
             "Envoltorios de dulce",
             "Bolsas de bocadillos",
             "Pasta de dientes",
@@ -90,7 +90,7 @@ public class DriverClasifico {
             "Tapas de frascos metálicos",
             "Alambre de cobre",
             "Clips metálicos",
-            "Tuberías de plomería de metal",
+            "Tuberias de plomería de metal",
             "Cubiertos de acero inoxidable",
             "Piezas de maquinaria de metal",
             "Llaves y tuercas de metal"
@@ -103,7 +103,7 @@ public class DriverClasifico {
             "Botellas de vidrio de bebidas",
             "Frascos de vidrio de conservas",
             "Vasos de vidrio",
-            "Tazas de café de vidrio",
+            "Tazas de cafe de vidrio",
             "Envases de perfume de vidrio",
             "Jarras de vidrio",
             "Bombillas de luz de vidrio",
@@ -116,7 +116,7 @@ public class DriverClasifico {
 
         //CREAR OBJETO CLASIFICACION -> BASURA PAPEL
         String[] articulosPapel = {
-            "Papel de periódico",
+            "Papel de periodico",
             "Revistas",
             "Cartón de cajas",
             "Papel de oficina",
@@ -154,7 +154,7 @@ public class DriverClasifico {
     public String devolverDescripcion(String clasificacion) {
         String desc = "";
         for (Clasificacion clasBasura : clasificacionesBasura) {
-            if (clasBasura.getClasificacion().equals(clasificacion)) {
+            if (clasBasura.getClasificacion().equalsIgnoreCase(clasificacion)) {
                 desc = clasBasura.getDescripcion() + "\n\n" + clasBasura.getDatoNegativo();
             }
         }

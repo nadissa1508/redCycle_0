@@ -83,7 +83,6 @@ public class Login extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtNombreUsuario = new javax.swing.JTextField();
-        txtPassword = new javax.swing.JTextField();
         cbRecordarPass = new javax.swing.JCheckBox();
         btnIniciarSesion = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -94,6 +93,7 @@ public class Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JPasswordField();
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -123,7 +123,6 @@ public class Login extends javax.swing.JFrame {
             }
         });
         jPanel2.add(txtNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 192, -1));
-        jPanel2.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 190, -1));
 
         cbRecordarPass.setForeground(new java.awt.Color(0, 83, 40));
         cbRecordarPass.setText("Recordar contraseña");
@@ -160,6 +159,9 @@ public class Login extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/logo.png"));
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 130, 110));
+
+        txtPassword.setText("jPasswordField1");
+        jPanel2.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 190, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, 370, 450));
 
@@ -254,7 +256,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lbRegistrarse;
     private javax.swing.JTextField txtNombreUsuario;
-    private javax.swing.JTextField txtPassword;
+    private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
 
 }

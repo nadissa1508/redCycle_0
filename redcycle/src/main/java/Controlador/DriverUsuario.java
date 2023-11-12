@@ -24,10 +24,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
 import javax.swing.JOptionPane;
 
 public class DriverUsuario {
@@ -251,37 +248,5 @@ public class DriverUsuario {
         archivo.guardarContenedoresCSV(usuarios);
     }
 
-    public void buscarResiduo(String residuo) {
-
-    }
-
-    public void ingresarResiduos(String clasificación, int cantidadResiduos) {
-
-    }
-
-    public void mostrarMisResiduos() {
-
-    }
-
-    public void mostrarEstadísticas(Date fecha) {
-
-    }
-
-    public String alertaContenedores(String clasificación) {
-        String alerta = "";
-        return alerta;
-    }
-
-    public void actualizarControlContenedor() {
-
-    }
-
-    public void calcularProgresoMensual() {
-
-    }
-
-    public void setContenedoresBasura(ArrayList<Contenedor> pCont) {
-
-    }
 
 }
