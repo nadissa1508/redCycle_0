@@ -4,7 +4,7 @@
  */
 package Vista;
 
-import Controlador.Driver;
+import Controlador.DriverUsuario;
 import java.io.IOException;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -18,9 +18,9 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    private Driver driver;
+    private DriverUsuario driver;
 
-    public Login(Driver driver) {
+    public Login(DriverUsuario driver) {
         this.driver = driver;
         initComponents();
         limpiar();
@@ -229,7 +229,7 @@ public class Login extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        Driver driver2 = new Driver();
+        DriverUsuario driver2 = new DriverUsuario();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Login(driver2).setVisible(true);

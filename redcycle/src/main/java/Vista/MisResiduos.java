@@ -4,16 +4,11 @@
  */
 package Vista;
 
-import Controlador.Driver;
+import Controlador.DriverUsuario;
 import Controlador.DriverContenedor;
 import Modelo.Contenedor;
-import Modelo.Usuario;
 import java.util.ArrayList;
-import java.awt.Image;
 import java.io.IOException;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,128 +20,119 @@ public class MisResiduos extends javax.swing.JFrame {
     /**
      * Creates new form MisResiduos
      */
-   
+    private static DriverUsuario driver;
     
-    private static Driver driver;
-    private DriverContenedor driverContenedor;
-    
-    
-    public MisResiduos (Driver driver) {
+
+    public MisResiduos(DriverUsuario driver) {
         this.driver = driver;
-        driverContenedor = new DriverContenedor(driver);
         initComponents();
         llenarCombo();
     }
-    
+
     public void abrirMisResiduos() {
         this.dispose();
         MisResiduos residuos = new MisResiduos(driver);
         residuos.setVisible(true);
     }
-    
-     public void abrirReduccionResiduos() {
+
+    public void abrirReduccionResiduos() {
         this.dispose();
         ReduccionResiduos reduccion = new ReduccionResiduos(driver);
         reduccion.setVisible(true);
     }
-    
-     public void abrirClasifico() {
+
+    public void abrirClasifico() {
         this.dispose();
         Clasifico clasifico = new Clasifico(driver);
         clasifico.setVisible(true);
     }
-     
-    public void abrirMiCuenta(){
+
+    public void abrirMiCuenta() {
         this.dispose();
         MiCuenta cuenta = new MiCuenta(driver);
         cuenta.setVisible(true);
     }
-    
-     public void abrirEstadisticas() {
+
+    public void abrirEstadisticas() {
         this.dispose();
         Estadisticas estadisticas = new Estadisticas(driver);
         estadisticas.setVisible(true);
     }
 
-    public void guardar(){
-        
-    }
-    
-    public void llenarCombo(){
-       ArrayList<Contenedor> cB = new ArrayList<>();
+    public void llenarCombo() {
+        ArrayList<Contenedor> cB = new ArrayList<>();
         cB = driver.getUsuario().getContenedoresBasura();
         spCantidadResiduos.setValue(cB.get(0).getCantResiduos());
-        for (int k=0;k<cB.size();k++){
-           cbClasificacionesBasura.addItem(cB.get(k).getClasificacion()); 
+        for (int k = 0; k < cB.size(); k++) {
+            cbClasificacionesBasura.addItem(cB.get(k).getClasificacion());
         }
     }
-    
-    public void getResiduos(){
-      ArrayList<Contenedor> cB = new ArrayList<>();
+
+    public void getResiduos() {
+        ArrayList<Contenedor> cB = new ArrayList<>();
         cB = driver.getUsuario().getContenedoresBasura();
-       
-        for (int k=0;k<cB.size();k++){
-            if (cB.get(k).getClasificacion().equals(cbClasificacionesBasura.getSelectedItem().toString())){
+
+        for (int k = 0; k < cB.size(); k++) {
+            if (cB.get(k).getClasificacion().equals(cbClasificacionesBasura.getSelectedItem().toString())) {
                 spCantidadResiduos.setValue(cB.get(k).getCantResiduos());
                 break;
             }
         }
-         for (int k=0;k<cB.size();k++){
-            if (cB.get(k).getClasificacion().equals("Multicapa")){
-               txtCantMulticapa.setText(String.valueOf(cB.get(k).getCantResiduos()));
+        for (int k = 0; k < cB.size(); k++) {
+            if (cB.get(k).getClasificacion().equals("Multicapa")) {
+                txtCantMulticapa.setText(String.valueOf(cB.get(k).getCantResiduos()));
             }
-            if (cB.get(k).getClasificacion().equals("Papel")){
-               txtCantPapel.setText(String.valueOf(cB.get(k).getCantResiduos()));  
+            if (cB.get(k).getClasificacion().equals("Papel")) {
+                txtCantPapel.setText(String.valueOf(cB.get(k).getCantResiduos()));
             }
-            if (cB.get(k).getClasificacion().equals("Plastico")){
-               txtCantPlasticos.setText(String.valueOf(cB.get(k).getCantResiduos()));
+            if (cB.get(k).getClasificacion().equals("Plastico")) {
+                txtCantPlasticos.setText(String.valueOf(cB.get(k).getCantResiduos()));
             }
-            if (cB.get(k).getClasificacion().equals("Vidrio")){
-               txtCantVidrios.setText(String.valueOf(cB.get(k).getCantResiduos()));  
+            if (cB.get(k).getClasificacion().equals("Vidrio")) {
+                txtCantVidrios.setText(String.valueOf(cB.get(k).getCantResiduos()));
             }
-            if (cB.get(k).getClasificacion().equals("Organica")){
-               txtCantOrganica.setText(String.valueOf(cB.get(k).getCantResiduos()));
+            if (cB.get(k).getClasificacion().equals("Organica")) {
+                txtCantOrganica.setText(String.valueOf(cB.get(k).getCantResiduos()));
             }
-            if (cB.get(k).getClasificacion().equals("Metal")){
-               txtCantMetal.setText(String.valueOf(cB.get(k).getCantResiduos()));  
+            if (cB.get(k).getClasificacion().equals("Metal")) {
+                txtCantMetal.setText(String.valueOf(cB.get(k).getCantResiduos()));
             }
         }
     }
-     
-    public void setResiduos(){
+
+    public void setResiduos() {
         ArrayList<Contenedor> cB = new ArrayList<>();
         ArrayList<Contenedor> cBmod = new ArrayList<>();
         cB = driver.getUsuario().getContenedoresBasura();
-        
+
         String itemSelected = cbClasificacionesBasura.getSelectedItem().toString();
-        
-       
-        if (itemSelected.equals("Multicapa")){
-        txtCantMulticapa.setText(String.valueOf(spCantidadResiduos.getValue()));
+
+        if (itemSelected.equals("Multicapa")) {
+            txtCantMulticapa.setText(String.valueOf(spCantidadResiduos.getValue()));
         }
-        if (itemSelected.equals("Papel")){
-        txtCantPapel.setText(String.valueOf(spCantidadResiduos.getValue()));
+        if (itemSelected.equals("Papel")) {
+            txtCantPapel.setText(String.valueOf(spCantidadResiduos.getValue()));
         }
-        if (itemSelected.equals("Plastico")){
-        txtCantPlasticos.setText(String.valueOf(spCantidadResiduos.getValue()));
+        if (itemSelected.equals("Plastico")) {
+            txtCantPlasticos.setText(String.valueOf(spCantidadResiduos.getValue()));
         }
-        if (itemSelected.equals("Vidrio")){
-        txtCantVidrios.setText(String.valueOf(spCantidadResiduos.getValue()));
+        if (itemSelected.equals("Vidrio")) {
+            txtCantVidrios.setText(String.valueOf(spCantidadResiduos.getValue()));
         }
-        if (itemSelected.equals("Organica")){
-        txtCantOrganica.setText(String.valueOf(spCantidadResiduos.getValue()));
+        if (itemSelected.equals("Organica")) {
+            txtCantOrganica.setText(String.valueOf(spCantidadResiduos.getValue()));
         }
-        if (itemSelected.equals("Metal")){
-        txtCantMetal.setText(String.valueOf(spCantidadResiduos.getValue()));
+        if (itemSelected.equals("Metal")) {
+            txtCantMetal.setText(String.valueOf(spCantidadResiduos.getValue()));
         }
-        
-        for(int i=0;i<cB.size();i++){
-            if (cB.get(i).getClasificacion().toString().equals(itemSelected)){
+
+        for (int i = 0; i < cB.size(); i++) {
+            if (cB.get(i).getClasificacion().toString().equals(itemSelected)) {
                 Contenedor contTemp = new Contenedor(cB.get(i).getClasificacion(), cB.get(i).getLitros(), Integer.parseInt(spCantidadResiduos.getValue().toString()));
                 cBmod.add(contTemp);
-                
-            }else {
-                
+
+            } else {
+
                 cBmod.add(cB.get(i));
             }
         }
@@ -154,8 +140,8 @@ public class MisResiduos extends javax.swing.JFrame {
         this.driver.setUsuario(driver.getUsuario().getId(), cBmod);
         cB = cBmod;
     }
-    
-     private void cerrarVentana() {
+
+    private void cerrarVentana() {
         int resp = JOptionPane.showConfirmDialog(null, "¿Desea salir del programa?", "Confirmar cierre", JOptionPane.YES_NO_OPTION);
         if ((resp == JOptionPane.YES_OPTION) && (driver.getSizeUsuarios() > 0)) {
             try {
@@ -173,8 +159,6 @@ public class MisResiduos extends javax.swing.JFrame {
         }
 
     }
-     
-     
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -253,11 +237,6 @@ public class MisResiduos extends javax.swing.JFrame {
 
         jLabel4.setText("Seleccione el artículo que desee clasificar: ");
 
-        cbClasificacionesBasura.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cbClasificacionesBasuraMouseClicked(evt);
-            }
-        });
         cbClasificacionesBasura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbClasificacionesBasuraActionPerformed(evt);
@@ -267,21 +246,11 @@ public class MisResiduos extends javax.swing.JFrame {
         jLabel5.setText("Cantidad producida:");
 
         spCantidadResiduos.setModel(new javax.swing.SpinnerNumberModel());
-        spCantidadResiduos.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                spCantidadResiduosStateChanged(evt);
-            }
-        });
 
         btnGuardar.setBackground(new java.awt.Color(73, 153, 28));
         btnGuardar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardar.setText("GUARDAR");
-        btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnGuardarMouseClicked(evt);
-            }
-        });
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
@@ -384,23 +353,23 @@ public class MisResiduos extends javax.swing.JFrame {
 
         jLabel27.setText("Cantidad");
         jPanel1.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, -1, -1));
+
+        txtCantPapel.setEditable(false);
         jPanel1.add(txtCantPapel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 59, -1));
 
-        txtCantMulticapa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCantMulticapaActionPerformed(evt);
-            }
-        });
+        txtCantMulticapa.setEditable(false);
         jPanel1.add(txtCantMulticapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 59, -1));
 
-        txtCantVidrios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCantVidriosActionPerformed(evt);
-            }
-        });
+        txtCantVidrios.setEditable(false);
         jPanel1.add(txtCantVidrios, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 59, -1));
+
+        txtCantOrganica.setEditable(false);
         jPanel1.add(txtCantOrganica, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, 59, -1));
+
+        txtCantPlasticos.setEditable(false);
         jPanel1.add(txtCantPlasticos, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 59, -1));
+
+        txtCantMetal.setEditable(false);
         jPanel1.add(txtCantMetal, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 360, 59, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/bote_amarillo.png"));
@@ -491,7 +460,7 @@ public class MisResiduos extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-        guardar();
+        setResiduos();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void lbMiCuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMiCuentaMouseClicked
@@ -514,35 +483,11 @@ public class MisResiduos extends javax.swing.JFrame {
         abrirReduccionResiduos();
     }//GEN-LAST:event_lbReduccionResiduosMouseClicked
 
-    private void txtCantVidriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantVidriosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCantVidriosActionPerformed
-
     private void cbClasificacionesBasuraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbClasificacionesBasuraActionPerformed
         // TODO add your handling code here:
-         getResiduos();
+        getResiduos();
     }//GEN-LAST:event_cbClasificacionesBasuraActionPerformed
 
-    
-    private void cbClasificacionesBasuraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbClasificacionesBasuraMouseClicked
-        // TODO add your handling code here:
-        //System.out.println("estoy en el mouse clicked");
-    }//GEN-LAST:event_cbClasificacionesBasuraMouseClicked
-
-    private void txtCantMulticapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantMulticapaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCantMulticapaActionPerformed
-
-    private void spCantidadResiduosStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spCantidadResiduosStateChanged
-        // TODO add your handling code here:
-        //GRAGAGRGAGRG
-        //setResiduos();
-    }//GEN-LAST:event_spCantidadResiduosStateChanged
-
-    private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
-        // TODO add your handling code here:
-        setResiduos();
-    }//GEN-LAST:event_btnGuardarMouseClicked
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
@@ -580,12 +525,10 @@ public class MisResiduos extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MisResiduos(driver).setVisible(true);
-                
+
             }
         });
     }
-    
-    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

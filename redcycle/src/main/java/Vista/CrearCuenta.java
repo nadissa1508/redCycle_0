@@ -4,7 +4,7 @@
  */
 package Vista;
 
-import Controlador.Driver;
+import Controlador.DriverUsuario;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 
@@ -17,9 +17,9 @@ public class CrearCuenta extends javax.swing.JFrame {
     /**
      * Creates new form CrearCuenta
      */
-    private static Driver driver;
+    private static DriverUsuario driver;
 
-    public CrearCuenta(Driver driver) {
+    public CrearCuenta(DriverUsuario driver) {
         this.driver = driver;
         initComponents();
         limpiar();

@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Vista;
-import Controlador.Driver;
+import Controlador.DriverUsuario;
 import Modelo.Usuario;
 import java.io.IOException;
 import javax.swing.JOptionPane;
@@ -21,8 +21,8 @@ public class Estadisticas extends javax.swing.JFrame {
         
         initComponents();
     }
-    private static Driver driver;
-    public Estadisticas (Driver driver) {
+    private static DriverUsuario driver;
+    public Estadisticas (DriverUsuario driver) {
         this.driver = driver;
         initComponents();
     }

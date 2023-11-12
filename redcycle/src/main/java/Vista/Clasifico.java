@@ -4,7 +4,7 @@
  */
 package Vista;
 
-import Controlador.Driver;
+import Controlador.DriverUsuario;
 
 import Controlador.DriverClasifico;
 import java.io.IOException;
@@ -19,10 +19,10 @@ public class Clasifico extends javax.swing.JFrame {
     /**
      * Creates new form Clasifico
      */
-    private static Driver driver;
+    private static DriverUsuario driver;
     private static DriverClasifico driverClasifico;
 
-    public Clasifico(Driver driver) {
+    public Clasifico(DriverUsuario driver) {
         this.driver = driver;
         driverClasifico = new DriverClasifico();
         initComponents();

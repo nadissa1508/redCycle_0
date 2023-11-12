@@ -4,7 +4,7 @@
  */
 package Vista;
 
-import Controlador.Driver;
+import Controlador.DriverUsuario;
 import Modelo.Usuario;
 import java.io.IOException;
 import javax.swing.JOptionPane;
@@ -18,9 +18,9 @@ public class MiCuenta extends javax.swing.JFrame {
     /**
      * Creates new form MiCuenta
      */
-    private static Driver driver;
+    private static DriverUsuario driver;
 
-    public MiCuenta(Driver driver) {
+    public MiCuenta(DriverUsuario driver) {
         this.driver = driver;
         initComponents();
         limpiar();

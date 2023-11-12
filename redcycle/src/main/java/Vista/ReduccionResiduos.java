@@ -4,7 +4,7 @@
  */
 package Vista;
 
-import Controlador.Driver;
+import Controlador.DriverUsuario;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 
@@ -21,8 +21,8 @@ public class ReduccionResiduos extends javax.swing.JFrame {
         initComponents();
     }
     
-     private static Driver driver;
-    public ReduccionResiduos (Driver driver) {
+     private static DriverUsuario driver;
+    public ReduccionResiduos (DriverUsuario driver) {
         this.driver = driver;
         initComponents();
     }

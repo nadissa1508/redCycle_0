@@ -14,9 +14,9 @@ import java.util.ArrayList;
 public class DriverContenedor {
 
     private ArrayList<Clasificacion> clasificacionesBasura;
-    private Driver driver;
+    private DriverUsuario driver;
 
-    public DriverContenedor(Driver driver) {
+    public DriverContenedor(DriverUsuario driver) {
         this.driver = driver;
     }
 
