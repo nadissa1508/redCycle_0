@@ -50,9 +50,7 @@ public class Driver {
 
     public void setUsuario(int pid, ArrayList<Contenedor> pCont) {
         Usuario tempUser = new Usuario(pid, usuarios.get(indexUsuario).getNombre(), usuarios.get(indexUsuario).getCorreo(), usuarios.get(indexUsuario).getPassword(), pCont);
-        usuarios.remove(pid - 1);
-        usuarios.add(tempUser);
-
+        usuarios.set(pid-1, tempUser); 
     }
 
     public int getSizeUsuarios() {
@@ -65,7 +63,7 @@ public class Driver {
 
     public Driver() {
         // indexUsuario = 0;
-        File file = new File("C:Usuario.csv");
+        File file = new File("Usuario.csv");
         archivo = new Archivo("Usuario.csv", "Contenedores.csv");
 
         if (file.exists()) {
@@ -75,7 +73,6 @@ public class Driver {
                 HashMap<Integer, ArrayList<Contenedor>> contenedoresPorUsuario = archivo.leerContenedoresCSV();
 
                 for (int userId : contenedoresPorUsuario.keySet()) {
-                    System.out.println("Usuario ID: " + userId);
                     ArrayList<Contenedor> contenedores = contenedoresPorUsuario.get(userId);
                     for (Contenedor contenedor : contenedores) {
                         System.out.println("   Contenedor: " + contenedor);
@@ -83,8 +80,6 @@ public class Driver {
                 }
 
                 for (Usuario usuario : usuarios) {
-                    System.out.println("usuario: " + usuario.getNombre());
-                    System.out.println("pass: " + usuario.getPassword());
                     if (contenedoresPorUsuario.containsKey(usuario.getId())) {
                         usuario.setContenedoresBasura(contenedoresPorUsuario.get(usuario.getId()));
                     }
@@ -228,7 +223,7 @@ public class Driver {
             flag = false;
         } else {
             for (int x = 0; x < usuarios.size() && !encontrado; x++) {
-
+                //System.out.println(usuarios.get(x).getNombre());
                 if ((user.equals(usuarios.get(x).getNombre())) && (pass.equals(usuarios.get(x).getPassword()))) {
                     indexUsuario = x;
                     flag = true;

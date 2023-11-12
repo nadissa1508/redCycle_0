@@ -152,7 +152,7 @@ public class MisResiduos extends javax.swing.JFrame {
         }
 
         this.driver.setUsuario(driver.getUsuario().getId(), cBmod);
-        
+        cB = cBmod;
     }
     
      private void cerrarVentana() {
