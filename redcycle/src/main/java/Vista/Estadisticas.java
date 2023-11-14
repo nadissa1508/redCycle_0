@@ -68,6 +68,11 @@ public class Estadisticas extends javax.swing.JFrame {
             System.exit(0);
         }
 
+        
+    }
+     
+     public void instrucciones(){
+        JOptionPane.showMessageDialog(null, "Estadísticas emplea una representación gráfica de tus contenedores y cuáles van acumulados. \nAdemás tus contenedores se basarán en la acumulación y si deseas retirar la basura de alguno. ", "Instrucciones de Uso", JOptionPane.INFORMATION_MESSAGE);
     }
 
 
@@ -87,7 +92,6 @@ public class Estadisticas extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -105,6 +109,8 @@ public class Estadisticas extends javax.swing.JFrame {
         lbPlasticos = new javax.swing.JLabel();
         lbMetal = new javax.swing.JLabel();
         lbOrganica = new javax.swing.JLabel();
+        jlbBoton = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -166,7 +172,6 @@ public class Estadisticas extends javax.swing.JFrame {
             }
         });
         jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 40, 260, -1));
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 90, 80));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
@@ -285,16 +290,29 @@ public class Estadisticas extends javax.swing.JFrame {
 
         jPanel4.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 190, 530, 310));
 
+        jlbBoton.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/boton.png")
+        );
+        jlbBoton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlbBotonMouseClicked(evt);
+            }
+        });
+        jPanel4.add(jlbBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, 40, 40));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/fondo2.png")
+        );
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 570));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 1067, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 1058, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -325,6 +343,11 @@ public class Estadisticas extends javax.swing.JFrame {
         // TODO add your handling code here:
         cerrarVentana();
     }//GEN-LAST:event_formWindowClosing
+
+    private void jlbBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbBotonMouseClicked
+        // TODO add your handling code here:
+        instrucciones();
+    }//GEN-LAST:event_jlbBotonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -375,6 +398,7 @@ public class Estadisticas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel jlbBoton;
     private javax.swing.JLabel lbIMGMetal;
     private javax.swing.JLabel lbIMGMulticapa;
     private javax.swing.JLabel lbIMGOrganica;

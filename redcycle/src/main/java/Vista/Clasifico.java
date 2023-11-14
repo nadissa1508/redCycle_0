@@ -88,6 +88,10 @@ public class Clasifico extends javax.swing.JFrame {
         reduccion.setVisible(true);
     }
     
+    public void instrucciones(){
+        JOptionPane.showMessageDialog(null, "¿Cómo lo Clasifico? Ayuda a encontrar el tipo de clasificación de algún material en específico. \nEscribe el nombre del material y luego presiona buscar.", "Instrucciones de Uso", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
      private void cerrarVentana() {
         int resp = JOptionPane.showConfirmDialog(null, "¿Desea salir del programa?", "Confirmar cierre", JOptionPane.YES_NO_OPTION);
         if ((resp == JOptionPane.YES_OPTION) && (driver.getSizeUsuarios() > 0)) {
@@ -105,6 +109,7 @@ public class Clasifico extends javax.swing.JFrame {
             System.exit(0);
         }
 
+        
     }
 
     /**
@@ -123,6 +128,7 @@ public class Clasifico extends javax.swing.JFrame {
         btnBuscar = new javax.swing.JButton();
         jLabel144 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jlBoton = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         lbClasificacion = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -167,6 +173,14 @@ public class Clasifico extends javax.swing.JFrame {
 
         jLabel5.setText("Pej. Pan viejo, blister de pastillas, revistas.");
 
+        jlBoton.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/boton.png")
+        );
+        jlBoton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlBotonMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -185,11 +199,17 @@ public class Clasifico extends javax.swing.JFrame {
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel4))
                 .addContainerGap(71, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jlBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addContainerGap()
+                .addComponent(jlBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel144)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
@@ -199,7 +219,7 @@ public class Clasifico extends javax.swing.JFrame {
                 .addComponent(txtBuscarArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addComponent(btnBuscar)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 380, 300));
@@ -248,12 +268,12 @@ public class Clasifico extends javax.swing.JFrame {
                 lbCuentaMouseClicked(evt);
             }
         });
-        jPanel1.add(lbCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 110, -1));
+        jPanel1.add(lbCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 110, 90));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("¿Cómo lo clasifico?");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 220, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 220, 70));
 
         lbMisResiduos.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         lbMisResiduos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -263,7 +283,7 @@ public class Clasifico extends javax.swing.JFrame {
                 lbMisResiduosMouseClicked(evt);
             }
         });
-        jPanel1.add(lbMisResiduos, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 30, 140, -1));
+        jPanel1.add(lbMisResiduos, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 140, 70));
 
         lbEstadisticas.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         lbEstadisticas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -273,7 +293,7 @@ public class Clasifico extends javax.swing.JFrame {
                 lbEstadisticasMouseClicked(evt);
             }
         });
-        jPanel1.add(lbEstadisticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 30, 130, 30));
+        jPanel1.add(lbEstadisticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 130, 70));
 
         lbReduccionResiduos.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         lbReduccionResiduos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -283,12 +303,12 @@ public class Clasifico extends javax.swing.JFrame {
                 lbReduccionResiduosMouseClicked(evt);
             }
         });
-        jPanel1.add(lbReduccionResiduos, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 30, 260, -1));
+        jPanel1.add(lbReduccionResiduos, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 10, 260, 70));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/fondo2.png"));
         jLabel2.setPreferredSize(new java.awt.Dimension(950, 560));
         jLabel2.setRequestFocusEnabled(false);
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 0, 1060, 580));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 0, 1050, 590));
 
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 560));
@@ -297,13 +317,11 @@ public class Clasifico extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1018, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 557, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -338,6 +356,11 @@ public class Clasifico extends javax.swing.JFrame {
         // TODO add your handling code here:
         cerrarVentana();
     }//GEN-LAST:event_formWindowClosing
+
+    private void jlBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlBotonMouseClicked
+        // TODO add your handling code here:
+        instrucciones();
+    }//GEN-LAST:event_jlBotonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -387,6 +410,7 @@ public class Clasifico extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jlBoton;
     private javax.swing.JLabel lbClasificacion;
     private javax.swing.JLabel lbCuenta;
     private javax.swing.JLabel lbEstadisticas;

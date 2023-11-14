@@ -140,6 +140,11 @@ public class MisResiduos extends javax.swing.JFrame {
         this.driver.setUsuario(driver.getUsuario().getId(), cBmod);
         cB = cBmod;
     }
+    
+    
+    public void instrucciones(){
+        JOptionPane.showMessageDialog(null, "Mis Residuos ayuda a mantener orden en la cantidad de residuos acumulados en tus contenedores. \nElige en la barra el contenedor que desea y la cantidad acumulada. \nLuego presiona Guardar para que se guarde en tu contenedor! ", "Instrucciones de Uso", JOptionPane.INFORMATION_MESSAGE);
+    }
 
     private void cerrarVentana() {
         int resp = JOptionPane.showConfirmDialog(null, "¿Desea salir del programa?", "Confirmar cierre", JOptionPane.YES_NO_OPTION);
@@ -178,6 +183,7 @@ public class MisResiduos extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         spCantidadResiduos = new javax.swing.JSpinner();
         btnGuardar = new javax.swing.JButton();
+        lbInstrucciones = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         lbIMGContenedorVidrios = new javax.swing.JLabel();
         lbIMGContenedorOrganica = new javax.swing.JLabel();
@@ -235,6 +241,9 @@ public class MisResiduos extends javax.swing.JFrame {
         jLabel144.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel144.setText("Mis Residuos");
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/hoja.png")
+        );
+
         jLabel4.setText("Seleccione el artículo que desee clasificar: ");
 
         cbClasificacionesBasura.addActionListener(new java.awt.event.ActionListener() {
@@ -254,6 +263,14 @@ public class MisResiduos extends javax.swing.JFrame {
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
+            }
+        });
+
+        lbInstrucciones.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/boton.png")
+        );
+        lbInstrucciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbInstruccionesMouseClicked(evt);
             }
         });
 
@@ -279,7 +296,9 @@ public class MisResiduos extends javax.swing.JFrame {
                         .addComponent(jLabel144)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(72, 72, 72))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lbInstrucciones, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -290,8 +309,10 @@ public class MisResiduos extends javax.swing.JFrame {
                         .addComponent(jLabel144))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(29, 29, 29)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbInstrucciones, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addComponent(cbClasificacionesBasura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -301,7 +322,7 @@ public class MisResiduos extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(spCantidadResiduos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 430, 310));
@@ -448,11 +469,11 @@ public class MisResiduos extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 1090, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 1058, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -493,6 +514,12 @@ public class MisResiduos extends javax.swing.JFrame {
         // TODO add your handling code here:
         cerrarVentana();
     }//GEN-LAST:event_formWindowClosing
+
+    private void lbInstruccionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbInstruccionesMouseClicked
+        // TODO add your handling code here:
+       
+        instrucciones();
+    }//GEN-LAST:event_lbInstruccionesMouseClicked
 
     /**
      * @param args the command line arguments
@@ -564,6 +591,7 @@ public class MisResiduos extends javax.swing.JFrame {
     private javax.swing.JLabel lbIMGContenedorPapel;
     private javax.swing.JLabel lbIMGContenedorPlasticos;
     private javax.swing.JLabel lbIMGContenedorVidrios;
+    private javax.swing.JLabel lbInstrucciones;
     private javax.swing.JLabel lbMetal;
     private javax.swing.JLabel lbMiCuenta;
     private javax.swing.JLabel lbMulticapa;
