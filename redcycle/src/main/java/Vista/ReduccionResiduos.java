@@ -141,7 +141,7 @@ public class ReduccionResiduos extends javax.swing.JFrame {
                 jLabel9MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 210, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 210, -1));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -151,7 +151,7 @@ public class ReduccionResiduos extends javax.swing.JFrame {
                 jLabel11MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, 190, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 30, 170, -1));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -161,12 +161,12 @@ public class ReduccionResiduos extends javax.swing.JFrame {
                 jLabel12MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 30, 140, -1));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 30, 140, -1));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Reducción de Residuos");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 30, -1, -1));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 30, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -270,7 +270,7 @@ public class ReduccionResiduos extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/fondo2.png")
         );
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1170, 560));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1170, 590));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -280,7 +280,7 @@ public class ReduccionResiduos extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();

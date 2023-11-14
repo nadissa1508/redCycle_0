@@ -96,20 +96,38 @@ public class Estadisticas extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jlbBoton = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        lbIMGVidrios = new javax.swing.JLabel();
-        lbIMGOrganica = new javax.swing.JLabel();
-        lbIMGMulticapa = new javax.swing.JLabel();
-        lbIMGPapel = new javax.swing.JLabel();
-        lbIMGMetal = new javax.swing.JLabel();
-        lbIMGPlasticos = new javax.swing.JLabel();
+        lbIMGContenedorVidrios = new javax.swing.JLabel();
+        lbIMGContenedorOrganica = new javax.swing.JLabel();
+        lbIMGContenedorMulticapa = new javax.swing.JLabel();
+        lbIMGContenedorPapel = new javax.swing.JLabel();
+        lbIMGContenedorMetal = new javax.swing.JLabel();
+        lbIMGContenedorPlasticos = new javax.swing.JLabel();
         lbMulticapa = new javax.swing.JLabel();
         lbPapel = new javax.swing.JLabel();
-        lbVidrio = new javax.swing.JLabel();
+        lbVidrios = new javax.swing.JLabel();
         lbPlasticos = new javax.swing.JLabel();
         lbMetal = new javax.swing.JLabel();
         lbOrganica = new javax.swing.JLabel();
-        jlbBoton = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        txtCantPapel = new javax.swing.JTextField();
+        txtCantMulticapa = new javax.swing.JTextField();
+        txtCantVidrios = new javax.swing.JTextField();
+        txtCantOrganica = new javax.swing.JTextField();
+        txtCantPlasticos = new javax.swing.JTextField();
+        txtCantMetal = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -201,95 +219,6 @@ public class Estadisticas extends javax.swing.JFrame {
 
         jPanel4.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 360, 240));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        lbMulticapa.setText("Multicapa");
-
-        lbPapel.setText("Papel");
-
-        lbVidrio.setText("Vidrios");
-
-        lbPlasticos.setText("Plásticos");
-
-        lbMetal.setText("Metal");
-
-        lbOrganica.setText("Orgánica");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbIMGMulticapa)
-                            .addComponent(lbIMGPapel)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(lbMulticapa))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(lbPapel)))
-                .addGap(80, 80, 80)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbIMGVidrios)
-                    .addComponent(lbIMGPlasticos)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(lbVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(lbPlasticos, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(85, 85, 85)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lbIMGOrganica)
-                        .addComponent(lbIMGMetal))
-                    .addComponent(lbMetal, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(lbOrganica, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(84, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(lbIMGVidrios)
-                                .addGap(4, 4, 4)
-                                .addComponent(lbVidrio)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lbIMGPlasticos))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lbIMGMulticapa, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lbMulticapa)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lbIMGPapel)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbPapel)
-                            .addComponent(lbPlasticos)
-                            .addComponent(lbMetal))
-                        .addGap(14, 14, 14))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lbIMGOrganica)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbOrganica)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbIMGMetal)
-                        .addGap(29, 29, 29))))
-        );
-
-        jPanel4.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 190, 530, 310));
-
         jlbBoton.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/boton.png")
         );
         jlbBoton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -298,6 +227,95 @@ public class Estadisticas extends javax.swing.JFrame {
             }
         });
         jPanel4.add(jlbBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, 40, 40));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(lbIMGContenedorVidrios, new org.netbeans.lib.awtextra.AbsoluteConstraints(414, 217, -1, 113));
+        jPanel1.add(lbIMGContenedorOrganica, new org.netbeans.lib.awtextra.AbsoluteConstraints(527, 169, -1, -1));
+        jPanel1.add(lbIMGContenedorMulticapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 275, -1, 109));
+        jPanel1.add(lbIMGContenedorPapel, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 419, -1, -1));
+        jPanel1.add(lbIMGContenedorMetal, new org.netbeans.lib.awtextra.AbsoluteConstraints(527, 402, -1, -1));
+        jPanel1.add(lbIMGContenedorPlasticos, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 388, -1, -1));
+
+        lbMulticapa.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        lbMulticapa.setText("Multicapa");
+        jPanel1.add(lbMulticapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+
+        lbPapel.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        lbPapel.setText("Papel");
+        jPanel1.add(lbPapel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, -1, -1));
+
+        lbVidrios.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        lbVidrios.setText("Vidrios");
+        jPanel1.add(lbVidrios, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 206, -1, -1));
+
+        lbPlasticos.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        lbPlasticos.setText("Plásticos");
+        jPanel1.add(lbPlasticos, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 57, -1));
+
+        lbMetal.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        lbMetal.setText("Metal");
+        jPanel1.add(lbMetal, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, 57, -1));
+
+        lbOrganica.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        lbOrganica.setText("Orgánica");
+        jPanel1.add(lbOrganica, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, -1, -1));
+
+        jLabel22.setText("Cantidad");
+        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 152, -1, -1));
+
+        jLabel23.setText("Cantidad");
+        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 338, -1, -1));
+
+        jLabel24.setText("Cantidad");
+        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, -1, -1));
+
+        jLabel26.setText("Cantidad");
+        jPanel1.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, -1, -1));
+
+        jLabel27.setText("Cantidad");
+        jPanel1.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, -1, -1));
+
+        txtCantPapel.setEditable(false);
+        jPanel1.add(txtCantPapel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 59, -1));
+
+        txtCantMulticapa.setEditable(false);
+        jPanel1.add(txtCantMulticapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 59, -1));
+
+        txtCantVidrios.setEditable(false);
+        jPanel1.add(txtCantVidrios, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 59, -1));
+
+        txtCantOrganica.setEditable(false);
+        jPanel1.add(txtCantOrganica, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, 59, -1));
+
+        txtCantPlasticos.setEditable(false);
+        jPanel1.add(txtCantPlasticos, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 59, -1));
+
+        txtCantMetal.setEditable(false);
+        jPanel1.add(txtCantMetal, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 360, 59, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/bote_amarillo.png"));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, 84, 103));
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/bote_verde.png"));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 81, 103));
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/bote_azul.png"));
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, 81, 101));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/bote_rojo.png"));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 229, 81, 103));
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/bote_morao.png"));
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 227, 81, 103));
+
+        jLabel18.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/bote_cafe.png"));
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 233, 81, 103));
+
+        jLabel28.setText("Cantidad");
+        jPanel1.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, -1, -1));
+
+        jPanel4.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, 540, 390));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/fondo2.png")
         );
@@ -392,24 +410,42 @@ public class Estadisticas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel jlbBoton;
-    private javax.swing.JLabel lbIMGMetal;
-    private javax.swing.JLabel lbIMGMulticapa;
-    private javax.swing.JLabel lbIMGOrganica;
-    private javax.swing.JLabel lbIMGPapel;
-    private javax.swing.JLabel lbIMGPlasticos;
-    private javax.swing.JLabel lbIMGVidrios;
+    private javax.swing.JLabel lbIMGContenedorMetal;
+    private javax.swing.JLabel lbIMGContenedorMulticapa;
+    private javax.swing.JLabel lbIMGContenedorOrganica;
+    private javax.swing.JLabel lbIMGContenedorPapel;
+    private javax.swing.JLabel lbIMGContenedorPlasticos;
+    private javax.swing.JLabel lbIMGContenedorVidrios;
     private javax.swing.JLabel lbMetal;
     private javax.swing.JLabel lbMulticapa;
     private javax.swing.JLabel lbOrganica;
     private javax.swing.JLabel lbPapel;
     private javax.swing.JLabel lbPlasticos;
-    private javax.swing.JLabel lbVidrio;
+    private javax.swing.JLabel lbVidrios;
+    private javax.swing.JTextField txtCantMetal;
+    private javax.swing.JTextField txtCantMulticapa;
+    private javax.swing.JTextField txtCantOrganica;
+    private javax.swing.JTextField txtCantPapel;
+    private javax.swing.JTextField txtCantPlasticos;
+    private javax.swing.JTextField txtCantVidrios;
     // End of variables declaration//GEN-END:variables
 }
