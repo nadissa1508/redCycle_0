@@ -73,13 +73,13 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="cbClasificacionesBasura" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
                                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Group type="102" attributes="0">
+                                      <Component id="jLabel4" min="-2" pref="274" max="-2" attributes="0"/>
+                                      <Component id="jLabel5" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
                                           <Component id="spCantidadResiduos" min="-2" pref="109" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
                                           <Component id="btnGuardar" min="-2" pref="120" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="jLabel4" min="-2" pref="274" max="-2" attributes="0"/>
-                                      <Component id="jLabel5" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
@@ -123,7 +123,7 @@
                           <Component id="btnGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="spCantidadResiduos" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="60" max="32767" attributes="0"/>
+                      <EmptySpace pref="63" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

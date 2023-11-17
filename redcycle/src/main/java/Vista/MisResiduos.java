@@ -5,7 +5,8 @@
 package Vista;
 
 import Controlador.DriverUsuario;
-import Controlador.DriverContenedor;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import Modelo.Contenedor;
 import java.util.ArrayList;
 import java.io.IOException;
@@ -66,6 +67,14 @@ public class MisResiduos extends javax.swing.JFrame {
         for (int k = 0; k < cB.size(); k++) {
             cbClasificacionesBasura.addItem(cB.get(k).getClasificacion());
         }
+    }
+    
+    public String obtenerFecha(){
+        Date fechaActual = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String fechaFormateada = dateFormat.format(fechaActual);
+        //System.out.println("Fecha actual del sistema: " + fechaFormateada);
+        return fechaFormateada;
     }
 
     public void getResiduos() {
@@ -128,7 +137,7 @@ public class MisResiduos extends javax.swing.JFrame {
 
         for (int i = 0; i < cB.size(); i++) {
             if (cB.get(i).getClasificacion().toString().equals(itemSelected)) {
-                Contenedor contTemp = new Contenedor(cB.get(i).getClasificacion(), cB.get(i).getLitros(), Integer.parseInt(spCantidadResiduos.getValue().toString()));
+                Contenedor contTemp = new Contenedor(cB.get(i).getClasificacion(), cB.get(i).getLitros(), Integer.parseInt(spCantidadResiduos.getValue().toString()), obtenerFecha());
                 cBmod.add(contTemp);
 
             } else {
@@ -285,12 +294,12 @@ public class MisResiduos extends javax.swing.JFrame {
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cbClasificacionesBasura, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel5Layout.createSequentialGroup()
                                     .addComponent(spCantidadResiduos, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel144)
@@ -322,7 +331,7 @@ public class MisResiduos extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(spCantidadResiduos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 430, 310));

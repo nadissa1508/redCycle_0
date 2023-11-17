@@ -97,13 +97,13 @@ public class Archivo {
         //        }
 
         try (FileWriter fw = new FileWriter("Contenedores.csv")) {
-            fw.write("idUsuario,clasificacion,litros,cantResiduos\n");
+            fw.write("idUsuario,clasificacion,litros,cantResiduos,fechaIngresoResiduos\n");
             for (Usuario usuario : usuarios) {
                 if (usuario != null && usuario.getContenedoresBasura() != null) {
                     for (Contenedor contenedor : usuario.getContenedoresBasura()) {
                         if (contenedor != null) {
                             String linea = usuario.getId() + "," + contenedor.getClasificacion() + ","
-                                    + contenedor.getLitros() + "," + contenedor.getCantResiduos() + "\n";
+                                    + contenedor.getLitros() + "," + contenedor.getCantResiduos() + "," + contenedor.getFechaIngresoResiduos() + "\n";
                             fw.write(linea);
                         }
 
@@ -146,8 +146,9 @@ public class Archivo {
             String clasificacion = datosContenedores[1];
             float litros = Float.parseFloat(datosContenedores[2]);
             int cantResiduos = Integer.parseInt(datosContenedores[3]);
+            String fechaIngresoResiduos = datosContenedores[4];
 
-            Contenedor contenedor = new Contenedor(clasificacion, litros, cantResiduos);
+            Contenedor contenedor = new Contenedor(clasificacion, litros, cantResiduos, fechaIngresoResiduos);
 
             contenedoresPorUsuario.putIfAbsent(idUsuario, new ArrayList<>());
             contenedoresPorUsuario.get(idUsuario).add(contenedor);
