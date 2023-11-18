@@ -26,11 +26,10 @@ public class Contenedor {
     private String clasificacion = "";
     private float litros = 0.0f;
     private int cantResiduos = 0;
-    private String fechaIngresoResiduos = "";
 
     @Override
     public String toString() {
-        return "Contenedor [clasificacion=" + clasificacion + ", litros=" + litros + ", cantResiduos=" + cantResiduos + "," + "Fecha registro:" + getFechaIngresoResiduos()
+        return "Contenedor [clasificacion=" + clasificacion + ", litros=" + litros + ", cantResiduos=" + cantResiduos 
                 + "]";
     }
 
@@ -59,33 +58,19 @@ public class Contenedor {
         this.cantResiduos = cantResiduos;
     }
 
-    /**
-     * @return the fechaIngresoResiduos
-     */
-    public String getFechaIngresoResiduos() {
-        return fechaIngresoResiduos;
-    }
-
-    /**
-     * @param fechaIngresoResiduos the fechaIngresoResiduos to set
-     */
-    public void setFechaIngresoResiduos(String fechaIngresoResiduos) {
-        this.fechaIngresoResiduos = fechaIngresoResiduos;
-    }
-
     //Constructor
-    public Contenedor(String clasificacion, float litros, int cantResiduos, String fecha) {
+    public Contenedor(String clasificacion, float litros, int cantResiduos) {
         this.clasificacion = clasificacion;
         this.litros = litros;
         this.cantResiduos = cantResiduos;
-        this.fechaIngresoResiduos = fecha;
+       
     }
 
     public Contenedor() {
         this.clasificacion = "";
         this.litros = 0.0f;
         this.cantResiduos = 0;
-        this.fechaIngresoResiduos = "";
     }
+
 
 }

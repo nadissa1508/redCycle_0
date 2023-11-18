@@ -20,44 +20,57 @@ public class ReduccionResiduos extends javax.swing.JFrame {
     public ReduccionResiduos() {
         initComponents();
     }
-    
-     private static DriverUsuario driver;
-    public ReduccionResiduos (DriverUsuario driver) {
+
+    private static DriverUsuario driver;
+
+    public ReduccionResiduos(DriverUsuario driver) {
         this.driver = driver;
         initComponents();
+        limpiar();
     }
-    
+
+    public void limpiar() {
+        textArea1.setLineWrap(true);
+        textArea1.setWrapStyleWord(true);
+        textArea2.setLineWrap(true);
+        textArea2.setWrapStyleWord(true);
+        textArea1.setText("La principal reducción de residuos este mes fue \"Plástico.\" ");
+        textArea2.setText("Reducir la producción de residuos de plástico beneficia al medio ambiente al conservar la vida marina y los ecosistemas marinos. Al optar por alternativas sostenibles, como bolsas reutilizables y botellas recargables, ayudas a prevenir la contaminación de los océanos y la ingesta de plásticos por parte de la vida marina. Además, esta elección también puede ahorrarte dinero a largo plazo y disminuir tu huella de carbono.");
+        lbThisMes.setText("65%");
+        lbLastmes.setText("83%");
+    }
+
     public void abrirMisResiduos() {
         this.dispose();
         MisResiduos residuos = new MisResiduos(driver);
         residuos.setVisible(true);
     }
-    
-     public void abrirReduccionResiduos() {
+
+    public void abrirReduccionResiduos() {
         this.dispose();
         ReduccionResiduos reduccion = new ReduccionResiduos(driver);
         reduccion.setVisible(true);
     }
-    
-     public void abrirClasifico() {
+
+    public void abrirClasifico() {
         this.dispose();
         Clasifico clasifico = new Clasifico(driver);
         clasifico.setVisible(true);
     }
-     
-    public void abrirMiCuenta(){
+
+    public void abrirMiCuenta() {
         this.dispose();
         MiCuenta cuenta = new MiCuenta(driver);
         cuenta.setVisible(true);
     }
-    
-     public void abrirEstadisticas() {
+
+    public void abrirEstadisticas() {
         this.dispose();
         Estadisticas estadisticas = new Estadisticas(driver);
         estadisticas.setVisible(true);
     }
-     
-     private void cerrarVentana() {
+
+    private void cerrarVentana() {
         int resp = JOptionPane.showConfirmDialog(null, "¿Desea salir del programa?", "Confirmar cierre", JOptionPane.YES_NO_OPTION);
         if ((resp == JOptionPane.YES_OPTION) && (driver.getSizeUsuarios() > 0)) {
             try {
@@ -74,9 +87,9 @@ public class ReduccionResiduos extends javax.swing.JFrame {
             System.exit(0);
         }
 
-    } 
-     
-     public void instrucciones(){
+    }
+
+    public void instrucciones() {
         JOptionPane.showMessageDialog(null, "Reducción de Residuos te ayudará a reflexionar sobre tus residuos.\nEn esta página sólamente muestra información.", "Instrucciones de Uso", JOptionPane.INFORMATION_MESSAGE);
     }
 
@@ -101,10 +114,16 @@ public class ReduccionResiduos extends javax.swing.JFrame {
         lbEsteMes = new javax.swing.JLabel();
         lbUltimoMes = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        lbLastmes = new javax.swing.JLabel();
+        lbThisMes = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel146 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textArea1 = new javax.swing.JTextArea();
         jPanel5 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        textArea2 = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
@@ -190,6 +209,12 @@ public class ReduccionResiduos extends javax.swing.JFrame {
             }
         });
 
+        lbLastmes.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        lbLastmes.setText("jLabel5");
+
+        lbThisMes.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        lbThisMes.setText("jLabel6");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -201,10 +226,14 @@ public class ReduccionResiduos extends javax.swing.JFrame {
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(70, Short.MAX_VALUE)
-                .addComponent(lbUltimoMes, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
-                .addComponent(lbEsteMes, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbLastmes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbUltimoMes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(68, 68, 68)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lbThisMes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbEsteMes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(87, 87, 87))
         );
         jPanel2Layout.setVerticalGroup(
@@ -217,14 +246,18 @@ public class ReduccionResiduos extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 203, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lbLastmes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbThisMes, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbUltimoMes)
                     .addComponent(lbEsteMes))
                 .addGap(47, 47, 47))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 80, -1, 395));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 80, 470, 395));
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 6, -1, -1));
 
         jPanel4.setBackground(new java.awt.Color(237, 255, 211));
@@ -234,39 +267,57 @@ public class ReduccionResiduos extends javax.swing.JFrame {
         jLabel146.setText("Reducciones");
         jLabel146.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
+        textArea1.setColumns(20);
+        textArea1.setRows(5);
+        jScrollPane1.setViewportView(textArea1);
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(jLabel146)
-                .addContainerGap(294, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel146)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(25, 25, 25)
                 .addComponent(jLabel146, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(579, 80, 480, -1));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 80, 480, -1));
 
         jPanel5.setBackground(new java.awt.Color(237, 255, 211));
+
+        textArea2.setColumns(20);
+        textArea2.setRows(5);
+        jScrollPane2.setViewportView(textArea2);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 185, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(579, 290, 480, -1));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 290, 480, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/fondo2.png")
         );
@@ -367,7 +418,13 @@ public class ReduccionResiduos extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbEsteMes;
+    private javax.swing.JLabel lbLastmes;
+    private javax.swing.JLabel lbThisMes;
     private javax.swing.JLabel lbUltimoMes;
+    private javax.swing.JTextArea textArea1;
+    private javax.swing.JTextArea textArea2;
     // End of variables declaration//GEN-END:variables
 }

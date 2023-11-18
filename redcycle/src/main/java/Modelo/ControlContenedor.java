@@ -23,7 +23,22 @@ import java.util.Date;
  * */
 public class ControlContenedor {
 
+    /**
+     * @return the idUsuario
+     */
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    /**
+     * @param idUsuario the idUsuario to set
+     */
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
     //Atributos
+    private int idUsuario;
     private Contenedor contenedor;
     private Date fecha;
 
@@ -33,15 +48,18 @@ public class ControlContenedor {
     }
 
     //Constructor
-    public ControlContenedor(Contenedor contenedor, Date fecha) {
+    public ControlContenedor(int idUsuario, Contenedor contenedor, Date fecha) {
+        this.idUsuario = idUsuario;
         this.contenedor = contenedor;
         this.fecha = fecha;
     }
 
     public ControlContenedor() {
+        this.idUsuario = 0;
         this.contenedor = new Contenedor();
         this.fecha = new Date();
     }
+    
 
     //Getters y Setters
     public Contenedor getContenedor() {
@@ -50,6 +68,10 @@ public class ControlContenedor {
 
     public void setContenedor(Contenedor contenedor) {
         this.contenedor = contenedor;
+    }
+    
+    public String getClasificacion(){
+        return contenedor.getClasificacion(); 
     }
 
     public Date getFecha() {

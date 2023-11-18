@@ -4,6 +4,7 @@
  */
 package Vista;
 
+import Controlador.DriverContenedor;
 import Controlador.DriverUsuario;
 import java.util.Date;
 import java.text.SimpleDateFormat;
@@ -69,12 +70,9 @@ public class MisResiduos extends javax.swing.JFrame {
         }
     }
     
-    public String obtenerFecha(){
+    public Date obtenerFecha(){
         Date fechaActual = new Date();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        String fechaFormateada = dateFormat.format(fechaActual);
-        //System.out.println("Fecha actual del sistema: " + fechaFormateada);
-        return fechaFormateada;
+        return fechaActual;
     }
 
     public void getResiduos() {
@@ -110,6 +108,7 @@ public class MisResiduos extends javax.swing.JFrame {
     }
 
     public void setResiduos() {
+        DriverContenedor driverCont = new DriverContenedor();
         ArrayList<Contenedor> cB = new ArrayList<>();
         ArrayList<Contenedor> cBmod = new ArrayList<>();
         cB = driver.getUsuario().getContenedoresBasura();
@@ -137,8 +136,9 @@ public class MisResiduos extends javax.swing.JFrame {
 
         for (int i = 0; i < cB.size(); i++) {
             if (cB.get(i).getClasificacion().toString().equals(itemSelected)) {
-                Contenedor contTemp = new Contenedor(cB.get(i).getClasificacion(), cB.get(i).getLitros(), Integer.parseInt(spCantidadResiduos.getValue().toString()), obtenerFecha());
+                Contenedor contTemp = new Contenedor(cB.get(i).getClasificacion(), cB.get(i).getLitros(), Integer.parseInt(spCantidadResiduos.getValue().toString()));
                 cBmod.add(contTemp);
+                driverCont.guardarControlContenedor(driver.getUsuario().getId(), contTemp, obtenerFecha());
 
             } else {
 
@@ -261,7 +261,7 @@ public class MisResiduos extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setText("Cantidad producida:");
+        jLabel5.setText("Cantidad de basura producida (litros):");
 
         spCantidadResiduos.setModel(new javax.swing.SpinnerNumberModel());
 
@@ -331,10 +331,10 @@ public class MisResiduos extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(spCantidadResiduos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
-        jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 430, 310));
+        jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 430, 320));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

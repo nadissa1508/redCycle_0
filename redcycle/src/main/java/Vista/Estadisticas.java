@@ -3,9 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Vista;
+
+import Controlador.DriverContenedor;
 import Controlador.DriverUsuario;
+import Modelo.Contenedor;
+import Modelo.ControlContenedor;
 import Modelo.Usuario;
+import java.awt.Color;
 import java.io.IOException;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,40 +25,129 @@ public class Estadisticas extends javax.swing.JFrame {
      * Creates new form Estadísticas
      */
     public Estadisticas() {
-        
+
         initComponents();
     }
     private static DriverUsuario driver;
-    public Estadisticas (DriverUsuario driver) {
+
+    public Estadisticas(DriverUsuario driver) {
         this.driver = driver;
         initComponents();
+        limpiar();
+        traerDatos();
+    }
+
+    public void limpiar() {
+        lbEstadoMetal.setText("No aplica");
+        lbEstadoMulticapa.setText("No aplica");
+        lbEstadoOrganica.setText("No aplica");
+        lbEstadoPapel.setText("No aplica");
+        lbEstadoPlasticos.setText("No aplica");
+        lbEstadoVidrio.setText("No aplica");
+    }
+
+    public String calcularNivelContenedor(Contenedor contenedor) {
+        String alerta = "";
+        float litros = contenedor.getLitros();
+        float cantResiduos = contenedor.getCantResiduos();
+
+        // Calcula el nivel del contenedor como un valor entre 0 y 1
+        float nivel = cantResiduos / litros;
+
+        // Define los umbrales para determinar el nivel
+        float umbralVacio = 1.0f / 3.0f;
+        float umbralMedioLleno = 2.0f / 3.0f;
+
+        // Compara el nivel con los umbrales
+        if (nivel <= umbralVacio) {
+            alerta = "vacio";
+        } else if (nivel <= umbralMedioLleno) {
+            alerta = "medio lleno";
+        } else {
+            alerta = "lleno";
+        }
+        return alerta;
     }
     
-    public void abrirMiCuenta(){
+    public Color colorAlerta(String nivelContenedor){
+        Color color = Color.WHITE;
+        if(nivelContenedor.equals("vacio")){
+            color = Color.GREEN;
+        }else if(nivelContenedor.equals("medio lleno")){
+            color = Color.YELLOW;
+        }else if(nivelContenedor.equals("lleno")){
+            color = Color.RED;
+        }
+        return color;
+    }
+
+    public void traerDatos() {
+        DriverContenedor driverCont = new DriverContenedor();
+        ArrayList<ControlContenedor> controlContenedores = driverCont.leerCSV();
+        if (!controlContenedores.isEmpty()) {
+            for (int i = 0; i < controlContenedores.size(); i++) {
+                if (controlContenedores.get(i).getClasificacion().equals("Multicapa") && controlContenedores.get(i).getIdUsuario() == driver.getUsuario().getId()) {
+                    lbEstadoMulticapa.setText(calcularNivelContenedor(controlContenedores.get(i).getContenedor()));
+                    lbEstadoMulticapa.setBackground(colorAlerta(calcularNivelContenedor(controlContenedores.get(i).getContenedor())));
+                    lbEstadoMulticapa.setOpaque(true);
+                }
+                if (controlContenedores.get(i).getClasificacion().equals("Papel") && controlContenedores.get(i).getIdUsuario() == driver.getUsuario().getId()) {
+                    lbEstadoPapel.setText(calcularNivelContenedor(controlContenedores.get(i).getContenedor()));
+                    lbEstadoPapel.setBackground(colorAlerta(calcularNivelContenedor(controlContenedores.get(i).getContenedor())));
+                    lbEstadoPapel.setOpaque(true);
+                }
+                if (controlContenedores.get(i).getClasificacion().equals("Plastico") && controlContenedores.get(i).getIdUsuario() == driver.getUsuario().getId()) {
+                    lbEstadoPlasticos.setText(calcularNivelContenedor(controlContenedores.get(i).getContenedor()));
+                    lbEstadoPlasticos.setBackground(colorAlerta(calcularNivelContenedor(controlContenedores.get(i).getContenedor())));
+                    lbEstadoPlasticos.setOpaque(true);
+                }
+
+                if (controlContenedores.get(i).getClasificacion().equals("Vidrio") && controlContenedores.get(i).getIdUsuario() == driver.getUsuario().getId()) {
+                    lbEstadoVidrio.setText(calcularNivelContenedor(controlContenedores.get(i).getContenedor()));
+                    lbEstadoVidrio.setBackground(colorAlerta(calcularNivelContenedor(controlContenedores.get(i).getContenedor())));
+                    lbEstadoVidrio.setOpaque(true);
+                }
+
+                if (controlContenedores.get(i).getClasificacion().equals("Organica") && controlContenedores.get(i).getIdUsuario() == driver.getUsuario().getId()) {
+                    lbEstadoOrganica.setText(calcularNivelContenedor(controlContenedores.get(i).getContenedor()));
+                    lbEstadoOrganica.setBackground(colorAlerta(calcularNivelContenedor(controlContenedores.get(i).getContenedor())));
+                    lbEstadoOrganica.setOpaque(true);
+                }
+                if (controlContenedores.get(i).getClasificacion().equals("Metal") && controlContenedores.get(i).getIdUsuario() == driver.getUsuario().getId()) {
+                    lbEstadoMetal.setText(calcularNivelContenedor(controlContenedores.get(i).getContenedor()));
+                    lbEstadoMetal.setBackground(colorAlerta(calcularNivelContenedor(controlContenedores.get(i).getContenedor())));
+                    lbEstadoMetal.setOpaque(true);
+                }
+
+            }
+        }
+    }
+
+    public void abrirMiCuenta() {
         this.dispose();
         MiCuenta cuenta = new MiCuenta(driver);
         cuenta.setVisible(true);
     }
-    
+
     public void abrirReduccionResiduos() {
         this.dispose();
         ReduccionResiduos reduccion = new ReduccionResiduos(driver);
         reduccion.setVisible(true);
     }
-     
+
     public void abrirMisResiduos() {
         this.dispose();
         MisResiduos residuos = new MisResiduos(driver);
         residuos.setVisible(true);
     }
-    
+
     public void abrirClasifico() {
         this.dispose();
         Clasifico clasifico = new Clasifico(driver);
         clasifico.setVisible(true);
     }
 
-     private void cerrarVentana() {
+    private void cerrarVentana() {
         int resp = JOptionPane.showConfirmDialog(null, "¿Desea salir del programa?", "Confirmar cierre", JOptionPane.YES_NO_OPTION);
         if ((resp == JOptionPane.YES_OPTION) && (driver.getSizeUsuarios() > 0)) {
             try {
@@ -68,14 +164,17 @@ public class Estadisticas extends javax.swing.JFrame {
             System.exit(0);
         }
 
+    }
+    public void cargarGrafica(){
+       
+         lbGrafica.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/grafica1.png")
+        );
         
     }
-     
-     public void instrucciones(){
+
+    public void instrucciones() {
         JOptionPane.showMessageDialog(null, "Estadísticas emplea una representación gráfica de tus contenedores y cuáles van acumulados. \nAdemás tus contenedores se basarán en la acumulación y si deseas retirar la basura de alguno. ", "Instrucciones de Uso", JOptionPane.INFORMATION_MESSAGE);
     }
-
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -96,6 +195,7 @@ public class Estadisticas extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        lbGrafica = new javax.swing.JLabel();
         jlbBoton = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         lbIMGContenedorVidrios = new javax.swing.JLabel();
@@ -110,25 +210,20 @@ public class Estadisticas extends javax.swing.JFrame {
         lbPlasticos = new javax.swing.JLabel();
         lbMetal = new javax.swing.JLabel();
         lbOrganica = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        txtCantPapel = new javax.swing.JTextField();
-        txtCantMulticapa = new javax.swing.JTextField();
-        txtCantVidrios = new javax.swing.JTextField();
-        txtCantOrganica = new javax.swing.JTextField();
-        txtCantPlasticos = new javax.swing.JTextField();
-        txtCantMetal = new javax.swing.JTextField();
+        lbEstadoMulticapa = new javax.swing.JLabel();
+        lbEstadoVidrio = new javax.swing.JLabel();
+        lbEstadoPapel = new javax.swing.JLabel();
+        lbEstadoMetal = new javax.swing.JLabel();
+        lbEstadoPlasticos = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lbEstadoOrganica = new javax.swing.JLabel();
+        btnBuscar = new javax.swing.JButton();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -178,7 +273,7 @@ public class Estadisticas extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Estado de los Contenedores");
-        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, -1, -1));
+        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 110, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
@@ -201,20 +296,28 @@ public class Estadisticas extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("Estadísticas");
-        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 150, -1));
+        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 150, -1));
 
         jLabel4.setText("Seleccione fecha para ver sus estadísticas : ");
-        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, -1, 20));
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, -1, 20));
+
+        lbGrafica.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbGrafica, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 240, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbGrafica, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel4.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 360, 240));
@@ -238,65 +341,60 @@ public class Estadisticas extends javax.swing.JFrame {
         jPanel1.add(lbIMGContenedorPlasticos, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 388, -1, -1));
 
         lbMulticapa.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        lbMulticapa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbMulticapa.setText("Multicapa");
-        jPanel1.add(lbMulticapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+        jPanel1.add(lbMulticapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 80, -1));
 
         lbPapel.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        lbPapel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbPapel.setText("Papel");
-        jPanel1.add(lbPapel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, -1, -1));
+        jPanel1.add(lbPapel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 80, -1));
 
         lbVidrios.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        lbVidrios.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbVidrios.setText("Vidrios");
-        jPanel1.add(lbVidrios, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 206, -1, -1));
+        jPanel1.add(lbVidrios, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 80, -1));
 
         lbPlasticos.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        lbPlasticos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbPlasticos.setText("Plásticos");
-        jPanel1.add(lbPlasticos, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 57, -1));
+        jPanel1.add(lbPlasticos, new org.netbeans.lib.awtextra.AbsoluteConstraints(387, 20, 90, -1));
 
         lbMetal.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        lbMetal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbMetal.setText("Metal");
-        jPanel1.add(lbMetal, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, 57, -1));
+        jPanel1.add(lbMetal, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, 80, -1));
 
         lbOrganica.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        lbOrganica.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbOrganica.setText("Orgánica");
-        jPanel1.add(lbOrganica, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, -1, -1));
+        jPanel1.add(lbOrganica, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 80, -1));
 
-        jLabel22.setText("Cantidad");
-        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 152, -1, -1));
+        lbEstadoMulticapa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbEstadoMulticapa.setText("Cantidad");
+        jPanel1.add(lbEstadoMulticapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 80, -1));
 
-        jLabel23.setText("Cantidad");
-        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 338, -1, -1));
+        lbEstadoVidrio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbEstadoVidrio.setText("Cantidad");
+        jPanel1.add(lbEstadoVidrio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 80, -1));
 
-        jLabel24.setText("Cantidad");
-        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, -1, -1));
+        lbEstadoPapel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbEstadoPapel.setText("Cantidad");
+        jPanel1.add(lbEstadoPapel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 80, -1));
 
-        jLabel26.setText("Cantidad");
-        jPanel1.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, -1, -1));
+        lbEstadoMetal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbEstadoMetal.setText("Cantidad");
+        jPanel1.add(lbEstadoMetal, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 340, 80, -1));
 
-        jLabel27.setText("Cantidad");
-        jPanel1.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, -1, -1));
+        lbEstadoPlasticos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbEstadoPlasticos.setText("Cantidad");
+        jPanel1.add(lbEstadoPlasticos, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, 80, -1));
 
-        txtCantPapel.setEditable(false);
-        jPanel1.add(txtCantPapel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 59, -1));
-
-        txtCantMulticapa.setEditable(false);
-        jPanel1.add(txtCantMulticapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 59, -1));
-
-        txtCantVidrios.setEditable(false);
-        jPanel1.add(txtCantVidrios, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 59, -1));
-
-        txtCantOrganica.setEditable(false);
-        jPanel1.add(txtCantOrganica, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, 59, -1));
-
-        txtCantPlasticos.setEditable(false);
-        jPanel1.add(txtCantPlasticos, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 59, -1));
-
-        txtCantMetal.setEditable(false);
-        jPanel1.add(txtCantMetal, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 360, 59, -1));
-
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/bote_amarillo.png"));
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, 84, 103));
 
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/bote_verde.png"));
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 81, 103));
 
@@ -304,22 +402,32 @@ public class Estadisticas extends javax.swing.JFrame {
         jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, 81, 101));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/bote_rojo.png"));
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 229, 81, 103));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 81, 103));
 
         jLabel17.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/bote_morao.png"));
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 227, 81, 103));
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 230, 81, 103));
 
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel18.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/bote_cafe.png"));
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 233, 81, 103));
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 81, 103));
 
-        jLabel28.setText("Cantidad");
-        jPanel1.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, -1, -1));
+        lbEstadoOrganica.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbEstadoOrganica.setText("Cantidad");
+        jPanel1.add(lbEstadoOrganica, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 80, -1));
 
-        jPanel4.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, 540, 390));
+        jPanel4.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, 530, 390));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/fondo2.png")
-        );
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 570));
+        btnBuscar.setBackground(new java.awt.Color(73, 153, 28));
+        btnBuscar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, -1, -1));
+        jPanel4.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 190, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -367,6 +475,11 @@ public class Estadisticas extends javax.swing.JFrame {
         instrucciones();
     }//GEN-LAST:event_jlbBotonMouseClicked
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+        cargarGrafica();
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -404,7 +517,8 @@ public class Estadisticas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnBuscar;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -414,12 +528,6 @@ public class Estadisticas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -429,6 +537,13 @@ public class Estadisticas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel jlbBoton;
+    private javax.swing.JLabel lbEstadoMetal;
+    private javax.swing.JLabel lbEstadoMulticapa;
+    private javax.swing.JLabel lbEstadoOrganica;
+    private javax.swing.JLabel lbEstadoPapel;
+    private javax.swing.JLabel lbEstadoPlasticos;
+    private javax.swing.JLabel lbEstadoVidrio;
+    private javax.swing.JLabel lbGrafica;
     private javax.swing.JLabel lbIMGContenedorMetal;
     private javax.swing.JLabel lbIMGContenedorMulticapa;
     private javax.swing.JLabel lbIMGContenedorOrganica;
@@ -441,11 +556,5 @@ public class Estadisticas extends javax.swing.JFrame {
     private javax.swing.JLabel lbPapel;
     private javax.swing.JLabel lbPlasticos;
     private javax.swing.JLabel lbVidrios;
-    private javax.swing.JTextField txtCantMetal;
-    private javax.swing.JTextField txtCantMulticapa;
-    private javax.swing.JTextField txtCantOrganica;
-    private javax.swing.JTextField txtCantPapel;
-    private javax.swing.JTextField txtCantPlasticos;
-    private javax.swing.JTextField txtCantVidrios;
     // End of variables declaration//GEN-END:variables
 }

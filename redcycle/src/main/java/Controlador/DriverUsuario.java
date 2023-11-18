@@ -163,27 +163,27 @@ public class DriverUsuario {
 
         Contenedor contTemp;
         if (litros1 > 0) {
-            contTemp = new Contenedor(clasificacionCont1, litros1, 0, "");
+            contTemp = new Contenedor(clasificacionCont1, litros1, 0);
             contenedoresBasura.add(contTemp);
         }
         if (litros2 > 0) {
-            contTemp = new Contenedor(clasificacionCont2, litros2, 0, "");
+            contTemp = new Contenedor(clasificacionCont2, litros2, 0);
             contenedoresBasura.add(contTemp);
         }
         if (litros3 > 0) {
-            contTemp = new Contenedor(clasificacionCont3, litros3, 0, "");
+            contTemp = new Contenedor(clasificacionCont3, litros3, 0);
             contenedoresBasura.add(contTemp);
         }
         if (litros4 > 0) {
-            contTemp = new Contenedor(clasificacionCont4, litros4, 0, "");
+            contTemp = new Contenedor(clasificacionCont4, litros4, 0);
             contenedoresBasura.add(contTemp);
         }
         if (litros5 > 0) {
-            contTemp = new Contenedor(clasificacionCont5, litros5, 0, "");
+            contTemp = new Contenedor(clasificacionCont5, litros5, 0);
             contenedoresBasura.add(contTemp);
         }
         if (litros6 > 0) {
-            contTemp = new Contenedor(clasificacionCont6, litros6, 0, "");
+            contTemp = new Contenedor(clasificacionCont6, litros6, 0);
             contenedoresBasura.add(contTemp);
         }
 
