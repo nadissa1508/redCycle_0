@@ -230,7 +230,6 @@ public class Estadisticas extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         lbEstadoOrganica = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -434,7 +433,6 @@ public class Estadisticas extends javax.swing.JFrame {
             }
         });
         jPanel4.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, -1, -1));
-        jPanel4.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 220, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -525,7 +523,6 @@ public class Estadisticas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
