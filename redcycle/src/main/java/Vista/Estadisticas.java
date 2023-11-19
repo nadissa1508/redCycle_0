@@ -16,8 +16,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
+ * POO 2 Semestre
+ * Facultad de Ingenieria
+ * Departamento de Ciencias de la Computacion
+ * Fecha inicio: 19/09/2023
+ * Fecha final: 17/11/2023
  *
- * @author nadis
+ * @author Nadissa Lopez 23764
+ * @author Vianka Castro 23201
+ * @author Ricardo Godinez 23247
  */
 public class Estadisticas extends javax.swing.JFrame {
 
@@ -223,7 +230,7 @@ public class Estadisticas extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         lbEstadoOrganica = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateChooser1 = new org.netbeans.modules.form.InvalidComponent();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -518,7 +525,7 @@ public class Estadisticas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private org.netbeans.modules.form.InvalidComponent jDateChooser1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

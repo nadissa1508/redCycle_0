@@ -8,9 +8,21 @@ import Modelo.Clasificacion;
 import java.util.ArrayList;
 
 /**
+ * POO 2 Semestre
+ * Facultad de Ingenieria
+ * Departamento de Ciencias de la Computacion
+ * Fecha inicio: 19/09/2023
+ * Fecha final: 17/11/2023
  *
- * @author richi
+ * @author Nadissa Lopez 23764
+ * @author Vianka Castro 23201
+ * @author Ricardo Godinez 23247
+ * 
+ * La clase DriverClasifico gestiona la clasificación de residuos categorizando los artículos de desecho en sus respectivas clasificaciones.
+ * como orgánicos, plástico, multicapa, metal, vidrio y papel y cartón. Permite agregar elementos de desecho al
+ * clasificaciones y búsqueda de residuos dentro de los mismos.
  */
+
 public class DriverClasifico {
 
     ArrayList<Clasificacion> clasificacionesBasura;
@@ -20,8 +32,12 @@ public class DriverClasifico {
         llenarClasificaciones();
     }
 
-    //este metodo toma cada elemento del array articulosClasificacion y los introduce dentro del arrayArticulos, que es atributo
-    //de las intancias de Clasificacion
+    /**
+     * Este método toma una serie de nombres de elementos de desecho y los agrega a la lista de elementos de clasificación de residuos.
+     *
+     * @param articulosClasificacion Una serie de cadenas que representan nombres de elementos de desecho.
+     * @return Una ArrayList que contiene los nombres de los elementos de desecho agregados.
+     */
     public ArrayList<String> llenarArrayArticulos(String[] articulosClasificacion) {
         Clasificacion clas = new Clasificacion();
         for (String articulo : articulosClasificacion) {
@@ -29,7 +45,10 @@ public class DriverClasifico {
         }
         return clas.getArrayArticulos();
     }
-
+    /**
+     * Completa la lista de clasificación de residuos con categorías predefinidas y sus elementos asociados.
+     *Cada clasificación incluye una descripción, impactos negativos y beneficios del manejo adecuado de los residuos.
+     */
     public void llenarClasificaciones() {
         Clasificacion tempClas;
 
@@ -130,7 +149,12 @@ public class DriverClasifico {
         tempClas = new Clasificacion("Papel y cartón", "La clasificación de basura de papel y cartón se refiere a la categorización de residuos que están hechos principalmente de materiales de papel, cartón y productos relacionados. Incluye elementos como periódicos, cajas de cartón, papel de oficina, cartón de envases, revistas, libros y otros artículos de papel y cartón. Estos materiales son altamente reciclables y su reciclaje contribuye a la conservación de los bosques y a la reducción de la contaminación. ", "El mal manejo de la basura de papel y cartón contribuye a la deforestación y la pérdida de hábitats naturales, lo que afecta la biodiversidad y aumenta la presión sobre los recursos naturales. Es crucial promover el reciclaje de papel y cartón para reducir estos impactos negativos en el medio ambiente.", "Reciclar papel y cartón conserva bosques, reduce emisiones de carbono y promueve un estilo de vida sostenible, marcando una diferencia en la protección de la naturaleza y la mitigación del cambio climático.", llenarArrayArticulos(articulosPapel));
         clasificacionesBasura.add(tempClas);
     }
-
+    /**
+     * Busca un elemento de desecho dentro de la lista de clasificación de desechos y devuelve su nombre de clasificación.
+     *
+     * @param articulo El nombre del elemento de desecho a buscar.
+     * @return El nombre de la clasificación a la que pertenece el artículo de desecho, o una cadena vacía si no se encuentra.
+     */
     public String buscarArticulo(String articulo) {
         String clas = "";
         for (Clasificacion clasificacion : clasificacionesBasura) {
@@ -141,7 +165,12 @@ public class DriverClasifico {
         }
         return clas;
     }
-
+    /**
+     * Devuelve una descripción detallada de una clasificación de residuos determinada, incluidos sus impactos negativos.
+     *
+     * @param clasificacion El nombre de la clasificación de residuos a describir.
+     * @return Una cadena que contiene la descripción y los impactos negativos de la clasificación de residuos.
+     */
     public String devolverDescripcion(String clasificacion) {
         String desc = "";
         for (Clasificacion clasBasura : clasificacionesBasura) {
