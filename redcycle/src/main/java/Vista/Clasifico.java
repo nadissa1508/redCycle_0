@@ -23,8 +23,10 @@ import javax.swing.JOptionPane;
  */
 public class Clasifico extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Clasifico
+       /**
+     * Constructor que inicializa los componentes de la interfaz y establece la conexión con los controladores.
+     * 
+     * @param driver El controlador de usuario para la gestión de datos de usuario.
      */
     private static DriverUsuario driver;
     private static DriverClasifico driverClasifico;
@@ -35,7 +37,9 @@ public class Clasifico extends javax.swing.JFrame {
         initComponents();
         limpiar();
     }
-
+  /**
+     * Método para limpiar los campos y reiniciar la interfaz a su estado inicial.
+     */
     public void limpiar() {
         txtBuscarArticulo.setText("");
         txtDescripcion.setText("");
@@ -43,7 +47,9 @@ public class Clasifico extends javax.swing.JFrame {
         txtDescripcion.setLineWrap(true);
         txtDescripcion.setWrapStyleWord(true);
     }
-
+    /**
+     * Método para buscar la clasificación de un artículo basado en el texto ingresado por el usuario.
+     */
     public void buscarArticulo() {
         String tituloLabel = driverClasifico.buscarArticulo(txtBuscarArticulo.getText());
         if (tituloLabel.equals("Organica")) {
@@ -71,34 +77,47 @@ public class Clasifico extends javax.swing.JFrame {
 
     }
 
+    /**
+     * Método para abrir la interfaz de gestión de residuos del usuario.
+     */
     public void abrirMisResiduos() {
         this.dispose();
         MisResiduos residuos = new MisResiduos(driver);
         residuos.setVisible(true);
     }
-
+    /**
+     * Método para abrir la interfaz de la cuenta del usuario.
+     */
     public void abrirMiCuenta() {
         this.dispose();
         MiCuenta cuenta = new MiCuenta(driver);
         cuenta.setVisible(true);
     }
-
+    /**
+     * Método para abrir la interfaz de estadísticas de la aplicación.
+     */
     public void abrirEstadisticas() {
         this.dispose();
         Estadisticas estadisticas = new Estadisticas(driver);
         estadisticas.setVisible(true);
     }
-
+    /**
+     * Método para abrir la interfaz de reducción de residuos.
+     */
     public void abrirReduccionResiduos() {
         this.dispose();
         ReduccionResiduos reduccion = new ReduccionResiduos(driver);
         reduccion.setVisible(true);
     }
-    
+        /**
+     * Método para mostrar las instrucciones de uso de la aplicación.
+     */
     public void instrucciones(){
         JOptionPane.showMessageDialog(null, "¿Cómo lo Clasifico? Ayuda a encontrar el tipo de clasificación de algún material en específico. \nEscribe el nombre del material y luego presiona buscar.", "Instrucciones de Uso", JOptionPane.INFORMATION_MESSAGE);
     }
-    
+    /**
+     * Método para cerrar la ventana y, si es necesario, guardar los datos antes de salir.
+     */
      private void cerrarVentana() {
         int resp = JOptionPane.showConfirmDialog(null, "¿Desea salir del programa?", "Confirmar cierre", JOptionPane.YES_NO_OPTION);
         if ((resp == JOptionPane.YES_OPTION) && (driver.getSizeUsuarios() > 0)) {
