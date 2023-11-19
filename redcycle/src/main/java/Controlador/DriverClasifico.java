@@ -32,8 +32,12 @@ public class DriverClasifico {
         llenarClasificaciones();
     }
 
-    //este metodo toma cada elemento del array articulosClasificacion y los introduce dentro del arrayArticulos, que es atributo
-    //de las intancias de Clasificacion
+    /**
+     * Este método toma una serie de nombres de elementos de desecho y los agrega a la lista de elementos de clasificación de residuos.
+     *
+     * @param articulosClasificacion Una serie de cadenas que representan nombres de elementos de desecho.
+     * @return Una ArrayList que contiene los nombres de los elementos de desecho agregados.
+     */
     public ArrayList<String> llenarArrayArticulos(String[] articulosClasificacion) {
         Clasificacion clas = new Clasificacion();
         for (String articulo : articulosClasificacion) {
