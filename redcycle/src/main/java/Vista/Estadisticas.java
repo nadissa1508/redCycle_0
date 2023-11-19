@@ -83,7 +83,7 @@ public class Estadisticas extends javax.swing.JFrame {
 
     public void traerDatos() {
         DriverContenedor driverCont = new DriverContenedor();
-        ArrayList<ControlContenedor> controlContenedores = driverCont.leerCSV();
+        ArrayList<ControlContenedor> controlContenedores = driverCont.leerControlContenedoresCSV();
         if (!controlContenedores.isEmpty()) {
             for (int i = 0; i < controlContenedores.size(); i++) {
                 if (controlContenedores.get(i).getClasificacion().equals("Multicapa") && controlContenedores.get(i).getIdUsuario() == driver.getUsuario().getId()) {

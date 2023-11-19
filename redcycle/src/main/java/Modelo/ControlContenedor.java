@@ -81,5 +81,10 @@ public class ControlContenedor {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-
+    
+    public int getCantResiduos(){
+        return contenedor.getCantResiduos();
+    }
+    
+  
 }

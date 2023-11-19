@@ -66,7 +66,7 @@ public class DriverContenedor {
         }
     }
 
-    public ArrayList<ControlContenedor> leerCSV() {
+    public ArrayList<ControlContenedor> leerControlContenedoresCSV() {
         ArrayList<ControlContenedor> listaObjetos = new ArrayList<>();
         String linea;
         String separador = ",";
@@ -94,10 +94,100 @@ public class DriverContenedor {
                 }
             }
         } catch (IOException | ParseException e) {
-            e.printStackTrace();
+           
         }
 
         return listaObjetos;
+    }
+
+    public String obtenerClasificacionMenosResiduos(int idUsuario) {
+        String clasificacion = "";
+        int cantidadMinima = Integer.MAX_VALUE, cantidadResiduos = 0;
+        controlContenedores = leerControlContenedoresCSV();
+
+        for (int i = 0; i < controlContenedores.size(); i++) {
+            if (controlContenedores.get(i).getIdUsuario() != idUsuario) {
+                controlContenedores.remove(i);
+            }
+        }
+
+        for (ControlContenedor contenedor : controlContenedores) {
+            cantidadResiduos = contenedor.getCantResiduos();
+            if (cantidadResiduos < cantidadMinima) {
+                cantidadMinima = cantidadResiduos;
+                clasificacion = contenedor.getClasificacion();
+
+            }
+        }
+        return clasificacion;
+    }
+
+    public String obtenerDato(int idUsuario, String clasificacion, int tipoDato) {
+        String dato = "";
+        controlContenedores = leerControlContenedoresCSV();
+        DriverClasifico driverClasifico = new DriverClasifico();
+
+        for (int i = 0; i < controlContenedores.size(); i++) {
+            if (controlContenedores.get(i).getIdUsuario() != idUsuario) {
+                controlContenedores.remove(i);
+            }
+        }
+
+        for (ControlContenedor contenedor : controlContenedores) {
+            if (contenedor.getClasificacion().equals(clasificacion)) {
+                if (tipoDato == 1) {//dato positivo
+                    dato = driverClasifico.devolverDatoPositivo(clasificacion);
+                } else {
+                    dato = driverClasifico.devolverDatoNegativo(clasificacion);
+                }
+
+            }
+        }
+
+        return dato;
+    }
+
+    public double obtenerPorcentajeMes(int idUsuario, String fechaString) {
+        double porcentaje = 0.0, basuraBase = 60.0;
+        String clasificacion = obtenerClasificacionMenosResiduos(idUsuario);
+
+        controlContenedores = leerControlContenedoresCSV();
+        ArrayList<ControlContenedor> contenedoresUsuario = new ArrayList<>();
+
+        Date fecha = null;
+        try {
+            fecha = new SimpleDateFormat("dd/MM/yyyy").parse(fechaString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            // Maneja la excepción si la fecha no se puede analizar correctamente
+        }
+
+        for (ControlContenedor contenedor : controlContenedores) {
+            System.out.println(contenedor.getIdUsuario() + contenedor.getClasificacion() + contenedor.getCantResiduos() + contenedor.getFecha());
+        }
+
+        // Filtrar los contenedores del usuario y clasificación deseada
+        for (ControlContenedor contenedor : controlContenedores) {
+            if (contenedor.getIdUsuario() == idUsuario && contenedor.getClasificacion().equals(clasificacion)) {
+                contenedoresUsuario.add(contenedor);
+            }
+        }
+
+        ControlContenedor contenedorActual = null;
+
+        for (ControlContenedor contenedor : contenedoresUsuario) {
+            if (contenedor.getFecha().equals(fecha)) {
+                contenedorActual = contenedor;
+                break; // Salir del bucle una vez encontrado el contenedor del mes actual
+            }
+        }
+
+        if (contenedorActual != null) {
+            double basuraActual = contenedorActual.getCantResiduos();
+            porcentaje = ((basuraActual - basuraBase) / basuraBase) * 100.0;
+        }
+
+        return porcentaje;
     }
 
 }

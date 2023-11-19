@@ -1,8 +1,10 @@
 idUsuario,clasificacion,litros,cantidadResiduos,fecha
-4,Organica,50.0,50,17/11/2023
-4,Plastico,40.0,40,17/11/2023
-4,Multicapa,70.0,30,17/11/2023
-1,Organica,70.0,50,17/11/2023
-1,Plastico,80.0,70,17/11/2023
-1,Multicapa,100.0,10,17/11/2023
-1,Organica,70.0,30,17/11/2023
+1,Organica,150.0,50,17/11/2023
+1,Plastico,120.0,60,17/11/2023
+1,Multicapa,130.0,80,17/11/2023
+1,Organica,130.0,80,17/10/2023
+2,Vidrio,50.0,50,17/11/2023
+3,Organica,70.0,20,17/11/2023
+3,Plastico,70.0,50,17/11/2023
+3,Multicapa,70.0,10,17/11/2023
+3,Papel,70.0,30,17/11/2023

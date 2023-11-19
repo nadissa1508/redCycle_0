@@ -4,8 +4,12 @@
  */
 package Vista;
 
+import Controlador.DriverContenedor;
 import Controlador.DriverUsuario;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,9 +26,11 @@ public class ReduccionResiduos extends javax.swing.JFrame {
     }
 
     private static DriverUsuario driver;
+    private DriverContenedor driverCont;
 
     public ReduccionResiduos(DriverUsuario driver) {
         this.driver = driver;
+        this.driverCont = new DriverContenedor();
         initComponents();
         limpiar();
     }
@@ -34,10 +40,50 @@ public class ReduccionResiduos extends javax.swing.JFrame {
         textArea1.setWrapStyleWord(true);
         textArea2.setLineWrap(true);
         textArea2.setWrapStyleWord(true);
-        textArea1.setText("La principal reducción de residuos este mes fue \"Plástico.\" ");
-        textArea2.setText("Reducir la producción de residuos de plástico beneficia al medio ambiente al conservar la vida marina y los ecosistemas marinos. Al optar por alternativas sostenibles, como bolsas reutilizables y botellas recargables, ayudas a prevenir la contaminación de los océanos y la ingesta de plásticos por parte de la vida marina. Además, esta elección también puede ahorrarte dinero a largo plazo y disminuir tu huella de carbono.");
-        lbThisMes.setText("65%");
-        lbLastmes.setText("83%");
+        traerDatos();
+    }
+
+    public String obtenerFechaActual() {
+        Date fechaActual = new Date();
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        return formato.format(fechaActual);
+    }
+
+    public String obtenerFechaMesAnterior() {
+        Calendar calendario = Calendar.getInstance();
+        calendario.setTime(new Date());
+        calendario.add(Calendar.MONTH, -1); // Restar 1 mes para obtener el mes anterior
+        Date fechaMesAnterior = calendario.getTime();
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        return formato.format(fechaMesAnterior);
+    }
+
+    public void traerDatos() {
+        String clasificacion = driverCont.obtenerClasificacionMenosResiduos(driver.getUsuario().getId());
+        textArea1.setText("La principal reducción de residuos este mes fue de la clasificación de basura  " + clasificacion + " ");
+
+        double porcentajeBasuraMesActual = driverCont.obtenerPorcentajeMes(driver.getUsuario().getId(), obtenerFechaActual());
+        double porcentajeBasuraMesAnterior = driverCont.obtenerPorcentajeMes(driver.getUsuario().getId(), obtenerFechaMesAnterior());
+
+        if (porcentajeBasuraMesActual < 0) {
+            porcentajeBasuraMesActual = porcentajeBasuraMesActual * -1;
+        }
+        
+        if (porcentajeBasuraMesAnterior < 0) {
+            porcentajeBasuraMesAnterior = porcentajeBasuraMesAnterior * -1;
+        }
+
+        String porcActual = String.format("%.2f", porcentajeBasuraMesActual);
+        String porcAnterior = String.format("%.2f", porcentajeBasuraMesAnterior);
+
+        lbThisMes.setText(porcActual + "%");
+        lbLastmes.setText(porcAnterior + "%");
+
+        if (porcentajeBasuraMesActual < porcentajeBasuraMesAnterior) {
+            textArea2.setText(driverCont.obtenerDato(driver.getUsuario().getId(), clasificacion, 1));
+        } else {
+            textArea2.setText(driverCont.obtenerDato(driver.getUsuario().getId(), clasificacion, 2));
+        }
     }
 
     public void abrirMisResiduos() {
@@ -228,13 +274,13 @@ public class ReduccionResiduos extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(27, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbLastmes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbUltimoMes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(68, 68, 68)
+                    .addComponent(lbLastmes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbUltimoMes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lbThisMes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbThisMes, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
                     .addComponent(lbEsteMes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(87, 87, 87))
+                .addGap(37, 37, 37))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
