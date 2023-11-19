@@ -12,12 +12,17 @@ import java.util.ArrayList;
  * Facultad de Ingenieria
  * Departamento de Ciencias de la Computacion
  * Fecha inicio: 19/09/2023
- * Fecha final: 19/09/2023
+ * Fecha final: 17/11/2023
  *
  * @author Nadissa Lopez 23764
  * @author Vianka Castro 23201
  * @author Ricardo Godinez 23247
+ * 
+ * La clase DriverClasifico gestiona la clasificación de residuos categorizando los artículos de desecho en sus respectivas clasificaciones.
+ * como orgánicos, plástico, multicapa, metal, vidrio y papel y cartón. Permite agregar elementos de desecho al
+ * clasificaciones y búsqueda de residuos dentro de los mismos.
  */
+
 public class DriverClasifico {
 
     ArrayList<Clasificacion> clasificacionesBasura;
@@ -36,7 +41,10 @@ public class DriverClasifico {
         }
         return clas.getArrayArticulos();
     }
-
+    /**
+     * Completa la lista de clasificación de residuos con categorías predefinidas y sus elementos asociados.
+     *Cada clasificación incluye una descripción, impactos negativos y beneficios del manejo adecuado de los residuos.
+     */
     public void llenarClasificaciones() {
         Clasificacion tempClas;
 
@@ -146,7 +154,12 @@ public class DriverClasifico {
         System.out.println(clasificacionesBasura.get(5).getArrayArticulos().get(0));
         
     }
-
+    /**
+     * Busca un elemento de desecho dentro de la lista de clasificación de desechos y devuelve su nombre de clasificación.
+     *
+     * @param articulo El nombre del elemento de desecho a buscar.
+     * @return El nombre de la clasificación a la que pertenece el artículo de desecho, o una cadena vacía si no se encuentra.
+     */
     public String buscarArticulo(String articulo) {
         String clas = "";
         for (Clasificacion clasificacion : clasificacionesBasura) {
@@ -157,7 +170,12 @@ public class DriverClasifico {
         }
         return clas;
     }
-
+    /**
+     * Devuelve una descripción detallada de una clasificación de residuos determinada, incluidos sus impactos negativos.
+     *
+     * @param clasificacion El nombre de la clasificación de residuos a describir.
+     * @return Una cadena que contiene la descripción y los impactos negativos de la clasificación de residuos.
+     */
     public String devolverDescripcion(String clasificacion) {
         String desc = "";
         for (Clasificacion clasBasura : clasificacionesBasura) {

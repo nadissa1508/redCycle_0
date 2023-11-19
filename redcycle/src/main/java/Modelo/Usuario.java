@@ -7,8 +7,15 @@ package Modelo;
 import java.util.ArrayList;
 
 /**
+ * POO 2 Semestre
+ * Facultad de Ingenieria
+ * Departamento de Ciencias de la Computacion
+ * Fecha inicio: 19/09/2023
+ * Fecha final: 17/11/2023
  *
- * @author nadis
+ * @author Nadissa Lopez 23764
+ * @author Vianka Castro 23201
+ * @author Ricardo Godinez 23247
  */
 public class Usuario {
 
